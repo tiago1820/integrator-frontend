@@ -1,0 +1,20 @@
+.nav {
+    background-color: #0F6292;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.link {
+    color: grey;
+    text-decoration: none;
+    margin-right: 10px;
+    margin-top: 10px;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: 1px solid #CCC;
+}
+
+.link:hover {
+    cursor: pointer;
+}

@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.css": "/proyecto-integrador-rick-and-morty/static/css/main.964fdded.css",
-    "main.js": "/proyecto-integrador-rick-and-morty/static/js/main.8fde121b.js",
+    "main.css": "/proyecto-integrador-rick-and-morty/static/css/main.4a21fa60.css",
+    "main.js": "/proyecto-integrador-rick-and-morty/static/js/main.20084e0e.js",
+    "static/media/Oswald-Regular.ttf": "/proyecto-integrador-rick-and-morty/static/media/Oswald-Regular.4736273ffd46f8c22d46.ttf",
     "index.html": "/proyecto-integrador-rick-and-morty/index.html",
-    "main.964fdded.css.map": "/proyecto-integrador-rick-and-morty/static/css/main.964fdded.css.map",
-    "main.8fde121b.js.map": "/proyecto-integrador-rick-and-morty/static/js/main.8fde121b.js.map"
+    "main.4a21fa60.css.map": "/proyecto-integrador-rick-and-morty/static/css/main.4a21fa60.css.map",
+    "main.20084e0e.js.map": "/proyecto-integrador-rick-and-morty/static/js/main.20084e0e.js.map"
   },
   "entrypoints": [
-    "static/css/main.964fdded.css",
-    "static/js/main.8fde121b.js"
+    "static/css/main.4a21fa60.css",
+    "static/js/main.20084e0e.js"
   ]
 }

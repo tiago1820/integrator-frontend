@@ -9,10 +9,7 @@
 
 .App {
    text-align: center;
+   padding: 25px;
 }
 
-body {
-  width: 100%;
-  height: 100vh;
-  background-image: linear-gradient(to bottom right, rgb(68,40,29), rgb(228,167,136), rgb(240,225,74), rgb(151,206,76), rgb(232,154,199));
-}
+
