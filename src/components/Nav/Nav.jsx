@@ -12,6 +12,7 @@ const Nav = ({ onSearch }) => {
             <SearchBar onSearch={onSearch} />
             <Link to='/home' className={link}>Home</Link>
             <Link to='/about' className={link}>About</Link>
+            <Link to='/' className={link}>Exit</Link>
         </div>
     );
 }
