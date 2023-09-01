@@ -1,0 +1,4 @@
+Empezar por...
+1. Reducer
+2.Config p/ traer Reducer
+3. Actions
