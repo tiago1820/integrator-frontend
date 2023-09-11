@@ -1,0 +1,80 @@
+.link {
+    box-sizing: border-box;
+    float: left;
+    width: 100%;
+    padding: 0 15px;
+    color: #343a40;
+    position: relative;
+    text-decoration: none;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #0b5ed7;
+    border-radius: 10px;
+
+}
+
+.image {
+    border-radius: 10px 10px 0 0;
+    max-width: 100%;
+    height: auto;
+}
+
+.cardContent {
+    padding: 10px;
+}
+
+.cardContent div {
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+.cardContent .origin {
+    font-size: 1.25rem;
+}
+
+.cardContent .name {
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.status {
+    top: 10px;
+    right: 20px;
+    font-size: 17px;
+    background-color: #25a745;
+    position: absolute;
+    display: inline-block;
+    padding: .25em .4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .2em;
+}
+
+@media (min-width: 576px) {
+    .link {
+        width: 50%;
+        float: left;
+    }
+}
+
+@media (min-width: 768px) {
+    .link {
+        width: 33.33%;
+        float: left;
+    }
+}
+
+@media (min-width: 992px) {
+    .link {
+        width: 25%;
+        float: left;
+    }
+}

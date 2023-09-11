@@ -1,5 +1,5 @@
-import Cards from './components/Cards.jsx';
-import SearchBar from './components/SearchBar.jsx';
+import Cards from './components/Cards/Cards';
+import SearchBar from './components/SearchBar/SearchBar';
 import characters from './data.js';
 
 function App() {
