@@ -1,13 +1,13 @@
-import SearchBar from "../SearchBar/SearchBar";
+import SearchBar from '../SearchBar/SearchBar';
 
 const Nav = (props) => {
     const { onSearch } = props;
 
     return (
         <div>
-            <SearchBar onSearch={onSearch}/>
+            <SearchBar onSearch={onSearch} />
         </div>
     )
 }
 
-export default Nav;
+export default Nav

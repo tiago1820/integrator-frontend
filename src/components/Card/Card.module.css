@@ -6,7 +6,6 @@
     color: #343a40;
     position: relative;
     text-decoration: none;
-    margin-bottom: 1rem;
 }
 
 .card {
@@ -14,7 +13,7 @@
     flex-direction: column;
     border: 2px solid #0b5ed7;
     border-radius: 10px;
-
+    margin-bottom: 1rem;
 }
 
 .image {
@@ -49,8 +48,8 @@
     background-color: #25a745;
     position: absolute;
     display: inline-block;
-    padding: .25em .4em;
-    font-size: 75%;
+    padding: .25rem .4rem;
+    /* font-size: 75%; */
     font-weight: 700;
     line-height: 1;
     text-align: center;

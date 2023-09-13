@@ -25,7 +25,8 @@ const Cards = (props) => {
                })}
             </div>
          </div>
-      </div>)
+      </div>
+   )
 }
 
 export default Cards;

@@ -1,6 +1,6 @@
 .container {
-    margin-right: auto;
     margin-left: auto;
+    margin-right: auto;
     padding-right: 15px;
     padding-left: 15px;
 }
@@ -13,10 +13,9 @@
 
 .column {
     box-sizing: border-box;
-    flex: 0 0 100%;
+    /* flex: 0 0 100%; */
     max-width: 100%;
 }
-
 
 @media (min-width: 576px) {
     .container {
