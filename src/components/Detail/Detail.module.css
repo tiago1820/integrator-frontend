@@ -5,6 +5,7 @@
     padding: 0 15px;
     color: #343a40;
     position: relative;
+    text-decoration: none;
 }
 
 .card {
@@ -23,10 +24,6 @@
 
 .cardContent {
     padding: 10px;
-}
-
-.cardContent a {
-    text-decoration: none;
 }
 
 .cardContent div {
