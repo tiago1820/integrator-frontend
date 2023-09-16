@@ -1,7 +1,11 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import LanguageSelector from '../LanguageSelector/LanguageSelector';
 import styles from './SearchBar.module.css';
 
 const SearchBar = (props) => {
+   const { t } = useTranslation();
+
    const [id, setId] = useState('');
 
    const handleChange = (e) => {
@@ -15,14 +19,14 @@ const SearchBar = (props) => {
          <input
             className={styles.searchInput}
             type='search'
-            placeholder='escriba un numero de 1 a 826'
+            placeholder={t('placeholderSearch')}
             onChange={handleChange}
             value={id}
          />
          <button
             className={styles.button}
             onClick={() => onSearch(id)}
-         >Agregar</button>
+         >{t('add')}</button>
       </div>
    );
 }
