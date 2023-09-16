@@ -3,9 +3,13 @@ import SearchBar from '../SearchBar/SearchBar';
 import PATHROUTES from '../../helpers/PathRoutes.helper';
 import { useRef } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
+import LanguageSelector from '../LanguageSelector/LanguageSelector';
 import styles from './Nav.module.css';
 
 const Nav = (props) => {
+
+    const { t } = useTranslation();
     const { onSearch } = props;
     const { HOME, ABOUT } = PATHROUTES;
 
@@ -26,9 +30,16 @@ const Nav = (props) => {
                         </Link>
                         <div className={styles.containerNav}>
                             <nav ref={navRef} className={styles.navbarNav}>
-                                <Link to={HOME} onClick={showNavBar}>Characters</Link>
-                                <Link to={HOME} onClick={showNavBar}>Episode</Link>
-                                <Link to={HOME} onClick={showNavBar}>Location</Link>
+                                <Link to={HOME} onClick={showNavBar}>{t('characters')}</Link>
+                                <Link to={HOME} onClick={showNavBar}>{t('episode')}</Link>
+                                <Link to={HOME} onClick={showNavBar}>{t('location')}</Link>
+                                <LanguageSelector />
+
+                                {/* <select>
+                                    <option value="en">English</option>
+                                    <option value="es">Español</option>
+                                    <option value="pt-br">Português</option>
+                                </select> */}
                                 <button onClick={showNavBar} className={`${styles.navBtn} ${styles.navCloseBtn}`}>
                                     <FaTimes />
                                 </button>
@@ -41,7 +52,7 @@ const Nav = (props) => {
                 </nav>
             </div>
             <div>
-                <h1 className={styles.characters}>Characters</h1>
+                <h1 className={styles.characters}>{t('characters')}</h1>
                 <div >
                     <SearchBar onSearch={onSearch} />
                 </div>
