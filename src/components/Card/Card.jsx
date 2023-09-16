@@ -4,7 +4,7 @@ import styles from './Card.module.css';
 
 const Card = (props) => {
    const { id, name, status, species, gender, origin, image, onClose } = props;
-   // const { DETAIL } = PATHROUTES;
+   const { DETAIL } = PATHROUTES;
 
    return (
       <div className={styles.link}>
@@ -12,7 +12,7 @@ const Card = (props) => {
             <button onClick={() => onClose(id)}>X</button>
             <img className={styles.image} src={image} alt='' />
             <div className={styles.cardContent}>
-               <Link to={`/detail/${id}`}>
+               <Link to={`detail/${id}`}>
                   <div className={styles.name}>{name}</div>
                </Link>
                <div>
