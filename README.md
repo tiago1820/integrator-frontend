@@ -1,2 +1,2 @@
 Project link:
-https://tiago1820.github.io/proyecto-integrador/
+https://tiago1820.github.io/
