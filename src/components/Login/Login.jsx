@@ -1,7 +1,7 @@
 import { useState } from "react";
 import validator from './validation';
 
-const Form = (props) => {
+const Login = (props) => {
 
     const { login } = props;
     const [errors, setErrors] = useState([]);
@@ -50,4 +50,4 @@ const Form = (props) => {
     )
 }
 
-export default Form;
+export default Login;

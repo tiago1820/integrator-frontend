@@ -6,7 +6,7 @@ import Nav from './components/Nav/Nav';
 import Cards from './components/Cards/Cards';
 import About from './components/About/About';
 import Detail from './components/Detail/Detail';
-import Form from './components/Form/Form';
+import Login from './components/Login/Login';
 import axios from 'axios';
 
 // firebase
@@ -52,7 +52,7 @@ function App() {
       <div className='App'>
          {pathname !== LOGIN && <Nav onSearch={onSearch} userCurrent={userCurrent} />}
          <Routes>
-            <Route path={LOGIN} element={<Form login={login} />} />
+            <Route path={LOGIN} element={<Login login={login} />} />
             <Route path={HOME} element={<Cards characters={characters} onClose={onClose} />} />
             <Route path={ABOUT} element={<About />} />
             <Route path={DETAIL} element={<Detail />} />
