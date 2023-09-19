@@ -10,8 +10,8 @@ import styles from './Nav.module.css';
 const Nav = (props) => {
 
     const { t } = useTranslation();
-    const { onSearch } = props;
-    const { HOME, ABOUT } = PATHROUTES;
+    const { onSearch, userCurrent } = props;
+    const { LOGIN, HOME, ABOUT } = PATHROUTES;
 
     const navRef = useRef();
 
@@ -29,17 +29,17 @@ const Nav = (props) => {
                             <span className={styles.wiki}> Wiki</span>
                         </Link>
                         <div className={styles.containerNav}>
+
                             <nav ref={navRef} className={styles.navbarNav}>
+                                <div className={styles.userCurrent}>
+                                    <p>{userCurrent}</p>
+                                    <Link to={LOGIN}>Log Out</Link>
+                                </div>
                                 <Link to={HOME} onClick={showNavBar}>{t('characters')}</Link>
                                 <Link to={HOME} onClick={showNavBar}>{t('episode')}</Link>
                                 <Link to={HOME} onClick={showNavBar}>{t('location')}</Link>
                                 <LanguageSelector />
 
-                                {/* <select>
-                                    <option value="en">English</option>
-                                    <option value="es">Español</option>
-                                    <option value="pt-br">Português</option>
-                                </select> */}
                                 <button onClick={showNavBar} className={`${styles.navBtn} ${styles.navCloseBtn}`}>
                                     <FaTimes />
                                 </button>
@@ -49,6 +49,7 @@ const Nav = (props) => {
                             </button>
                         </div>
                     </div>
+
                 </nav>
             </div>
             <div>
@@ -56,12 +57,7 @@ const Nav = (props) => {
                 <div >
                     <SearchBar onSearch={onSearch} />
                 </div>
-
-                {/* <Link to={HOME}>Home</Link>
-                    <Link to={ABOUT}>About</Link> */}
-                {/* <SearchBar onSearch={onSearch} /> */}
             </div>
-
         </>
     )
 }
