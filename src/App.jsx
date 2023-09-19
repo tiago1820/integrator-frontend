@@ -8,12 +8,14 @@ import About from './components/About/About';
 import Detail from './components/Detail/Detail';
 import Login from './components/Login/Login';
 import axios from 'axios';
+import styles from './App.module.css';
 
 // firebase
 import app from './firebase/firebase';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 function App() {
+
    const auth = getAuth(app);
    const { pathname } = useLocation();
    const { LOGIN, HOME, ABOUT, DETAIL } = PATHROUTES;
@@ -49,7 +51,7 @@ function App() {
    }
 
    return (
-      <div className='App'>
+      <div className={styles.app}>
          {pathname !== LOGIN && <Nav onSearch={onSearch} userCurrent={userCurrent} />}
          <Routes>
             <Route path={LOGIN} element={<Login login={login} />} />

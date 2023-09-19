@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import SearchBar from '../SearchBar/SearchBar';
 import PATHROUTES from '../../helpers/PathRoutes.helper';
 import { useRef } from 'react';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import { FaBars, FaTimes, FaSignOutAlt } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
 import LanguageSelector from '../LanguageSelector/LanguageSelector';
 import styles from './Nav.module.css';
@@ -21,37 +21,35 @@ const Nav = (props) => {
 
     return (
         <>
-            <div >
-                <nav className={styles.navbar}>
-                    <div className={styles.container}>
-                        <Link to={HOME} className={styles.brand}>
-                            Rick & Morty
-                            <span className={styles.wiki}> Wiki</span>
-                        </Link>
-                        <div className={styles.containerNav}>
+            <nav className={styles.navbar}>
+                <div className={styles.left}>
+                    <Link to={HOME} className={styles.appName} >Rick & Morty</Link>
+                </div>
 
-                            <nav ref={navRef} className={styles.navbarNav}>
-                                <div className={styles.userCurrent}>
-                                    <p>{userCurrent}</p>
-                                    <Link to={LOGIN}>Log Out</Link>
-                                </div>
-                                <Link to={HOME} onClick={showNavBar}>{t('characters')}</Link>
-                                <Link to={HOME} onClick={showNavBar}>{t('episode')}</Link>
-                                <Link to={HOME} onClick={showNavBar}>{t('location')}</Link>
-                                <LanguageSelector />
-
-                                <button onClick={showNavBar} className={`${styles.navBtn} ${styles.navCloseBtn}`}>
-                                    <FaTimes />
-                                </button>
-                            </nav>
-                            <button className={styles.navBtn} onClick={showNavBar}>
-                                <FaBars />
-                            </button>
+                <div className={styles.column}>
+                    <div className={styles.userInfo}>
+                        <div className={styles.userContainer}>
+                            <p className={styles.userEmail}>{userCurrent}</p>
+                            <Link to={LOGIN} className={styles.logoutBtn} >
+                                <FaSignOutAlt />
+                            </Link>
                         </div>
                     </div>
 
-                </nav>
-            </div>
+                    <nav ref={navRef} className={styles.right}>
+                        <Link to={HOME} onClick={showNavBar} className={styles.navLink} >{t('characters')}</Link>
+                        <Link to={HOME} onClick={showNavBar} className={styles.navLink} >{t('episode')}</Link>
+                        <Link to={HOME} onClick={showNavBar} className={styles.navLink} >{t('location')}</Link>
+                        <LanguageSelector />
+                        <button className={`${styles.navBtn} ${styles.navCloseBtn}`} onClick={showNavBar}>
+                            <FaTimes />
+                        </button>
+                    </nav>
+                    <button className={styles.navBtn} onClick={showNavBar}>
+                        <FaBars />
+                    </button>
+                </div>
+            </nav>
             <div>
                 <h1 className={styles.characters}>{t('characters')}</h1>
                 <div >
