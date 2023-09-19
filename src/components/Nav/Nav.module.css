@@ -17,6 +17,13 @@
 
 }
 
+.userCurrent{
+    display: flex;
+    justify-content: end;
+    margin-right: 2.5rem;
+    font-size: 1.3rem;
+}
+
 .navbarNav {
     top: 0;
     left: 0;
@@ -92,7 +99,7 @@ nav a:hover {
         visibility: visible;
         opacity: 1;
     }
-
+    
     .navbarNav {
         position: fixed;
         top: 0;

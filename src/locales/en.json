@@ -3,5 +3,10 @@
     "episode": "Episode",
     "location": "Location",
     "add": "Add",
-    "placeholderSearch": "write a number"
+    "placeholderSearch": "write a number",
+    "validatorE1": "Enter an email.",
+    "validatorE2": "Enter a valid email.",
+    "validatorE3": "Must be less than 36 characters.",
+    "validatorP1": "At least one numbers.",
+    "validatorP2": "It must be more than 6 and less than 10 characters."
 }
