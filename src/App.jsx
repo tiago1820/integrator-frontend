@@ -1,5 +1,5 @@
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useDebugValue, useEffect, useState } from 'react';
 import { filterCharacters, handleCharacterData } from './helpers/app.helper';
 import PATHROUTES from './helpers/PathRoutes.helper';
 import Nav from './components/Nav/Nav';
@@ -7,27 +7,29 @@ import Cards from './components/Cards/Cards';
 import About from './components/About/About';
 import Detail from './components/Detail/Detail';
 import Login from './components/Login/Login';
+import NewAccount from './components/NewAccount/NewAccount';
 import axios from 'axios';
 import styles from './App.module.css';
 
 // firebase
 import app from './firebase/firebase';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 
 function App() {
 
    const auth = getAuth(app);
    const { pathname } = useLocation();
-   const { LOGIN, HOME, ABOUT, DETAIL } = PATHROUTES;
+   const { LOGIN, NEWACCOUNT, HOME, ABOUT, DETAIL } = PATHROUTES;
    const [characters, setCharacters] = useState([]);
    const [access, setAccess] = useState(false);
    const [userCurrent, setUserCurrent] = useState('');
+   const [message, setMessage] = useState('');
    const navigate = useNavigate();
 
    function login(userData) {
       signInWithEmailAndPassword(auth, userData.email, userData.password)
-         .then((data) => {
-            setUserCurrent(data.user.email)
+         .then((result) => {
+            setUserCurrent(result.user.email)
             setAccess(true);
             navigate(HOME);
          })
@@ -35,6 +37,20 @@ function App() {
             navigate(LOGIN);
          });
    }
+
+   function registerUser(userData) {
+      createUserWithEmailAndPassword(auth, userData.email, userData.password)
+         .then((result) => {
+            setUserCurrent(result.user.email)
+            setAccess(true);
+            navigate(HOME);
+         })
+         .catch(error => {
+            console.error(error);
+            setMessage('Ha ocurrido un error al registrar el usuario. Por favor, inténtalo de nuevo más tarde.');
+         })
+   }
+
 
    useEffect(() => {
       !access && navigate(LOGIN);
@@ -52,9 +68,10 @@ function App() {
 
    return (
       <div className={styles.app}>
-         {pathname !== LOGIN && <Nav onSearch={onSearch} userCurrent={userCurrent} />}
+         {pathname !== LOGIN && pathname !== NEWACCOUNT && <Nav onSearch={onSearch} userCurrent={userCurrent} />}
          <Routes>
             <Route path={LOGIN} element={<Login login={login} />} />
+            <Route path={NEWACCOUNT} element={<NewAccount registerUser={registerUser} message={message} />} />
             <Route path={HOME} element={<Cards characters={characters} onClose={onClose} />} />
             <Route path={ABOUT} element={<About />} />
             <Route path={DETAIL} element={<Detail />} />

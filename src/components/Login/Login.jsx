@@ -1,5 +1,5 @@
 import { useState } from "react";
-import validator from './validation';
+import validator from '../../helpers/validation..helper';
 import { Link } from "react-router-dom";
 import PATHROUTES from "../../helpers/PathRoutes.helper";
 import styles from './Login.module.css';
@@ -55,10 +55,10 @@ const Login = (props) => {
                 </div>
                 {errors.p1 ? (<p>{errors.p1}</p>) : (<p>{errors.p2}</p>)}
 
-                <button className={styles.button}>Ingresar</button>
+                <button className={styles.button}>Login</button>
 
                 <div>
-                    <Link to={PASSWORDRESET}>Olvide mi contraseña</Link>
+                    {/* <Link to={PASSWORDRESET}>Olvide mi contraseña</Link> */}
                     <Link to={NEWACCOUNT}>Sign up</Link>
                 </div>
             </form>
