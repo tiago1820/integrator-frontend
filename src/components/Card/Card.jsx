@@ -12,7 +12,7 @@ const Card = (props) => {
             <button onClick={() => onClose(id)}>X</button>
             <img className={styles.image} src={image} alt='' />
             <div className={styles.cardContent}>
-               <Link to={`/proyecto-integrador/detail/${id}`}>
+               <Link to={`/detail/${id}`}>
                   <div className={styles.name}>{name}</div>
                </Link>
                <div>

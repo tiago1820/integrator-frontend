@@ -1,13 +1,13 @@
-import { useState } from "react";
+import { useState } from 'react';
 import validator from '../../helpers/validation..helper';
-import { Link } from "react-router-dom";
-import PATHROUTES from "../../helpers/PathRoutes.helper";
-import styles from './Login.module.css';
+import { Link } from 'react-router-dom';
+import PATHROUTES from '../../helpers/PathRoutes.helper';
+import styles from './PasswordReset.module.css';
 
-const Login = (props) => {
+const PasswordReset = (props) => {
 
-    const { NEWACCOUNT, PASSWORDRESET } = PATHROUTES;
-    const { login } = props;
+    const { recoverPassword, message } = props;
+    const { LOGIN, NEWACCOUNT } = PATHROUTES;
     const [errors, setErrors] = useState([]);
     const [userData, setUserData] = useState({
         email: '',
@@ -21,13 +21,14 @@ const Login = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        login(userData);
+        recoverPassword(userData);
     }
 
     return (
         <div className={styles.container}>
             <form onSubmit={handleSubmit}>
-                <h2 className={styles.title}>Login</h2>
+                <h2 className={styles.title}>Password Reset</h2>
+                <p>Escribí tu mail para que te enviemos un correo para crear una nueva contraseña.</p>
                 <div className={styles.inputContainer}>
                     <label className={styles.label} htmlFor="">Email</label>
                     <input
@@ -42,23 +43,11 @@ const Login = (props) => {
                 </div>
                 {errors.e1 ? (<p>{errors.e1}</p>) : errors.e2 ? (<p>{errors.e2}</p>) : (<p>{errors.e3}</p>)}
 
-                <div>
-                    <label className={styles.label} htmlFor="">Password</label>
-                    <input
-                        className={styles.input}
-                        onChange={handleChange}
-                        type="password"
-                        name="password"
-                        value={userData.password}
-                        placeholder="Password..."
-                    />
-                </div>
-                {errors.p1 ? (<p>{errors.p1}</p>) : (<p>{errors.p2}</p>)}
-
-                <button className={styles.button}>Login</button>
+                <button className={styles.button}>Resetar Contraseña</button>
+                {message ? (<p>{message}</p>) : (<p></p>)}
 
                 <div>
-                    <Link to={PASSWORDRESET}>Olvide mi contraseña</Link>
+                    <Link to={LOGIN}>Login</Link>
                     <Link to={NEWACCOUNT}>Sign up</Link>
                 </div>
             </form>
@@ -66,4 +55,4 @@ const Login = (props) => {
     )
 }
 
-export default Login;
+export default PasswordReset;
