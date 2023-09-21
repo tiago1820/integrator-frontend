@@ -1,10 +1,10 @@
 const PATHROUTES = {
-    LOGIN: '/proyecto-integrador/',
-    HOME: '/proyecto-integrador/home',
-    ABOUT: '/proyecto-integrador/about',
-    DETAIL: '/proyecto-integrador/detail/:id',
-    NEWACCOUNT: '/proyecto-integrador/newaccount',
-    PASSWORDRESET: '/proyecto-integrador/passwordreset'
+    LOGIN: '/',
+    HOME: '/home',
+    ABOUT: '/about',
+    DETAIL: '/detail/:id',
+    NEWACCOUNT: '/newaccount',
+    PASSWORDRESET: '/passwordreset',
 }
 
 export default PATHROUTES;
