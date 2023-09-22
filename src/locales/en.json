@@ -1,7 +1,17 @@
-{
-    "characters": "Characters",
-    "episode": "Episode",
-    "location": "Location",
+{   
+    "resetPassword": "Reset Password",
+    "newPassword": "Enter your email so we can send you an email to create a new password.",
+    "passwordReset": "Password Reset",
+    "haveAccount": "I already have an account",
+    "newAccount": "Create an account",
+    "welcome": "Welcome to the Rick And Morty Wiki",
+    "login": "Log in",
+    "email": "Email",
+    "password": "Password",
+    "forgotPassword": "I forgot my password",
+    "signUp": "Sign Up",
+    "home": "Home",
+    "about": "About",
     "add": "Add",
     "placeholderSearch": "write a number",
     "validatorE1": "Enter an email.",
@@ -10,3 +20,4 @@
     "validatorP1": "At least one numbers.",
     "validatorP2": "It must be more than 6 and less than 10 characters."
 }
+

@@ -119,6 +119,7 @@
 
     .navbar .responsiveNav {
         transform: none;
+        z-index: 10;
         
     }
 

@@ -3,9 +3,12 @@ import validator from '../../helpers/validation..helper';
 import { Link } from 'react-router-dom';
 import PATHROUTES from '../../helpers/PathRoutes.helper';
 import styles from './PasswordReset.module.css';
+import { useTranslation } from "react-i18next";
+
 
 const PasswordReset = (props) => {
 
+    const { t } = useTranslation();
     const { recoverPassword, message } = props;
     const { LOGIN, NEWACCOUNT } = PATHROUTES;
     const [errors, setErrors] = useState([]);
@@ -27,28 +30,28 @@ const PasswordReset = (props) => {
     return (
         <div className={styles.container}>
             <form onSubmit={handleSubmit}>
-                <h2 className={styles.title}>Password Reset</h2>
-                <p>Escribí tu mail para que te enviemos un correo para crear una nueva contraseña.</p>
+                <h2 className={styles.title}>{t('resetPassword')}</h2>
+                <p>{t("newPassword")}</p>
                 <div className={styles.inputContainer}>
-                    <label className={styles.label} htmlFor="">Email</label>
+                    <label className={styles.label} htmlFor="">{t('email')}</label>
                     <input
                         className={styles.input}
                         onChange={handleChange}
                         type="text"
                         name="email"
                         value={userData.email}
-                        placeholder="Email..."
+                        placeholder={`${t('email')}...`}
 
                     />
                 </div>
                 {errors.e1 ? (<p>{errors.e1}</p>) : errors.e2 ? (<p>{errors.e2}</p>) : (<p>{errors.e3}</p>)}
 
-                <button className={styles.button}>Resetar Contraseña</button>
+                <button className={styles.button}>{t('resetPassword')}</button>
                 {message ? (<p>{message}</p>) : (<p></p>)}
 
                 <div>
-                    <Link to={LOGIN}>Login</Link>
-                    <Link to={NEWACCOUNT}>Sign up</Link>
+                    <Link to={LOGIN}>{t('login')}</Link>
+                    <Link to={NEWACCOUNT}>{t('signUp')}</Link>
                 </div>
             </form>
         </div>

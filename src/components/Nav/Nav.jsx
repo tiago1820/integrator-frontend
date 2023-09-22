@@ -37,9 +37,8 @@ const Nav = (props) => {
                     </div>
 
                     <nav ref={navRef} className={styles.right}>
-                        <Link to={HOME} onClick={showNavBar} className={styles.navLink} >{t('characters')}</Link>
-                        <Link to={HOME} onClick={showNavBar} className={styles.navLink} >{t('episode')}</Link>
-                        <Link to={HOME} onClick={showNavBar} className={styles.navLink} >{t('location')}</Link>
+                        <Link to={HOME} onClick={showNavBar} className={styles.navLink} >{t('home')}</Link>
+                        <Link to={HOME} onClick={showNavBar} className={styles.navLink} >{t('about')}</Link>
                         <LanguageSelector />
                         <button className={`${styles.navBtn} ${styles.navCloseBtn}`} onClick={showNavBar}>
                             <FaTimes />
@@ -51,7 +50,7 @@ const Nav = (props) => {
                 </div>
             </nav>
             <div>
-                <h1 className={styles.characters}>{t('characters')}</h1>
+                {/* <h1 className={styles.characters}>{t('characters')}</h1> */}
                 <div >
                     <SearchBar onSearch={onSearch} />
                 </div>

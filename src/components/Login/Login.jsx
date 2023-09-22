@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import validator from '../../helpers/validation..helper';
 import { Link } from "react-router-dom";
 import PATHROUTES from "../../helpers/PathRoutes.helper";
 import styles from './Login.module.css';
+import { useTranslation } from "react-i18next";
 
 const Login = (props) => {
 
+    const { t } = useTranslation();
     const { NEWACCOUNT, PASSWORDRESET } = PATHROUTES;
     const { login } = props;
     const [errors, setErrors] = useState([]);
@@ -27,39 +29,40 @@ const Login = (props) => {
     return (
         <div className={styles.container}>
             <form onSubmit={handleSubmit}>
-                <h2 className={styles.title}>Login</h2>
+                <h3 className={styles.welcome}>{t('welcome')}</h3>
+                <h2 className={styles.title}>Log in</h2>
                 <div className={styles.inputContainer}>
-                    <label className={styles.label} htmlFor="">Email</label>
+                    <label className={styles.label} htmlFor="">{t('email')}</label>
                     <input
                         className={styles.input}
                         onChange={handleChange}
                         type="text"
                         name="email"
                         value={userData.email}
-                        placeholder="Email..."
+                        placeholder={`${t('email')}...`}
 
                     />
                 </div>
                 {errors.e1 ? (<p>{errors.e1}</p>) : errors.e2 ? (<p>{errors.e2}</p>) : (<p>{errors.e3}</p>)}
 
                 <div>
-                    <label className={styles.label} htmlFor="">Password</label>
+                    <label className={styles.label} htmlFor="">{t('password')}</label>
                     <input
                         className={styles.input}
                         onChange={handleChange}
                         type="password"
                         name="password"
                         value={userData.password}
-                        placeholder="Password..."
+                        placeholder={`${t('password')}...`}
                     />
                 </div>
                 {errors.p1 ? (<p>{errors.p1}</p>) : (<p>{errors.p2}</p>)}
 
-                <button className={styles.button}>Login</button>
+                <button className={styles.button}>{t('login')}</button>
 
                 <div>
-                    <Link to={PASSWORDRESET}>Olvide mi contraseña</Link>
-                    <Link to={NEWACCOUNT}>Sign up</Link>
+                    <Link to={PASSWORDRESET}>{t('forgotPassword')}</Link>
+                    <Link to={NEWACCOUNT}>{t('signUp')}</Link>
                 </div>
             </form>
         </div>
