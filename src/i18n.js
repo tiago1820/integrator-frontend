@@ -10,14 +10,21 @@ const resources = {
     pt: { translation: ptTranslations }
 }
 
+// Obtén el idioma del navegador del usuario
+let userLanguage = navigator.language.split('-')[0];
+
+if (!['en', 'es', 'pt'].includes(userLanguage)) {
+    userLanguage = 'en';
+}
+
 i18n
     .use(initReactI18next)
     .init({
         resources,
-        lng: 'en',
+        lng: userLanguage,
         interpolation: {
             escapeValue: false,
         },
     })
 
-    export default i18n;
+export default i18n;

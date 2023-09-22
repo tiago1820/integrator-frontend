@@ -1,7 +1,16 @@
 {
-    "characters": "Personagens",
-    "episode": "Episódio",
-    "location": "Localização",
+    "resetPassword": "Redefinir senha",
+    "newPassword": "Digite seu e-mail para que possamos lhe enviar um e-mail para criar uma nova senha",
+    "haveAccount": "Já tenho uma conta",
+    "newAccount": "Criar uma conta",
+    "welcome": "Bem-vindo à Wiki de Rick e Morty",
+    "login": "Entrar",
+    "email": "Email",
+    "password": "Senha",
+    "forgotPassword": "Esqueci minha senha",
+    "signUp": "Registre-se",
+    "home": "Inicio",
+    "about": "Quem somos",
     "add": "Adicionar",
     "placeholderSearch": "escreva um número"
 }
