@@ -1,20 +1,22 @@
+// DEPENDENCIES AND HOOKS
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
-import { useDebugValue, useEffect, useState } from 'react';
-import { filterCharacters, handleCharacterData } from './helpers/app.helper';
-import PATHROUTES from './helpers/PathRoutes.helper';
+// COMPONENTS
 import Nav from './components/Nav/Nav';
 import Cards from './components/Cards/Cards';
 import About from './components/About/About';
 import Detail from './components/Detail/Detail';
-import Login from './components/Login/Login';
+import PasswordReset from './components/PasswordReset/PasswordReset';
 import NewAccount from './components/NewAccount/NewAccount';
-import axios from 'axios';
+import Login from './components/Login/Login';
+// FILES
+import { filterCharacters, handleCharacterData } from './helpers/app.helper';
+import PATHROUTES from './helpers/PathRoutes.helper';
 import styles from './App.module.css';
-
-// firebase
+// FIREBASE
 import app from './firebase/firebase';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
-import PasswordReset from './components/PasswordReset/PasswordReset';
 
 function App() {
 

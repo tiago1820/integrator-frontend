@@ -1,9 +1,12 @@
+// DEPENDENCIES AND HOOKS
 import { Link } from 'react-router-dom';
-import SearchBar from '../SearchBar/SearchBar';
-import PATHROUTES from '../../helpers/PathRoutes.helper';
 import { useRef } from 'react';
-import { FaBars, FaTimes, FaSignOutAlt } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
+import { FaBars, FaTimes, FaSignOutAlt } from 'react-icons/fa';
+// COMPONENTS
+import SearchBar from '../SearchBar/SearchBar';
+//FILES
+import PATHROUTES from '../../helpers/PathRoutes.helper';
 import LanguageSelector from '../LanguageSelector/LanguageSelector';
 import styles from './Nav.module.css';
 
