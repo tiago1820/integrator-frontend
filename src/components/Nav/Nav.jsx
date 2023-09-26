@@ -1,5 +1,5 @@
 // DEPENDENCIES AND HOOKS
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaBars, FaTimes, FaSignOutAlt } from 'react-icons/fa';
@@ -14,7 +14,8 @@ const Nav = (props) => {
 
     const { t } = useTranslation();
     const { onSearch, userCurrent } = props;
-    const { LOGIN, HOME, ABOUT } = PATHROUTES;
+    const { LOGIN, HOME, ABOUT, FAVORITES } = PATHROUTES;
+    const { pathname } = useLocation();
 
     const navRef = useRef();
 
@@ -40,8 +41,11 @@ const Nav = (props) => {
                     </div>
 
                     <nav ref={navRef} className={styles.right}>
-                        <Link to={HOME} onClick={showNavBar} className={styles.navLink} >{t('home')}</Link>
+                        {
+                            pathname !== HOME && <Link to={HOME} onClick={showNavBar} className={styles.navLink} >{t('home')}</Link>
+                        }
                         <Link to={HOME} onClick={showNavBar} className={styles.navLink} >{t('about')}</Link>
+                        <Link to={FAVORITES} onClick={showNavBar} className={styles.navLink} >Favorites</Link>
                         <LanguageSelector />
                         <button className={`${styles.navBtn} ${styles.navCloseBtn}`} onClick={showNavBar}>
                             <FaTimes />
