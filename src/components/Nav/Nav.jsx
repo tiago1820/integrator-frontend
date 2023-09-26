@@ -5,15 +5,17 @@ import { useTranslation } from 'react-i18next';
 import { FaBars, FaTimes, FaSignOutAlt } from 'react-icons/fa';
 // COMPONENTS
 import SearchBar from '../SearchBar/SearchBar';
+import RandomButton from '../RandomButtom/RandomButton';
 //FILES
 import PATHROUTES from '../../helpers/PathRoutes.helper';
 import LanguageSelector from '../LanguageSelector/LanguageSelector';
 import styles from './Nav.module.css';
 
 const Nav = (props) => {
+    console.log(props)
 
     const { t } = useTranslation();
-    const { onSearch, userCurrent } = props;
+    const { onSearch, userCurrent, getRandom } = props;
     const { LOGIN, HOME, ABOUT, FAVORITES } = PATHROUTES;
     const { pathname } = useLocation();
 
@@ -46,6 +48,7 @@ const Nav = (props) => {
                         }
                         <Link to={HOME} onClick={showNavBar} className={styles.navLink} >{t('about')}</Link>
                         <Link to={FAVORITES} onClick={showNavBar} className={styles.navLink} >Favorites</Link>
+                        <RandomButton getRandom={getRandom}/>
                         <LanguageSelector />
                         <button className={`${styles.navBtn} ${styles.navCloseBtn}`} onClick={showNavBar}>
                             <FaTimes />

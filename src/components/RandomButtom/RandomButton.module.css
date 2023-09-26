@@ -1,0 +1,11 @@
+.randomButton {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    outline: none;
+    margin-top: 0.38rem;
+    margin-left: 0.9rem;
+}

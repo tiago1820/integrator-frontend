@@ -72,7 +72,29 @@ function App() {
 	const onSearch = (id) => {
 		axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
 			handleCharacterData(data, characters, setCharacters);
-		})
+		});
+	}
+
+	// RANDOM
+	function getRandomNumber() {
+		return Math.floor(Math.random() * 826) + 1;
+	}
+
+	
+	const getRandom = () => {
+		let id;
+
+		const isIdCharacters = (id) => {
+			return characters.some(characters => characters.id === id);
+		}
+
+		do {
+			id = getRandomNumber();
+		} while (isIdCharacters(id));
+
+		axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
+			handleCharacterData(data, characters, setCharacters);
+		});
 	}
 
 	const onClose = (id) => {
@@ -81,7 +103,7 @@ function App() {
 
 	return (
 		<div className={styles.app}>
-			{pathname !== LOGIN && pathname !== NEWACCOUNT && pathname !== PASSWORDRESET && <Nav onSearch={onSearch} userCurrent={userCurrent} />}
+			{pathname !== LOGIN && pathname !== NEWACCOUNT && pathname !== PASSWORDRESET && <Nav onSearch={onSearch} userCurrent={userCurrent} getRandom={getRandom}/>}
 			<Routes>
 				<Route path={LOGIN} element={<Login login={login} />} />
 				<Route path={NEWACCOUNT} element={<NewAccount registerUser={registerUser} message={message} />} />

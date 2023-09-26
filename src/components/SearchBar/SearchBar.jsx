@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import LanguageSelector from '../LanguageSelector/LanguageSelector';
 import styles from './SearchBar.module.css';
 
 const SearchBar = (props) => {
