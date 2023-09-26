@@ -10,6 +10,7 @@ import Detail from './components/Detail/Detail';
 import PasswordReset from './components/PasswordReset/PasswordReset';
 import NewAccount from './components/NewAccount/NewAccount';
 import Login from './components/Login/Login';
+import Favorites from './components/Favorites/Favorites';
 // FILES
 import { filterCharacters, handleCharacterData } from './helpers/app.helper';
 import PATHROUTES from './helpers/PathRoutes.helper';
@@ -22,7 +23,7 @@ function App() {
 
 	const auth = getAuth(app);
 	const { pathname } = useLocation();
-	const { LOGIN, NEWACCOUNT, PASSWORDRESET, HOME, ABOUT, DETAIL } = PATHROUTES;
+	const { LOGIN, NEWACCOUNT, PASSWORDRESET, HOME, ABOUT, DETAIL, FAVORITES } = PATHROUTES;
 	const [characters, setCharacters] = useState([]);
 	const [access, setAccess] = useState(false);
 	const [userCurrent, setUserCurrent] = useState('');
@@ -88,6 +89,7 @@ function App() {
 				<Route path={HOME} element={<Cards characters={characters} onClose={onClose} />} />
 				<Route path={ABOUT} element={<About />} />
 				<Route path={DETAIL} element={<Detail />} />
+				<Route path={FAVORITES} element={<Favorites />} />
 			</Routes>
 		</div>
 	);

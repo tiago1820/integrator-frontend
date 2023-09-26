@@ -1,15 +1,44 @@
-import { Link } from 'react-router-dom';
-import PATHROUTES from '../../helpers/PathRoutes.helper';
+// DEPENDENCIES AND HOOKS
+import { Link, useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+// FILES
 import styles from './Card.module.css';
+import PATHROUTES from '../../helpers/PathRoutes.helper';
+import { addFav, removeFav } from "../../redux/actions";
 
 const Card = (props) => {
-   const { id, name, status, species, gender, origin, image, onClose } = props;
-   const { DETAIL } = PATHROUTES;
+   const { id, name, status, species, gender, origin, image, onClose, addFav, removeFav, myFavorites } = props;
+   const { DETAIL, FAVORITES } = PATHROUTES;
+   const { pathname } = useLocation();
+
+   const [isFav, setIsFav] = useState(false);
+
+   const handleFavorite = () => {
+      isFav ? removeFav(id) : addFav(props);
+      setIsFav(!isFav);
+   }
+
+   useEffect(() => {
+      myFavorites.forEach((fav) => {
+         if (fav.id === props.id) {
+            setIsFav(true);
+         }
+      });
+   }, [myFavorites]);
 
    return (
       <div className={styles.link}>
          <div className={styles.card}>
-            <button onClick={() => onClose(id)}>X</button>
+            {
+               isFav ? <button onClick={handleFavorite}>❤️</button> : <button onClick={handleFavorite}>🤍</button>
+            }
+
+            {
+               pathname !== FAVORITES && <button onClick={() => onClose(id)}>X</button>
+
+            }
+
             <img className={styles.image} src={image} alt='' />
             <div className={styles.cardContent}>
                <Link to={`/detail/${id}`}>
@@ -27,4 +56,21 @@ const Card = (props) => {
    );
 }
 
-export default Card;
+const mapDispatchToProps = (dispatch) => {
+   return {
+      addFav: (character) => {
+         dispatch(addFav(character))
+      },
+      removeFav: (id) => {
+         dispatch(removeFav(id))
+      }
+   }
+}
+
+const mapStateToProps = (state) => {
+   return {
+      myFavorites: state.myFavorites,
+   }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Card);
