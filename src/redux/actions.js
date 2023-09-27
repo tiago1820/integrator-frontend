@@ -11,3 +11,10 @@ export const removeFav = (id) => {
         payload: id
     }
 }
+
+export const setTotalChar = (total) => {
+    return {
+        type: "SET_TOTAL_CHAR",
+        payload: total
+    }
+}

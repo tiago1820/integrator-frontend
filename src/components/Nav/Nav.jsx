@@ -12,7 +12,6 @@ import LanguageSelector from '../LanguageSelector/LanguageSelector';
 import styles from './Nav.module.css';
 
 const Nav = (props) => {
-    console.log(props)
 
     const { t } = useTranslation();
     const { onSearch, userCurrent, getRandom } = props;
