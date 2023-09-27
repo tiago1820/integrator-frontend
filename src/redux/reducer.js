@@ -1,5 +1,6 @@
 const initialState = {
-    myFavorites: []
+    myFavorites: [],
+    totalChars: null
 }
 
 const rootReducer = (state = initialState, { type, payload }) => {
@@ -17,6 +18,12 @@ const rootReducer = (state = initialState, { type, payload }) => {
                 ...state,
                 myFavorites: copy2
             }
+        
+            case "SET_TOTAL_CHAR":
+                return {
+                    ...state,
+                    totalChars: payload
+                }
 
         default:
             return {

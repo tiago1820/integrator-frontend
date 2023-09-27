@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
+import { connect } from 'react-redux';
 // COMPONENTS
 import Nav from './components/Nav/Nav';
 import Cards from './components/Cards/Cards';
@@ -18,9 +19,12 @@ import styles from './App.module.css';
 // FIREBASE
 import app from './firebase/firebase';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
+import { setTotalChar } from './redux/actions';
 
-function App() {
+function App(props) {
 
+	const { setTotalChar, totalChars } = props;
+	console.log(totalChars)
 	const auth = getAuth(app);
 	const { pathname } = useLocation();
 	const { LOGIN, NEWACCOUNT, PASSWORDRESET, HOME, ABOUT, DETAIL, FAVORITES } = PATHROUTES;
@@ -30,17 +34,31 @@ function App() {
 	const [message, setMessage] = useState('');
 	const navigate = useNavigate();
 
-	function login(userData) {
-		signInWithEmailAndPassword(auth, userData.email, userData.password)
-			.then((result) => {
-				setUserCurrent(result.user.email)
-				setAccess(true);
-				navigate(HOME);
+	async function login(userData) {
+		try {
+			const result = await signInWithEmailAndPassword(auth, userData.email, userData.password);
+			setUserCurrent(result.user.email);
+			setAccess(true);
+			navigate(HOME);
+			const totalChars = await getTotalChars();
+			setTotalChar(totalChars)
+		} catch (error) {
+			navigate(LOGIN);
+		}
+	}
+
+
+	function getTotalChars() {
+		return axios.get("https://rickandmortyapi.com/api/character")
+			.then(response => {
+				return response.data.info.count;
 			})
-			.catch((error) => {
-				navigate(LOGIN);
+			.catch(error => {
+				console.error(error);
+				throw error;
 			});
 	}
+
 
 	function registerUser(userData) {
 		createUserWithEmailAndPassword(auth, userData.email, userData.password)
@@ -77,10 +95,11 @@ function App() {
 
 	// RANDOM
 	function getRandomNumber() {
-		return Math.floor(Math.random() * 826) + 1;
+		return Math.floor(Math.random() * totalChars) + 1;
+		
 	}
 
-	
+
 	const getRandom = () => {
 		let id;
 
@@ -103,7 +122,7 @@ function App() {
 
 	return (
 		<div className={styles.app}>
-			{pathname !== LOGIN && pathname !== NEWACCOUNT && pathname !== PASSWORDRESET && <Nav onSearch={onSearch} userCurrent={userCurrent} getRandom={getRandom}/>}
+			{pathname !== LOGIN && pathname !== NEWACCOUNT && pathname !== PASSWORDRESET && <Nav onSearch={onSearch} userCurrent={userCurrent} getRandom={getRandom} />}
 			<Routes>
 				<Route path={LOGIN} element={<Login login={login} />} />
 				<Route path={NEWACCOUNT} element={<NewAccount registerUser={registerUser} message={message} />} />
@@ -117,4 +136,18 @@ function App() {
 	);
 }
 
-export default App;
+const mapDispatchToProps = (dispatch) => {
+	return {
+		setTotalChar: (total) => {
+			dispatch(setTotalChar(total))
+		}
+	}
+}
+
+const mapStateToProps = (state) => {
+	return {
+		totalChars: state.totalChars,
+	}
+ }
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
