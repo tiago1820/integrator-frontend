@@ -2,7 +2,7 @@
 const About = () => {
   return (
     <div>
-      
+      Hola!
     </div>
   )
 }

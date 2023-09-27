@@ -42,12 +42,10 @@ const Nav = (props) => {
                     </div>
 
                     <nav ref={navRef} className={styles.right}>
-                        {
-                            pathname !== HOME && <Link to={HOME} onClick={showNavBar} className={styles.navLink} >{t('home')}</Link>
-                        }
-                        <Link to={HOME} onClick={showNavBar} className={styles.navLink} >{t('about')}</Link>
-                        <Link to={FAVORITES} onClick={showNavBar} className={styles.navLink} >Favorites</Link>
-                        <RandomButton getRandom={getRandom}/>
+                        {pathname !== HOME && <Link to={HOME} onClick={showNavBar} className={styles.navLink} >{t('home')}</Link>}
+                        {pathname !== ABOUT && <Link to={ABOUT} onClick={showNavBar} className={styles.navLink} >{t('about')}</Link>}
+                        {pathname !== FAVORITES && <Link to={FAVORITES} onClick={showNavBar} className={styles.navLink} >{t('favorites')}</Link>}
+                        <RandomButton getRandom={getRandom} />
                         <LanguageSelector />
                         <button className={`${styles.navBtn} ${styles.navCloseBtn}`} onClick={showNavBar}>
                             <FaTimes />
