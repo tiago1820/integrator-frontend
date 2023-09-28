@@ -5,7 +5,8 @@ const PATHROUTES = {
     DETAIL: '/detail/:id',
     NEWACCOUNT: '/newaccount',
     PASSWORDRESET: '/passwordreset',
-    FAVORITES: '/favorite',
+    FAVORITES: '/favorites',
+    ERROR_404: '*',
 }
 
 export default PATHROUTES;

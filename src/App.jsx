@@ -12,6 +12,7 @@ import PasswordReset from './components/PasswordReset/PasswordReset';
 import NewAccount from './components/NewAccount/NewAccount';
 import Login from './components/Login/Login';
 import Favorites from './components/Favorites/Favorites';
+import { ProtectedRoute } from './components/ProtectedRoute/ProtectedRoute';
 // FILES
 import { filterCharacters, handleCharacterData } from './helpers/app.helper';
 import PATHROUTES from './helpers/PathRoutes.helper';
@@ -23,13 +24,15 @@ import { setTotalChar } from './redux/actions';
 
 function App(props) {
 
+	const [user, setUser] = useState(null);
+
+
 	const { setTotalChar, totalChars } = props;
-	console.log(totalChars)
 	const auth = getAuth(app);
 	const { pathname } = useLocation();
-	const { LOGIN, NEWACCOUNT, PASSWORDRESET, HOME, ABOUT, DETAIL, FAVORITES } = PATHROUTES;
+	const { LOGIN, NEWACCOUNT, PASSWORDRESET, HOME, ABOUT, DETAIL, FAVORITES, ERROR_404 } = PATHROUTES;
 	const [characters, setCharacters] = useState([]);
-	const [access, setAccess] = useState(false);
+	// const [access, setAccess] = useState(false);
 	const [userCurrent, setUserCurrent] = useState('');
 	const [message, setMessage] = useState('');
 	const navigate = useNavigate();
@@ -37,8 +40,16 @@ function App(props) {
 	async function login(userData) {
 		try {
 			const result = await signInWithEmailAndPassword(auth, userData.email, userData.password);
+			// setAccess(true);
+
+
+			setUser({
+				id: result.user.uid,
+				email: result.user.email
+			})
+
+
 			setUserCurrent(result.user.email);
-			setAccess(true);
 			navigate(HOME);
 			const totalChars = await getTotalChars();
 			setTotalChar(totalChars)
@@ -46,6 +57,8 @@ function App(props) {
 			navigate(LOGIN);
 		}
 	}
+
+	const logout = () => setUser(null);
 
 
 	function getTotalChars() {
@@ -83,9 +96,9 @@ function App(props) {
 			})
 	}
 
-	useEffect(() => {
-		!access && navigate(LOGIN);
-	}, [access]);
+	// useEffect(() => {
+	// 	!access && navigate(LOGIN);
+	// }, [access]);
 
 	const onSearch = (id) => {
 		axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
@@ -96,7 +109,7 @@ function App(props) {
 	// RANDOM
 	function getRandomNumber() {
 		return Math.floor(Math.random() * totalChars) + 1;
-		
+
 	}
 
 
@@ -120,17 +133,29 @@ function App(props) {
 		setCharacters(filterCharacters(characters, id));
 	}
 
+	useEffect(() => {
+		const currentPath = window.location.pathname;
+		const validRoutes = [HOME, ABOUT, DETAIL, FAVORITES]
+		if (!validRoutes.includes(currentPath)) {
+			navigate(LOGIN);
+		}
+	}, [])
+
 	return (
 		<div className={styles.app}>
-			{pathname !== LOGIN && pathname !== NEWACCOUNT && pathname !== PASSWORDRESET && <Nav onSearch={onSearch} userCurrent={userCurrent} getRandom={getRandom} />}
+			{pathname !== LOGIN && pathname !== NEWACCOUNT && pathname !== PASSWORDRESET && <Nav logout={logout} onSearch={onSearch} userCurrent={userCurrent} getRandom={getRandom} />}
 			<Routes>
 				<Route path={LOGIN} element={<Login login={login} />} />
 				<Route path={NEWACCOUNT} element={<NewAccount registerUser={registerUser} message={message} />} />
 				<Route path={PASSWORDRESET} element={<PasswordReset recoverPassword={recoverPassword} message={message} />} />
-				<Route path={HOME} element={<Cards characters={characters} onClose={onClose} />} />
-				<Route path={ABOUT} element={<About />} />
-				<Route path={DETAIL} element={<Detail />} />
-				<Route path={FAVORITES} element={<Favorites />} />
+
+				<Route element={<ProtectedRoute isAllowed={!!user} redirectTo={LOGIN} pathname={pathname} />}>
+					<Route path={HOME} element={<Cards characters={characters} onClose={onClose} />} />
+					<Route path={ABOUT} element={<About />} />
+					<Route path={DETAIL} element={<Detail />} />
+					<Route path={FAVORITES} element={<Favorites />} />
+				</Route>
+
 			</Routes>
 		</div>
 	);
@@ -148,6 +173,6 @@ const mapStateToProps = (state) => {
 	return {
 		totalChars: state.totalChars,
 	}
- }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
