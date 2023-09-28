@@ -14,7 +14,7 @@ import styles from './Nav.module.css';
 const Nav = (props) => {
 
     const { t } = useTranslation();
-    const { onSearch, userCurrent, getRandom } = props;
+    const { onSearch, userCurrent, getRandom, logout } = props;
     const { LOGIN, HOME, ABOUT, FAVORITES } = PATHROUTES;
     const { pathname } = useLocation();
 
@@ -35,7 +35,7 @@ const Nav = (props) => {
                     <div className={styles.userInfo}>
                         <div className={styles.userContainer}>
                             <p className={styles.userEmail}>{userCurrent}</p>
-                            <Link to={LOGIN} className={styles.logoutBtn} >
+                            <Link to={LOGIN} className={styles.logoutBtn} onClick={logout}>
                                 <FaSignOutAlt />
                             </Link>
                         </div>
