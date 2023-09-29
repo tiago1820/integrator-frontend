@@ -20,19 +20,16 @@ import styles from './App.module.css';
 // FIREBASE
 import app from './firebase/firebase';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
-import { setTotalChar } from './redux/actions';
+import { removeUser, setTotalChar, setUser } from './redux/actions';
 
 function App(props) {
 
-	const [user, setUser] = useState(null);
-
-
-	const { setTotalChar, totalChars } = props;
+	const { setTotalChar, totalChars, user, setUser, removeUser } = props;
+	console.log("user", user)
 	const auth = getAuth(app);
 	const { pathname } = useLocation();
 	const { LOGIN, NEWACCOUNT, PASSWORDRESET, HOME, ABOUT, DETAIL, FAVORITES, ERROR_404 } = PATHROUTES;
 	const [characters, setCharacters] = useState([]);
-	// const [access, setAccess] = useState(false);
 	const [userCurrent, setUserCurrent] = useState('');
 	const [message, setMessage] = useState('');
 	const navigate = useNavigate();
@@ -40,15 +37,13 @@ function App(props) {
 	async function login(userData) {
 		try {
 			const result = await signInWithEmailAndPassword(auth, userData.email, userData.password);
-			// setAccess(true);
 
-
-			setUser({
+			const user = {
 				id: result.user.uid,
 				email: result.user.email
-			})
+			}
 
-
+			setUser(user);
 			setUserCurrent(result.user.email);
 			navigate(HOME);
 			const totalChars = await getTotalChars();
@@ -58,7 +53,7 @@ function App(props) {
 		}
 	}
 
-	const logout = () => setUser(null);
+	const logout = () => removeUser();
 
 
 	function getTotalChars() {
@@ -165,6 +160,14 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		setTotalChar: (total) => {
 			dispatch(setTotalChar(total))
+		},
+
+		setUser: (user) => {
+			dispatch(setUser(user))
+		},
+
+		removeUser: () => {
+			dispatch(removeUser())
 		}
 	}
 }
@@ -172,6 +175,7 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
 	return {
 		totalChars: state.totalChars,
+		user: state.user,
 	}
 }
 
