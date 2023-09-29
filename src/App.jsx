@@ -25,12 +25,10 @@ import { removeUser, setTotalChar, setUser } from './redux/actions';
 function App(props) {
 
 	const { setTotalChar, totalChars, user, setUser, removeUser } = props;
-	console.log("user", user)
 	const auth = getAuth(app);
 	const { pathname } = useLocation();
 	const { LOGIN, NEWACCOUNT, PASSWORDRESET, HOME, ABOUT, DETAIL, FAVORITES, ERROR_404 } = PATHROUTES;
 	const [characters, setCharacters] = useState([]);
-	const [userCurrent, setUserCurrent] = useState('');
 	const [message, setMessage] = useState('');
 	const navigate = useNavigate();
 
@@ -44,7 +42,6 @@ function App(props) {
 			}
 
 			setUser(user);
-			setUserCurrent(result.user.email);
 			navigate(HOME);
 			const totalChars = await getTotalChars();
 			setTotalChar(totalChars)
@@ -138,7 +135,7 @@ function App(props) {
 
 	return (
 		<div className={styles.app}>
-			{pathname !== LOGIN && pathname !== NEWACCOUNT && pathname !== PASSWORDRESET && <Nav logout={logout} onSearch={onSearch} userCurrent={userCurrent} getRandom={getRandom} />}
+			{pathname !== LOGIN && pathname !== NEWACCOUNT && pathname !== PASSWORDRESET && <Nav logout={logout} onSearch={onSearch} userCurrent={user.email} getRandom={getRandom} />}
 			<Routes>
 				<Route path={LOGIN} element={<Login login={login} />} />
 				<Route path={NEWACCOUNT} element={<NewAccount registerUser={registerUser} message={message} />} />
