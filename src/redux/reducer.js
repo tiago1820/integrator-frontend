@@ -7,7 +7,7 @@ const initialState = {
 const rootReducer = (state = initialState, { type, payload }) => {
     switch (type) {
         case "ADD_FAV":
-            let copy1 = state.myFavorites;
+            let copy1 = [...state.myFavorites];
             copy1.push(payload);
             return {
                 ...state, myFavorites: copy1
