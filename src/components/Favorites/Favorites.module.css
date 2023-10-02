@@ -1,0 +1,16 @@
+.selectContainer {
+    text-align: center;
+}
+
+.select {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    outline: none;
+    margin: 0 auto;
+    margin-bottom: 1.5rem;
+    
+}
