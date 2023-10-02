@@ -104,7 +104,6 @@ function App(props) {
 
 	}
 
-
 	const getRandom = () => {
 		let id;
 

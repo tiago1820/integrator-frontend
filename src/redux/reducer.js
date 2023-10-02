@@ -1,6 +1,7 @@
 const initialState = {
     myFavorites: [],
     allCharacters: [],
+    characterDetail: {},
     totalChars: null,
     user: null,
 }
@@ -66,6 +67,18 @@ const rootReducer = (state = initialState, { type, payload }) => {
             return {
                 ...state,
                 myFavorites: state.allCharacters
+            }
+        
+        case "GET_CHARACTER_DETAIL":
+            return {
+                ...state,
+                characterDetail: payload
+            }
+
+        case "CLEAN_DETAIL":
+            return {
+                ...state,
+                characterDetail: {},
             }
 
         default:
