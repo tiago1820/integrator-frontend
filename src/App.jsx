@@ -47,7 +47,7 @@ function App(props) {
 
 
 	function getTotalChars() {
-		return axios.get("https://rickandmortyapi.com/api/character")
+		return axios.get("https://rickandmortyapi.com/api/character/")
 			.then(response => {
 				return response.data.info.count;
 			})
