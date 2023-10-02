@@ -1,6 +1,6 @@
 import { connect, useDispatch } from "react-redux";
 import Card from "../Card/Card";
-import { filterCards, orderCards } from "../../redux/actions";
+import { filterCards, orderCards, showAllcharacters } from "../../redux/actions";
 
 const Favorites = (props) => {
 	const dispatch = useDispatch();
@@ -11,7 +11,12 @@ const Favorites = (props) => {
 	}
 
 	const handleFilter = (e) => {
-		dispatch(filterCards(e.target.value))
+		const selectedValue = e.target.value;
+		if (selectedValue === "All") {
+			dispatch(showAllcharacters());
+		} else {
+			dispatch(filterCards(selectedValue));
+		}
 	}
 
 	return (
@@ -22,6 +27,7 @@ const Favorites = (props) => {
 			</select>
 
 			<select onChange={handleFilter}>
+				<option value="All">All</option>
 				<option value="Male">Male</option>
 				<option value="Female">Female</option>
 				<option value="Genderless">Genderless</option>
