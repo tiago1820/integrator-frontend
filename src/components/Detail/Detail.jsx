@@ -1,27 +1,12 @@
-import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import useCharacter from '../../hooks/useCharacter';
 import styles from './Detail.module.css';
-import axios from "axios";
 
 const Detail = () => {
-	const { id } = useParams();
-	const [character, setCharacter] = useState({});
-
-	useEffect(() => {
-		axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
-			if (data.name) {
-				setCharacter(data);
-			} else {
-				window.alert('No hay personajes con ese ID');
-			}
-		});
-		return setCharacter({});
-	}, [id]);
+	const character = useCharacter();
 
 	return (
 		<div className={styles.link}>
 			<div className={styles.card}>
-				{/* <button onClick={() => onClose(id)}>X</button> */}
 				<img className={styles.image} src={character?.image} alt='' />
 				<div className={styles.cardContent}>
 					<div className={styles.name}>{character?.name}</div>
