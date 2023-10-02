@@ -11,6 +11,8 @@ const Login = (props) => {
     const { NEWACCOUNT, PASSWORDRESET } = PATHROUTES;
     const { login } = props;
     const [errors, setErrors] = useState([]);
+    const [invalidLogin, setInvalidLogin] = useState("");
+    
     const [userData, setUserData] = useState({
         email: '',
         password: ''
@@ -21,9 +23,14 @@ const Login = (props) => {
         setUserData({ ...userData, [e.target.name]: e.target.value })
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
-        login(userData);
+        try {
+            await login(userData);
+        } catch(error) {
+            setInvalidLogin("Invalid email or password.")
+        }
+       
     }
 
     return (
@@ -57,7 +64,7 @@ const Login = (props) => {
                     />
                 </div>
                 {errors.p1 ? (<p>{errors.p1}</p>) : (<p>{errors.p2}</p>)}
-
+                {invalidLogin}
                 <button className={styles.button}>{t('login')}</button>
 
                 <div>
