@@ -5,7 +5,6 @@ import PATHROUTES from '../../helpers/PathRoutes.helper';
 import styles from './PasswordReset.module.css';
 import { useTranslation } from "react-i18next";
 
-
 const PasswordReset = (props) => {
 
     const { t } = useTranslation();

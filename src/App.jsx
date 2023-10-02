@@ -4,23 +4,15 @@ import { useEffect, useState } from 'react';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 // COMPONENTS
-import Nav from './components/Nav/Nav';
-import Cards from './components/Cards/Cards';
-import About from './components/About/About';
-import Detail from './components/Detail/Detail';
-import PasswordReset from './components/PasswordReset/PasswordReset';
-import NewAccount from './components/NewAccount/NewAccount';
-import Login from './components/Login/Login';
-import Favorites from './components/Favorites/Favorites';
-import { ProtectedRoute } from './components/ProtectedRoute/ProtectedRoute';
+import { About, Nav, Detail, Cards, PasswordReset, NewAccount, Login, Favorites, ProtectedRoute } from "./components";
 // FILES
 import { filterCharacters, handleCharacterData } from './helpers/app.helper';
 import PATHROUTES from './helpers/PathRoutes.helper';
+import { removeUser, setTotalChar, setUser } from './redux/actions';
 import styles from './App.module.css';
 // FIREBASE
 import app from './firebase/firebase';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
-import { removeUser, setTotalChar, setUser } from './redux/actions';
 
 function App(props) {
 
