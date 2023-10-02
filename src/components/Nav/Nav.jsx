@@ -4,8 +4,7 @@ import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaBars, FaTimes, FaSignOutAlt } from 'react-icons/fa';
 // COMPONENTS
-import SearchBar from '../SearchBar/SearchBar';
-import RandomButton from '../RandomButtom/RandomButton';
+import { SearchBar, RandomButton } from "../../components";
 //FILES
 import PATHROUTES from '../../helpers/PathRoutes.helper';
 import LanguageSelector from '../LanguageSelector/LanguageSelector';

@@ -5,7 +5,6 @@ import PATHROUTES from "../../helpers/PathRoutes.helper";
 import styles from './NewAccount.module.css';
 import { useTranslation } from "react-i18next";
 
-
 const NewAccount = (props) => {
 
 	const { t } = useTranslation();

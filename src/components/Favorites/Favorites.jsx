@@ -1,5 +1,5 @@
 import { connect, useDispatch } from "react-redux";
-import Card from "../Card/Card";
+import {Card} from "../../components";
 import { filterCards, orderCards, showAllcharacters } from "../../redux/actions";
 
 const Favorites = (props) => {
