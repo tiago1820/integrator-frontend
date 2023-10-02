@@ -39,6 +39,7 @@ function App(props) {
 			setTotalChar(totalChars)
 		} catch (error) {
 			navigate(LOGIN);
+			throw error;
 		}
 	}
 
