@@ -31,3 +31,17 @@ export const removeUser = () => {
         type: "REMOVE_USER",
     }
 }
+
+export const orderCards = (order) => {
+    return {
+        type: "ORDER",
+        payload: order
+    }
+}
+
+export const filterCards = (gender) => {
+    return {
+        type: "FILTER",
+        payload: gender
+    }
+}
