@@ -45,3 +45,9 @@ export const filterCards = (gender) => {
         payload: gender
     }
 }
+
+export const showAllcharacters = () => {
+    return {
+        type: "SHOW_ALL",
+    }
+}

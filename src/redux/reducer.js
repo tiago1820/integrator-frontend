@@ -62,6 +62,12 @@ const rootReducer = (state = initialState, { type, payload }) => {
                 myFavorites: copy4
             }
 
+        case "SHOW_ALL":
+            return {
+                ...state,
+                myFavorites: state.allCharacters
+            }
+
         default:
             return {
                 ...state
