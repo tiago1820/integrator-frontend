@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 // COMPONENTS
-import { About, Nav, Detail, Cards, PasswordReset, NewAccount, Login, Favorites, ProtectedRoute } from "./components";
+import { About, Nav, Detail, Cards, PasswordReset, NewAccount, Login, Favorites, ProtectedRoute, Error404 } from "./components";
 // FILES
 import { filterCharacters, handleCharacterData } from './helpers/app.helper';
 import PATHROUTES from './helpers/PathRoutes.helper';
@@ -121,7 +121,7 @@ function App(props) {
 		const currentPath = window.location.pathname;
 		const validRoutes = [HOME, ABOUT, DETAIL, FAVORITES]
 		if (!validRoutes.includes(currentPath)) {
-			navigate(LOGIN);
+			navigate(ERROR_404);
 		}
 	}, [])
 
@@ -138,6 +138,7 @@ function App(props) {
 					<Route path={ABOUT} element={<About />} />
 					<Route path={DETAIL} element={<Detail />} />
 					<Route path={FAVORITES} element={<Favorites />} />
+					<Route path={ERROR_404} element={<Error404 />} />
 				</Route>
 
 			</Routes>
