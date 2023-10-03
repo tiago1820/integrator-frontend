@@ -2,10 +2,12 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import { FaHeart } from 'react-icons/fa';
+
 // FILES
-import styles from './Card.module.css';
 import PATHROUTES from '../../helpers/PathRoutes.helper';
 import { addFav, removeFav } from "../../redux/actions";
+import styles from './Card.module.css';
 
 const Card = (props) => {
    const { id, name, status, species, gender, origin, image, onClose, addFav, removeFav, myFavorites } = props;
@@ -30,28 +32,30 @@ const Card = (props) => {
    return (
       <div className={styles.link}>
          <div className={styles.card}>
-            {
-               isFav ? <button onClick={handleFavorite}>❤️</button> : <button onClick={handleFavorite}>🤍</button>
-            }
 
-            {
-               pathname !== FAVORITES && <button onClick={() => onClose(id)}>X</button>
+            <div className={styles.idChar}>{id}</div>
 
-            }
 
             <img className={styles.image} src={image} alt='' />
             <div className={styles.cardContent}>
                <Link to={`/detail/${id}`}>
                   <div className={styles.name}>{name}</div>
                </Link>
-               <div>
-                  <div>{species}</div>
-                  <div>{gender}</div>
-                  <div className={styles.origin}>{origin}</div>
-               </div>
+            </div>
+
+            <div className={styles.cardButtonsContainer}>
+               {
+                  isFav ? <div className={styles.favoriteBtn} onClick={handleFavorite}><FaHeart size={30} color='red' /></div> :
+                     <div className={styles.favoriteBtn} onClick={handleFavorite}><FaHeart size={30} color='white' /></div>
+               }
+
+               {
+                  pathname !== FAVORITES && <div className={styles.closeBtn} onClick={() => onClose(id)}>X</div>
+
+               }
             </div>
          </div>
-         <div className={styles.status}>{status}</div>
+         {/* <div className={styles.status}>{status}</div> */}
       </div>
    );
 }

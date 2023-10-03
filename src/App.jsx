@@ -123,6 +123,10 @@ function App(props) {
 		if (!validRoutes.includes(currentPath)) {
 			navigate(ERROR_404);
 		}
+
+		if (currentPath === LOGIN && user) {
+			navigate(HOME);
+		}
 	}, [])
 
 	return (
