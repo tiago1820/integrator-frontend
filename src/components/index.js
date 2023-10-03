@@ -11,6 +11,7 @@ import PasswordReset from "./PasswordReset/PasswordReset";
 import { ProtectedRoute } from "./ProtectedRoute/ProtectedRoute";
 import RandomButton from "./RandomButtom/RandomButton";
 import SearchBar from "./SearchBar/SearchBar";
+import Error404 from "./Error404/Error404";
 
 export {
     About,
@@ -25,5 +26,6 @@ export {
     PasswordReset,
     ProtectedRoute,
     RandomButton,
-    SearchBar
+    SearchBar,
+    Error404
 }

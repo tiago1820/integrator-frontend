@@ -6,7 +6,7 @@ const PATHROUTES = {
     NEWACCOUNT: '/newaccount',
     PASSWORDRESET: '/passwordreset',
     FAVORITES: '/favorites',
-    ERROR_404: '*',
+    ERROR_404: '/*',
 }
 
 export default PATHROUTES;

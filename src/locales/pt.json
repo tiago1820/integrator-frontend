@@ -13,5 +13,7 @@
     "about": "Quem somos",
     "favorites": "Favoritos",
     "add": "Adicionar",
-    "placeholderSearch": "escreva um número"
+    "placeholderSearch": "escreva um número",
+    "404h2": "Ops! Essa página não pode ser encontrada.",
+    "404p": "Parece que nada foi encontrado neste local. Talvez tente um dos links do menu de navegação?"
 }
