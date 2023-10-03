@@ -45,30 +45,24 @@ function App(props) {
 
 	const logout = () => removeUser();
 
+	async function registerUser(userData) {
+		try {
+			const result = await createUserWithEmailAndPassword(auth, userData.email, userData.password);
 
-	function getTotalChars() {
-		return axios.get("https://rickandmortyapi.com/api/character/")
-			.then(response => {
-				return response.data.info.count;
-			})
-			.catch(error => {
-				console.error(error);
-				throw error;
-			});
-	}
+			const user = {
+				id: result.user.uid,
+				email: result.user.email
+			}
 
+			setUser(user);
+			navigate(HOME);
+			const totalChars = await getTotalChars();
+			setTotalChar(totalChars)
 
-	function registerUser(userData) {
-		createUserWithEmailAndPassword(auth, userData.email, userData.password)
-			.then((result) => {
-				setUserCurrent(result.user.email)
-				setAccess(true);
-				navigate(HOME);
-			})
-			.catch(error => {
-				console.error(error);
-				setMessage('Ha ocurrido un error al registrar el usuario. Por favor, inténtalo de nuevo más tarde.');
-			})
+		} catch {
+			navigate(NEWACCOUNT);
+			console.error(error)
+		}
 	}
 
 	function recoverPassword(userData) {
@@ -81,9 +75,16 @@ function App(props) {
 			})
 	}
 
-	// useEffect(() => {
-	// 	!access && navigate(LOGIN);
-	// }, [access]);
+	function getTotalChars() {
+		return axios.get("https://rickandmortyapi.com/api/character/")
+			.then(response => {
+				return response.data.info.count;
+			})
+			.catch(error => {
+				console.error(error);
+				throw error;
+			});
+	}
 
 	const onSearch = (id) => {
 		axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
