@@ -20,8 +20,6 @@ const Favorites = (props) => {
 		}
 	}
 
-	console.log(styles)
-
 	return (
 		<div>
 			<div className={styles.selectContainer}>

@@ -11,13 +11,26 @@ const initialState = {
 const rootReducer = (state = initialState, { type, payload }) => {
     switch (type) {
         case ADD_FAV:
-            let copy1 = [...state.allCharacters];
-            copy1.push(payload);
-            return {
-                ...state,
-                myFavorites: copy1,
-                allCharacters: copy1
+            const newCharacter = payload;
+            const isAlreadyFavorited = state.myFavorites.some(char => char.id === newCharacter.id);
+
+            if(!isAlreadyFavorited) {
+                const updateFavorites = [...state.myFavorites, newCharacter];
+                return {
+                    ...state,
+                    myFavorites: updateFavorites,
+                    allCharacters: updateFavorites
+                }
             }
+            
+            
+        //     let copy1 = [...state.allCharacters];
+        //     copy1.push(payload);
+        //     return {
+        //         ...state,
+        //         myFavorites: copy1,
+        //         allCharacters: copy1
+        //     }
 
         case REMOVE_FAV:
             let copy2 = state.myFavorites.filter((char) => char.id !== Number(payload));
