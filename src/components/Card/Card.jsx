@@ -42,20 +42,17 @@ const Card = (props) => {
                   <div className={styles.name}>{name}</div>
                </Link>
             </div>
-
+            
             <div className={styles.cardButtonsContainer}>
                {
                   isFav ? <div className={styles.favoriteBtn} onClick={handleFavorite}><FaHeart size={30} color='red' /></div> :
                      <div className={styles.favoriteBtn} onClick={handleFavorite}><FaHeart size={30} color='white' /></div>
                }
 
-               {
-                  pathname !== FAVORITES && <div className={styles.closeBtn} onClick={() => onClose(id)}>X</div>
+               <div className={styles.closeBtn} onClick={() => onClose(id)}>X</div>
 
-               }
             </div>
          </div>
-         {/* <div className={styles.status}>{status}</div> */}
       </div>
    );
 }

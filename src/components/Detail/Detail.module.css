@@ -1,80 +1,58 @@
-.link {
-    box-sizing: border-box;
-    float: left;
-    width: 100%;
-    padding: 0 15px;
-    color: #343a40;
-    position: relative;
-    text-decoration: none;
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
 }
 
 .card {
-    display: flex;
-    flex-direction: column;
-    border: 2px solid #0b5ed7;
+    background-color: #cceeff;
+    border: 1px solid #999;
     border-radius: 10px;
-    margin-bottom: 1rem;
+    padding: 10px;
+    width: 100%;
+    position: relative;
 }
 
 .image {
-    border-radius: 10px 10px 0 0;
-    max-width: 100%;
-    height: auto;
+    width: 100%;
+    border-radius: 10px;
 }
 
 .cardContent {
-    padding: 10px;
+    margin-top: 10px;
+    position: relative;
+    /* Añadido */
+
 }
 
-.cardContent div {
-    font-weight: 400;
-    font-size: 1rem;
-}
-
-.cardContent .origin {
-    font-size: 1.25rem;
-}
-
-.cardContent .name {
+.id {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 17px;
+    background-color: #0C6EFD;
+    color: #fff;
+    padding: .25rem .4rem;
+    font-size: 1.2rem;
     font-weight: 700;
-    font-size: 1.25rem;
-    margin-bottom: 1.5rem;
+    border-radius: .2em;
+    z-index: 10;
+}
+
+.name {
+    font-size: 1.5em;
+    font-weight: bold;
 }
 
 .status {
-    top: 10px;
-    right: 20px;
-    font-size: 17px;
-    background-color: #25a745;
-    position: absolute;
-    display: inline-block;
-    padding: .25rem .4rem;
-    /* font-size: 75%; */
-    font-weight: 700;
-    line-height: 1;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: baseline;
-    border-radius: .2em;
+    font-size: 1.2em;
 }
 
-@media (min-width: 576px) {
-    .link {
-        width: 50%;
-        float: left;
-    }
+.details div {
+    margin-bottom: 5px;
 }
 
-@media (min-width: 768px) {
-    .link {
-        width: 33.33%;
-        float: left;
-    }
-}
-
-@media (min-width: 992px) {
-    .link {
-        width: 25%;
-        float: left;
-    }
+.origin {
+    color: #ff6600;
 }
