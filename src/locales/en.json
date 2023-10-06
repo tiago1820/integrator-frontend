@@ -21,6 +21,10 @@
     "validatorP1": "At least one numbers.",
     "validatorP2": "It must be more than 6 and less than 10 characters.",
     "404h2": "Oops! That page can’t be found.",
-    "404p": "It appears that nothing was found at this location. Maybe try one of the navigation menu links?"
+    "404p": "It appears that nothing was found at this location. Maybe try one of the navigation menu links?",
+    "species": "Species: ",
+    "gender": "Gender: ",
+    "origin": "Origin: ",
+    "status": "Status: "
 }
 

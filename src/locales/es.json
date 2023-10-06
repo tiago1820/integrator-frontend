@@ -15,5 +15,9 @@
     "add": "Agregar",
     "placeholderSearch": "escribe un numero",
     "404h2": "¡Ups! Esa página no se puede encontrar.",
-    "404p": "Parece que no se encontró nada en este lugar. ¿Quizás probar uno de los enlaces del menú de navegación?"
+    "404p": "Parece que no se encontró nada en este lugar. ¿Quizás probar uno de los enlaces del menú de navegación?",
+    "species": "Especie: ",
+    "gender": "Género: ",
+    "origin": "Origen: ",
+    "status": "Estado: "
 }

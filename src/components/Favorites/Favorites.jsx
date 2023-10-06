@@ -1,6 +1,7 @@
 import { connect, useDispatch } from "react-redux";
 import { Card } from "../../components";
 import { filterCards, orderCards, showAllcharacters } from "../../redux/actions";
+import { removeFav } from "../../redux/actions";
 import styles from "./Favorites.module.css";
 
 const Favorites = (props) => {
@@ -46,8 +47,9 @@ const Favorites = (props) => {
 						status={char.status}
 						species={char.species}
 						gender={char.gender}
-						origin={char.origin.name}
+						origin={char.origin?.name}
 						image={char.image}
+						onClose={() => dispatch(removeFav(char.id))}
 					/>
 				)
 			})}
