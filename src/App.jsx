@@ -2,7 +2,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 // COMPONENTS
 import { About, Nav, Detail, Cards, PasswordReset, NewAccount, Login, Favorites, ProtectedRoute, Error404 } from "./components";
 // FILES
@@ -16,13 +16,16 @@ import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, se
 
 function App(props) {
 
-	const { setTotalChar, totalChars, user, setUser, removeUser } = props;
+	const totalChars = useSelector(state => state.totalChars);
+	const user = useSelector(state => state.user);
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+
 	const auth = getAuth(app);
 	const { pathname } = useLocation();
 	const { LOGIN, NEWACCOUNT, PASSWORDRESET, HOME, ABOUT, DETAIL, FAVORITES, ERROR_404 } = PATHROUTES;
 	const [characters, setCharacters] = useState([]);
 	const [message, setMessage] = useState('');
-	const navigate = useNavigate();
 
 	async function login(userData) {
 		try {
@@ -33,17 +36,17 @@ function App(props) {
 				email: result.user.email
 			}
 
-			setUser(user);
+			dispatch(setUser(user));
 			navigate(HOME);
 			const totalChars = await getTotalChars();
-			setTotalChar(totalChars)
+			dispatch(setTotalChar(totalChars));
 		} catch (error) {
 			navigate(LOGIN);
 			throw error;
 		}
 	}
 
-	const logout = () => removeUser();
+	const logout = () => dispatch(removeUser());
 
 	async function registerUser(userData) {
 		try {
@@ -54,14 +57,14 @@ function App(props) {
 				email: result.user.email
 			}
 
-			setUser(user);
+			dispatch(setUser(user));
 			navigate(HOME);
 			const totalChars = await getTotalChars();
-			setTotalChar(totalChars)
+			dispatch(setTotalChar(totalChars));
 
 		} catch {
+			console.error(error);
 			navigate(NEWACCOUNT);
-			console.error(error)
 		}
 	}
 
@@ -151,27 +154,4 @@ function App(props) {
 	);
 }
 
-const mapDispatchToProps = (dispatch) => {
-	return {
-		setTotalChar: (total) => {
-			dispatch(setTotalChar(total))
-		},
-
-		setUser: (user) => {
-			dispatch(setUser(user))
-		},
-
-		removeUser: () => {
-			dispatch(removeUser())
-		}
-	}
-}
-
-const mapStateToProps = (state) => {
-	return {
-		totalChars: state.totalChars,
-		user: state.user,
-	}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
