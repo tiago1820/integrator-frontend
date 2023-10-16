@@ -14,7 +14,7 @@ import styles from './App.module.css';
 import app from './firebase/firebase';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
 
-function App(props) {
+function App() {
 
 	const totalChars = useSelector(state => state.totalChars);
 	const user = useSelector(state => state.user);
@@ -29,12 +29,11 @@ function App(props) {
 
 	async function login(userData) {
 		try {
-			const result = await signInWithEmailAndPassword(auth, userData.email, userData.password);
-
-			const user = {
-				id: result.user.uid,
-				email: result.user.email
-			}
+			const { email: userEmail, password: userPass } = userData;
+			const URL = "http://localhost:3001/rickandmorty/login/";
+			const { data } = await axios(`${URL}?email=${userEmail}&password=${userPass}`);
+			const { uid, email } = data;
+			const user = { uid, email };
 
 			dispatch(setUser(user));
 			navigate(HOME);
