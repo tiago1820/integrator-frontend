@@ -33,6 +33,7 @@ function App() {
 			dispatch(setUser(user));
 			navigate(HOME);
 			const totalChars = await getTotalChars();
+			console.log("DATAAA", totalChars);
 			dispatch(setTotalChar(totalChars));
 		} catch (error) {
 			navigate(LOGIN);
@@ -73,9 +74,9 @@ function App() {
 	}
 
 	function getTotalChars() {
-		return axios.get("https://rickandmortyapi.com/api/character/")
+		return axios.get("http://localhost:3001/rickandmorty/character/count")
 			.then(response => {
-				return response.data.info.count;
+				return response.data.totalCharacterCount;
 			})
 			.catch(error => {
 				console.error(error);
@@ -84,7 +85,7 @@ function App() {
 	}
 
 	const onSearch = (id) => {
-		axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
+		axios(`http://localhost:3001/rickandmorty/character/${id}`).then(({ data }) => {
 			handleCharacterData(data, characters, setCharacters);
 		});
 	}
@@ -106,7 +107,9 @@ function App() {
 			id = getRandomNumber();
 		} while (isIdCharacters(id));
 
-		axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
+		console.log("ID", id);
+
+		axios(`http://localhost:3001/rickandmorty/character/${id}`).then(({ data }) => {
 			handleCharacterData(data, characters, setCharacters);
 		});
 	}
