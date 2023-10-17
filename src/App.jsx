@@ -10,9 +10,6 @@ import { filterCharacters, handleCharacterData } from './helpers/app.helper';
 import PATHROUTES from './helpers/PathRoutes.helper';
 import { removeUser, setTotalChar, setUser } from './redux/actions';
 import styles from './App.module.css';
-// FIREBASE
-import app from './firebase/firebase';
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
 
 function App() {
 
@@ -20,8 +17,6 @@ function App() {
 	const user = useSelector(state => state.user);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-
-	const auth = getAuth(app);
 	const { pathname } = useLocation();
 	const { LOGIN, NEWACCOUNT, PASSWORDRESET, HOME, ABOUT, DETAIL, FAVORITES, ERROR_404 } = PATHROUTES;
 	const [characters, setCharacters] = useState([]);
@@ -49,12 +44,11 @@ function App() {
 
 	async function registerUser(userData) {
 		try {
-			const result = await createUserWithEmailAndPassword(auth, userData.email, userData.password);
-
-			const user = {
-				id: result.user.uid,
-				email: result.user.email
-			}
+			const { email: userEmail, password: userPass } = userData;
+			const URL = "http://localhost:3001/rickandmorty/register/";
+			const { data } = await axios(`${URL}?email=${userEmail}&password=${userPass}`);
+			const { uid, email } = data;
+			const user = { uid, email };
 
 			dispatch(setUser(user));
 			navigate(HOME);
@@ -67,14 +61,15 @@ function App() {
 		}
 	}
 
-	function recoverPassword(userData) {
-		sendPasswordResetEmail(auth, userData.email)
-			.then((result) => {
-				setMessage('Email enviado con exito');
-			})
-			.catch((error) => {
-				setMessage('Error al enviar el correo electronico: ' + error.message)
-			})
+	async function recoverPassword(userData) {
+		try {
+			const { email: userEmail } = userData;
+			const URL = "http://localhost:3001/rickandmorty/recover/";
+			await axios(`${URL}?email=${userEmail}`);
+		} catch (error) {
+			setMessage('Error al enviar el correo electronico: ' + error.message)
+
+		}
 	}
 
 	function getTotalChars() {
