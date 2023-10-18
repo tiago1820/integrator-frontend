@@ -9,13 +9,15 @@ import { SearchBar, RandomButton } from "../../components";
 import PATHROUTES from '../../helpers/PathRoutes.helper';
 import LanguageSelector from '../LanguageSelector/LanguageSelector';
 import styles from './Nav.module.css';
+import { useSelector } from 'react-redux';
 
 const Nav = (props) => {
 
     const { t } = useTranslation();
-    const { onSearch, userCurrent, getRandom, logout } = props;
+    const { onSearch, getRandom, logout } = props;
     const { LOGIN, HOME, ABOUT, FAVORITES } = PATHROUTES;
     const { pathname } = useLocation();
+    const user = useSelector((state) => state.user);
 
     const navRef = useRef();
 
@@ -33,7 +35,7 @@ const Nav = (props) => {
                 <div className={styles.column}>
                     <div className={styles.userInfo}>
                         <div className={styles.userContainer}>
-                            <p className={styles.userEmail}>{userCurrent}</p>
+                            <p className={styles.userEmail}>{user.email}</p>
                             <Link to={LOGIN} className={styles.logoutBtn} onClick={logout}>
                                 <FaSignOutAlt />
                             </Link>

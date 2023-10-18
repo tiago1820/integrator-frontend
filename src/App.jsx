@@ -27,7 +27,7 @@ function App() {
 			const { email: userEmail, password: userPass } = userData;
 			const URL = "http://localhost:3001/rickandmorty/login/";
 			const { data } = await axios(`${URL}?email=${userEmail}&password=${userPass}`);
-			const { uid, email } = data;
+			const { uid, email } = data.currentUser;
 			const user = { uid, email };
 
 			dispatch(setUser(user));
@@ -132,7 +132,7 @@ function App() {
 
 	return (
 		<div className={styles.app}>
-			{pathname !== LOGIN && pathname !== NEWACCOUNT && pathname !== PASSWORDRESET && <Nav logout={logout} onSearch={onSearch} userCurrent={user?.email} getRandom={getRandom} />}
+			{pathname !== LOGIN && pathname !== NEWACCOUNT && pathname !== PASSWORDRESET && <Nav logout={logout} onSearch={onSearch}getRandom={getRandom} />}
 			<Routes>
 				<Route path={LOGIN} element={<Login login={login} />} />
 				<Route path={NEWACCOUNT} element={<NewAccount registerUser={registerUser} message={message} />} />
