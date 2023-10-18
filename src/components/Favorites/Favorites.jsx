@@ -1,8 +1,9 @@
 import { connect, useDispatch } from "react-redux";
 import { Card } from "../../components";
 import { filterCards, orderCards, showAllcharacters } from "../../redux/actions";
-import { removeFav } from "../../redux/actions";
+import { removeFav, getFavs } from "../../redux/actions";
 import styles from "./Favorites.module.css";
+import { useEffect } from "react";
 
 const Favorites = (props) => {
 	const dispatch = useDispatch();
@@ -20,6 +21,12 @@ const Favorites = (props) => {
 			dispatch(filterCards(selectedValue));
 		}
 	}
+
+	useEffect(() => {
+		dispatch(getFavs());
+
+	}, [])
+
 
 	return (
 		<div>
@@ -43,13 +50,14 @@ const Favorites = (props) => {
 					<Card
 						key={char.id}
 						id={char.id}
+						uid={char?.uid}
 						name={char.name}
 						status={char.status}
 						species={char.species}
 						gender={char.gender}
 						origin={char.origin?.name}
 						image={char.image}
-						onClose={() => dispatch(removeFav(char.id))}
+						onClose={() => dispatch(removeFav(char.uid))}
 					/>
 				)
 			})}

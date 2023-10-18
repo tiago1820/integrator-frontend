@@ -10,14 +10,14 @@ import { addFav, removeFav } from "../../redux/actions";
 import styles from './Card.module.css';
 
 const Card = (props) => {
-   const { id, name, status, species, gender, origin, image, onClose, addFav, removeFav, myFavorites } = props;
+   const { uid, id, name, status, species, gender, origin, image, onClose, addFav, removeFav, myFavorites } = props;
    const { DETAIL, FAVORITES } = PATHROUTES;
    const { pathname } = useLocation();
-
+   
    const [isFav, setIsFav] = useState(false);
 
    const handleFavorite = () => {
-      isFav ? removeFav(id) : addFav(props);
+      isFav ? removeFav(uid) : addFav(props);
       setIsFav(!isFav);
    }
 

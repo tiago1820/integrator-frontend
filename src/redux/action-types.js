@@ -8,3 +8,4 @@ export const FILTER = "FILTER";
 export const SHOW_ALL = "SHOW_ALL";
 export const GET_CHARACTER_DETAIL = "GET_CHARACTER_DETAIL";
 export const CLEAN_DETAIL = "CLEAN_DETAIL";
+export const GET_FAVS = "GET_FAVS";

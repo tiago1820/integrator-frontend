@@ -1,17 +1,40 @@
-import { ADD_FAV, REMOVE_FAV, SET_TOTAL_CHAR, SET_USER, REMOVE_USER, ORDER, FILTER, SHOW_ALL, GET_CHARACTER_DETAIL, CLEAN_DETAIL } from "./action-types";
+import { ADD_FAV, REMOVE_FAV, SET_TOTAL_CHAR, SET_USER, REMOVE_USER, ORDER, FILTER, SHOW_ALL, GET_CHARACTER_DETAIL, CLEAN_DETAIL, GET_FAVS } from "./action-types";
+import axios from "axios";
 
-export const addFav = (character) => {
-    return {
-        type: ADD_FAV,
-        payload: character
+export const getFavs = () => {
+    return async function (dispatch) {
+        try {
+            const response = await axios.get(`http://localhost:3001/rickandmorty/favs`);
+            dispatch({ type: GET_FAVS, payload: response.data });
+        } catch (error) {
+            console.error('Error al obtener favoritos:', error);
+        }
     }
 }
 
-export const removeFav = (id) => {
-    return {
-        type: REMOVE_FAV,
-        payload: id
+export const addFav = (character) => {
+    return async (dispatch) => {
+        try {
+            const response = await axios.post("http://localhost:3001/rickandmorty/fav", character);
+            return dispatch({ type: ADD_FAV, payload: response.data });
+
+        } catch (error) {
+            console.error('Error al agregar el favorito:', error);
+        }
     }
+}
+
+export const removeFav = (uid) => {
+    console.log("UID", uid)
+    return async (dispatch) => {
+        try {
+            const response = await axios.delete("http://localhost:3001/rickandmorty/fav/" + uid);
+            return dispatch({ type: REMOVE_FAV, payload: response.data });
+        } catch (error) {
+            console.error('Error al eliminar el favorito:', error);
+        }
+    }
+
 }
 
 export const setTotalChar = (total) => {

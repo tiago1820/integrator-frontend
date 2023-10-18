@@ -1,4 +1,4 @@
-import { ADD_FAV, REMOVE_FAV, SET_TOTAL_CHAR, SET_USER, REMOVE_USER, ORDER, FILTER, SHOW_ALL, GET_CHARACTER_DETAIL, CLEAN_DETAIL } from "./action-types";
+import { ADD_FAV, REMOVE_FAV, SET_TOTAL_CHAR, SET_USER, REMOVE_USER, ORDER, FILTER, SHOW_ALL, GET_CHARACTER_DETAIL, CLEAN_DETAIL, GET_FAVS } from "./action-types";
 
 const initialState = {
     myFavorites: [],
@@ -10,25 +10,15 @@ const initialState = {
 
 const rootReducer = (state = initialState, { type, payload }) => {
     switch (type) {
-        case ADD_FAV:
-            const newCharacter = payload;
-            const isAlreadyFavorited = state.myFavorites.some(char => char.id === newCharacter.id);
 
-            if(!isAlreadyFavorited) {
-                const updateFavorites = [...state.myFavorites, newCharacter];
-                return {
-                    ...state,
-                    myFavorites: updateFavorites,
-                    allCharacters: updateFavorites
-                }
-            }
-        
+        case GET_FAVS:
+            return { ...state, myFavorites: payload, allCharacters: payload };
+
+        case ADD_FAV:
+            return { ...state, myFavorites: payload, allCharacters: payload };
+
         case REMOVE_FAV:
-            let copy2 = state.myFavorites.filter((char) => char.id !== Number(payload));
-            return {
-                ...state,
-                myFavorites: copy2
-            }
+            return { ...state, myFavorites: payload, allCharacters: payload };
 
         case SET_TOTAL_CHAR:
             return {

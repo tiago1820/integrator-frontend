@@ -10,6 +10,7 @@ const composeEnhancers =
 const persistConfig = {
     key: 'root',
     storage,
+    whitelist: ["user", "totalChars"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
