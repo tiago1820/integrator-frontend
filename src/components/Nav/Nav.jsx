@@ -35,7 +35,7 @@ const Nav = (props) => {
                 <div className={styles.column}>
                     <div className={styles.userInfo}>
                         <div className={styles.userContainer}>
-                            <p className={styles.userEmail}>{user.email}</p>
+                            <p className={styles.userEmail}>{user?.email}</p>
                             <Link to={LOGIN} className={styles.logoutBtn} onClick={logout}>
                                 <FaSignOutAlt />
                             </Link>
