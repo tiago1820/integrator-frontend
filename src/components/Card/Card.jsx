@@ -10,14 +10,16 @@ import { addFav, removeFav } from "../../redux/actions";
 import styles from './Card.module.css';
 
 const Card = (props) => {
-   const { uid, id, name, status, species, gender, origin, image, onClose, addFav, removeFav, myFavorites } = props;
+   const { uid, id, name, status, species, gender, origin, image, onClose, addFav, removeFav, myFavorites, userId } = props;
+
    const { DETAIL, FAVORITES } = PATHROUTES;
    const { pathname } = useLocation();
    
    const [isFav, setIsFav] = useState(false);
 
    const handleFavorite = () => {
-      isFav ? removeFav(uid) : addFav(props);
+      const favoriteData = {id, name, status, species, gender, origin, image, uid, userId}
+      isFav ? removeFav(favoriteData) : addFav(favoriteData);
       setIsFav(!isFav);
    }
 
@@ -32,10 +34,7 @@ const Card = (props) => {
    return (
       <div className={styles.link}>
          <div className={styles.card}>
-
             <div className={styles.idChar}>{id}</div>
-
-
             <img className={styles.image} src={image} alt='' />
             <div className={styles.cardContent}>
                <Link to={`/detail/${id}`}>
@@ -62,8 +61,8 @@ const mapDispatchToProps = (dispatch) => {
       addFav: (character) => {
          dispatch(addFav(character))
       },
-      removeFav: (id) => {
-         dispatch(removeFav(id))
+      removeFav: (character) => {
+         dispatch(removeFav(character))
       }
    }
 }

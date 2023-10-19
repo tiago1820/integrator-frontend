@@ -7,7 +7,8 @@ import { useEffect } from "react";
 
 const Favorites = (props) => {
 	const dispatch = useDispatch();
-	const { myFavorites } = props;
+	const { myFavorites, user } = props;
+	const userId = user.uid;
 
 	const handleOrder = (e) => {
 		dispatch(orderCards(e.target.value));
@@ -23,9 +24,9 @@ const Favorites = (props) => {
 	}
 
 	useEffect(() => {
-		dispatch(getFavs());
+		dispatch(getFavs(userId));
 
-	}, [])
+	}, [myFavorites])
 
 
 	return (
@@ -46,10 +47,12 @@ const Favorites = (props) => {
 			</div>
 
 			{myFavorites.map((char) => {
+
 				return (
 					<Card
 						key={char.id}
 						id={char.id}
+						userId={userId ? userId : null}
 						uid={char?.uid}
 						name={char.name}
 						status={char.status}
@@ -68,6 +71,7 @@ const Favorites = (props) => {
 const mapStateToProps = (state) => {
 	return {
 		myFavorites: state.myFavorites,
+		user: state.user,
 	}
 }
 
