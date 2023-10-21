@@ -9,7 +9,8 @@ import PATHROUTES from './helpers/PathRoutes.helper.js';
 import axios from 'axios';
 import Favorites from './components/Favorites/Favorites.jsx';
 import styles from "./App.module.css";
-import login from './helpers/auth.helper.js';
+import login from './services/auth.service.js';
+import characterService from './services/character.service.js';
 
 function App() {
 
@@ -34,7 +35,7 @@ function App() {
 
     const onSearch = async (id) => {
         try {
-            const { data } = await axios(`http://localhost:3001/rickandmorty/character/${id}`)
+            const data  = await characterService.getCharacterById(id);
             if (data.name) {
                 setCharacters((oldChars) => [...oldChars, data]);
             } else {
