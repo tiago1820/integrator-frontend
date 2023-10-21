@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Nav } from './components';
-import { characterService, login, AppRoutes } from './services';
+import { characterService, login, AppRoutes } from './services'
 import styles from "./App.module.css";
 
 function App() {
