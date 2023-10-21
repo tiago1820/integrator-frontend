@@ -1,16 +1,22 @@
-.selectContainer {
-    text-align: center;
+.container {
+    display: flex;
+    justify-content: center;
 }
 
-.select {
-    padding: 8px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
-    color: #333;
-    outline: none;
-    margin: 0 auto;
-    margin-bottom: 1.5rem;
-    
+.column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.selectors {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
 }

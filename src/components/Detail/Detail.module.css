@@ -1,58 +1,44 @@
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    height: 100vh;
+/* Detail.module.css */
+.link {
+    text-decoration: none;
 }
 
 .card {
-    background-color: #cceeff;
-    border: 1px solid #999;
-    border-radius: 10px;
-    padding: 10px;
-    width: 100%;
     position: relative;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.image {
+.card img {
     width: 100%;
-    border-radius: 10px;
+    border-radius: 4px;
 }
 
 .cardContent {
     margin-top: 10px;
-    position: relative;
-    /* Añadido */
-
 }
 
-.id {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    font-size: 17px;
-    background-color: #0C6EFD;
-    color: #fff;
-    padding: .25rem .4rem;
-    font-size: 1.2rem;
-    font-weight: 700;
-    border-radius: .2em;
-    z-index: 10;
-}
-
-.name {
-    font-size: 1.5em;
+.cardContent .name {
     font-weight: bold;
-}
-
-.status {
-    font-size: 1.2em;
-}
-
-.details div {
+    font-size: 1.2rem;
     margin-bottom: 5px;
 }
 
+.cardContent div {
+    font-size: 0.9rem;
+    margin-bottom: 3px;
+}
+
+.status {
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
 .origin {
-    color: #ff6600;
+    font-weight: bold;
 }

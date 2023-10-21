@@ -3,10 +3,7 @@ const PATHROUTES = {
     HOME: '/home',
     ABOUT: '/about',
     DETAIL: '/detail/:id',
-    NEWACCOUNT: '/newaccount',
-    PASSWORDRESET: '/passwordreset',
-    FAVORITES: '/favorites',
-    ERROR_404: '/*',
+    FAVORITES: '/favorites'
 }
 
 export default PATHROUTES;

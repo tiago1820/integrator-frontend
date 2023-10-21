@@ -1,135 +1,18 @@
-:root {
-    --mainColor: #29335c;
-    --mainColorLight: #5767aa;
-    --secondaryColor: #d82b39;
-    --textColor: #eee;
-}
-
-.navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #F8F9FA;
-    padding: 10px 20px;
-    color: #4A4A4B;
-}
-
-.column {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px 20px;
-}
-
-.userInfo,
-.right {
-    width: 100%;
-    /* Ocupa todo el ancho del contenedor */
-}
-
-.right {
+.navContainer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.appName {
-    text-decoration: none;
-    font-size: 1.5em;
-    outline: none;
-    color: black;
-
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
 }
 
 .navLink {
+    color: #fff;
     text-decoration: none;
-    color: #4A4A4B;
-    margin-left: 20px;
-    outline: none;
-    font-size: 1.3rem;
-}
-
-.navLink:hover {
-    color: black;
-}
-
-.navbar .navBtn {
-    padding: 5px;
-    cursor: pointer;
-    background: transparent;
-    border: none;
-    outline: none;
-    color: #051E34;
-    visibility: hidden;
-    opacity: 0;
-    font-size: 1.8rem;
-}
-
-.userInfo {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.userContainer {
-    display: flex;
-    align-items: center;
-}
-
-.userEmail {
-    font-size: 16px;
-    font-weight: bold;
     margin-right: 10px;
 }
 
-.logoutBtn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 1.2rem;
-}
-
-@media only screen and (max-width: 1024px) {
-    
-    .navbar .navBtn {
-        visibility: visible;
-        opacity: 1;
-    }
-
-    .navbar a {
-        color: #4A4A4B;
-    }
-
-    .navbar nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 1.5rem;
-        background-color: #fff;
-        transition: 1s;
-        transform: translateY(-100vh);
-        
-        
-    }
-
-    .navbar .responsiveNav {
-        transform: none;
-        z-index: 10;
-        
-    }
-
-    nav .navCloseBtn {
-        position: absolute;
-        top: 2rem;
-        right: 2rem;
-    }
-
-    nav a {
-        font-size: 1.5rem;
-    }
+.navLink:hover {
+    text-decoration: underline;
 }

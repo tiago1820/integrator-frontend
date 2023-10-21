@@ -1,25 +1,18 @@
-// DEPENDENCIES AND HOOKS
 import { Link, useLocation } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
-import { FaHeart } from 'react-icons/fa';
-
-// FILES
 import PATHROUTES from '../../helpers/PathRoutes.helper';
-import { addFav, removeFav } from "../../redux/actions";
 import styles from './Card.module.css';
+import { addFav, removeFav } from '../../redux/actions';
+import { connect } from 'react-redux';
+import { useEffect, useState } from 'react';
 
 const Card = (props) => {
-   const { uid, id, name, status, species, gender, origin, image, onClose, addFav, removeFav, myFavorites, userId } = props;
-
+   const { id, name, status, species, gender, origin, image, onClose, addFav, removeFav, myFavorites } = props;
    const { DETAIL, FAVORITES } = PATHROUTES;
    const { pathname } = useLocation();
-   
    const [isFav, setIsFav] = useState(false);
 
    const handleFavorite = () => {
-      const favoriteData = {id, name, status, species, gender, origin, image, uid, userId}
-      isFav ? removeFav(favoriteData) : addFav(favoriteData);
+      isFav ? removeFav(id) : addFav(props);
       setIsFav(!isFav);
    }
 
@@ -34,24 +27,29 @@ const Card = (props) => {
    return (
       <div className={styles.link}>
          <div className={styles.card}>
-            <div className={styles.idChar}>{id}</div>
+            {
+               isFav ? (
+                  <button onClick={handleFavorite}>❤️</button>
+               ) : (
+                  <button onClick={handleFavorite}>🤍</button>
+               )
+            }
+
+            {/* {pathname !== FAVORITES && <button onClick={() => onClose(id)}>X</button>} */}
+
             <img className={styles.image} src={image} alt='' />
             <div className={styles.cardContent}>
                <Link to={`/detail/${id}`}>
                   <div className={styles.name}>{name}</div>
                </Link>
-            </div>
-            
-            <div className={styles.cardButtonsContainer}>
-               {
-                  isFav ? <div className={styles.favoriteBtn} onClick={handleFavorite}><FaHeart size={30} color='red' /></div> :
-                     <div className={styles.favoriteBtn} onClick={handleFavorite}><FaHeart size={30} color='white' /></div>
-               }
-
-               <div className={styles.closeBtn} onClick={() => onClose(id)}>X</div>
-
+               <div>
+                  <div>{species}</div>
+                  <div>{gender}</div>
+                  <div className={styles.origin}>{origin}</div>
+               </div>
             </div>
          </div>
+         <div className={styles.status}>{status}</div>
       </div>
    );
 }
@@ -61,8 +59,8 @@ const mapDispatchToProps = (dispatch) => {
       addFav: (character) => {
          dispatch(addFav(character))
       },
-      removeFav: (character) => {
-         dispatch(removeFav(character))
+      removeFav: (id) => {
+         dispatch(removeFav(id))
       }
    }
 }

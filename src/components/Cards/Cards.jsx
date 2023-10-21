@@ -1,11 +1,8 @@
-import { useSelector } from "react-redux";
-import { Card } from "../../components";
+import Card from '../Card/Card';
 import styles from './Cards.module.css';
 
 const Cards = (props) => {
    const { characters, onClose } = props;
-   const userId = useSelector((state) => state.user.uid);
-   console.log("USERID-CARDS",userId);
 
    return (
       <div className={styles.container}>
@@ -16,12 +13,11 @@ const Cards = (props) => {
                      <Card
                         key={char.id}
                         id={char.id}
-                        userId={userId ? userId : null}
                         name={char.name}
                         status={char.status}
                         species={char.species}
                         gender={char.gender}
-                        origin={char.origin?.name}
+                        origin={char.origin.name}
                         image={char.image}
                         onClose={onClose}
                      />
@@ -29,8 +25,7 @@ const Cards = (props) => {
                })}
             </div>
          </div>
-      </div>
-   )
+      </div>)
 }
 
 export default Cards;

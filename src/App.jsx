@@ -1,154 +1,75 @@
-// DEPENDENCIES AND HOOKS
+import { useState, useEffect } from 'react';
+import Cards from './components/Cards/Cards.jsx';
+import Nav from './components/Nav/Nav.jsx';
+import About from './components/About/About.jsx';
+import Detail from './components/Detail/Detail.jsx';
+import Form from './components/Form/Form.jsx';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import PATHROUTES from './helpers/PathRoutes.helper.js';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
-import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-// COMPONENTS
-import { About, Nav, Detail, Cards, PasswordReset, NewAccount, Login, Favorites, ProtectedRoute, Error404 } from "./components";
-// FILES
-import { filterCharacters, handleCharacterData } from './helpers/app.helper';
-import PATHROUTES from './helpers/PathRoutes.helper';
-import { removeUser, setTotalChar, setUser } from './redux/actions';
-import styles from './App.module.css';
+import Favorites from './components/Favorites/Favorites.jsx';
+import styles from "./App.module.css";
 
 function App() {
 
-	const totalChars = useSelector(state => state.totalChars);
-	const user = useSelector(state => state.user);
-	const dispatch = useDispatch();
-	const navigate = useNavigate();
-	const { pathname } = useLocation();
-	const { LOGIN, NEWACCOUNT, PASSWORDRESET, HOME, ABOUT, DETAIL, FAVORITES, ERROR_404 } = PATHROUTES;
-	const [characters, setCharacters] = useState([]);
-	const [message, setMessage] = useState('');
+    const { pathname } = useLocation();
+    const { LOGIN, HOME, ABOUT, DETAIL, FAVORITES } = PATHROUTES;
+    const [characters, setCharacters] = useState([]);
+    const [access, setAccess] = useState(false);
+    const navigate = useNavigate();
 
-	async function login(userData) {
-		try {
-			const { email: userEmail, password: userPass } = userData;
-			const URL = "http://localhost:3001/rickandmorty/login/";
-			const { data } = await axios(`${URL}?email=${userEmail}&password=${userPass}`);
-			const { uid, email } = data.currentUser;
-			const user = { uid, email };
+    async function login(userData) {
+        try {
+            const { email, password } = userData;
+            const URL = 'http://localhost:3001/rickandmorty/login/';
+            const { data } = await axios(URL + `?email=${email}&password=${password}`);
+            const { access } = data;
+            setAccess(data);
+            access && navigate('/home');
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
-			dispatch(setUser(user));
-			navigate(HOME);
-			const totalChars = await getTotalChars();
-			console.log("DATAAA", totalChars);
-			dispatch(setTotalChar(totalChars));
-		} catch (error) {
-			navigate(LOGIN);
-			throw error;
-		}
-	}
+    useEffect(() => {
+        !access && navigate('/');
+    }, [access]);
 
-	const logout = () => dispatch(removeUser());
+    const onSearch = async (id) => {
+        try {
+            const { data } = await axios(`http://localhost:3001/rickandmorty/character/${id}`)
+            if (data.name) {
+                setCharacters((oldChars) => [...oldChars, data]);
+            } else {
+                window.alert('¡No hay personajes con este ID!');
+            }
 
-	async function registerUser(userData) {
-		try {
-			const { email: userEmail, password: userPass } = userData;
-			const URL = "http://localhost:3001/rickandmorty/register/";
-			const { data } = await axios(`${URL}?email=${userEmail}&password=${userPass}`);
-			const { uid, email } = data;
-			const user = { uid, email };
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
-			dispatch(setUser(user));
-			navigate(HOME);
-			const totalChars = await getTotalChars();
-			dispatch(setTotalChar(totalChars));
+    const onClose = (id) => {
+        setCharacters(
+            characters.filter((char) => {
+                return char.id !== id;
+            })
+        )
+    }
 
-		} catch {
-			console.error(error);
-			navigate(NEWACCOUNT);
-		}
-	}
+    return (
+        <div className={styles.appContainer}>
+            {pathname !== '/' && <Nav onSearch={onSearch} />}
+            <Routes>
+                <Route path={LOGIN} element={<Form login={login} />} />
+                <Route path={HOME} element={<Cards characters={characters} onClose={onClose} />} />
+                <Route path={ABOUT} element={<About />} />
+                <Route path={DETAIL} element={<Detail />} />
+                <Route path={FAVORITES} element={<Favorites />} />
 
-	async function recoverPassword(userData) {
-		try {
-			const { email: userEmail } = userData;
-			const URL = "http://localhost:3001/rickandmorty/recover/";
-			await axios(`${URL}?email=${userEmail}`);
-		} catch (error) {
-			setMessage('Error al enviar el correo electronico: ' + error.message)
-
-		}
-	}
-
-	function getTotalChars() {
-		return axios.get("http://localhost:3001/rickandmorty/character/count")
-			.then(response => {
-				return response.data.totalCharacterCount;
-			})
-			.catch(error => {
-				console.error(error);
-				throw error;
-			});
-	}
-
-	const onSearch = (id) => {
-		axios(`http://localhost:3001/rickandmorty/character/${id}`).then(({ data }) => {
-			handleCharacterData(data, characters, setCharacters);
-		});
-	}
-
-	// RANDOM
-	function getRandomNumber() {
-		return Math.floor(Math.random() * totalChars) + 1;
-
-	}
-
-	const getRandom = () => {
-		let id;
-
-		const isIdCharacters = (id) => {
-			return characters.some(characters => characters.id === id);
-		}
-
-		do {
-			id = getRandomNumber();
-		} while (isIdCharacters(id));
-
-		console.log("ID", id);
-
-		axios(`http://localhost:3001/rickandmorty/character/${id}`).then(({ data }) => {
-			handleCharacterData(data, characters, setCharacters);
-		});
-	}
-
-	const onClose = (id) => {
-		setCharacters(filterCharacters(characters, id));
-	}
-
-	useEffect(() => {
-		const currentPath = window.location.pathname;
-		const validRoutes = [HOME, ABOUT, DETAIL, FAVORITES]
-		if (!validRoutes.includes(currentPath)) {
-			navigate(ERROR_404);
-		}
-
-		if (currentPath === LOGIN && user) {
-			navigate(HOME);
-		}
-	}, [])
-
-	return (
-		<div className={styles.app}>
-			{pathname !== LOGIN && pathname !== NEWACCOUNT && pathname !== PASSWORDRESET && <Nav logout={logout} onSearch={onSearch}getRandom={getRandom} />}
-			<Routes>
-				<Route path={LOGIN} element={<Login login={login} />} />
-				<Route path={NEWACCOUNT} element={<NewAccount registerUser={registerUser} message={message} />} />
-				<Route path={PASSWORDRESET} element={<PasswordReset recoverPassword={recoverPassword} message={message} />} />
-
-				<Route element={<ProtectedRoute isAllowed={!!user} redirectTo={LOGIN} pathname={pathname} />}>
-					<Route path={HOME} element={<Cards characters={characters} onClose={onClose} />} />
-					<Route path={ABOUT} element={<About />} />
-					<Route path={DETAIL} element={<Detail />} />
-					<Route path={FAVORITES} element={<Favorites />} />
-					<Route path={ERROR_404} element={<Error404 />} />
-				</Route>
-
-			</Routes>
-		</div>
-	);
+            </Routes>
+        </div>
+    );
 }
 
 export default App;
