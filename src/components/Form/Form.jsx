@@ -3,7 +3,7 @@ import validator from "./validation";
 import styles from "./Form.module.css";
 
 const Form = (props) => {
-    const { login } = props;
+    const { handleLogin } = props;
 
     const [errors, setErrors] = useState([]);
 
@@ -19,7 +19,7 @@ const Form = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        login(userData)
+        handleLogin(userData)
     }
 
     return (

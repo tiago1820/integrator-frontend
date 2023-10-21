@@ -9,6 +9,7 @@ import PATHROUTES from './helpers/PathRoutes.helper.js';
 import axios from 'axios';
 import Favorites from './components/Favorites/Favorites.jsx';
 import styles from "./App.module.css";
+import login from './helpers/auth.helper.js';
 
 function App() {
 
@@ -18,14 +19,10 @@ function App() {
     const [access, setAccess] = useState(false);
     const navigate = useNavigate();
 
-    async function login(userData) {
+    // Authentication
+    const handleLogin = async (userData) => {
         try {
-            const { email, password } = userData;
-            const URL = 'http://localhost:3001/rickandmorty/login/';
-            const { data } = await axios(URL + `?email=${email}&password=${password}`);
-            const { access } = data;
-            setAccess(data);
-            access && navigate('/home');
+            await login(userData, setAccess, navigate);
         } catch (error) {
             console.log(error);
         }
@@ -61,7 +58,7 @@ function App() {
         <div className={styles.appContainer}>
             {pathname !== '/' && <Nav onSearch={onSearch} />}
             <Routes>
-                <Route path={LOGIN} element={<Form login={login} />} />
+                <Route path={LOGIN} element={<Form handleLogin={handleLogin} />} />
                 <Route path={HOME} element={<Cards characters={characters} onClose={onClose} />} />
                 <Route path={ABOUT} element={<About />} />
                 <Route path={DETAIL} element={<Detail />} />
