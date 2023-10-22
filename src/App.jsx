@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
 import { Nav } from './components';
 import { characterService, login, AppRoutes } from './services'
 import styles from "./App.module.css";
+import { useLocationPathname, useCharactersState, useAccessState, useNavigateFunction } from '../src/constants/consts';
 
 function App() {
-    const { pathname } = useLocation();
-    const [characters, setCharacters] = useState([]);
-    const [access, setAccess] = useState(false);
-    const navigate = useNavigate();
+    const pathname = useLocationPathname();
+    const [characters, setCharacters] = useCharactersState();
+    const [access, setAccess] = useAccessState();
+    const navigate = useNavigateFunction();
 
     const handleLogin = async (userData) => {
         try {
