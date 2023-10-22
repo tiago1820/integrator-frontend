@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocationPathname } from '../../constants/consts';
 
-const Card = (props) => {
+export const Card = (props) => {
    const dispatch = useDispatch();
    const myFavorites = useSelector(state => state.myFavorites);
 
@@ -46,7 +46,7 @@ const Card = (props) => {
                   <div className={styles.origin}>{origin}</div>
                </div>
             </div>
-            {pathname !== FAVORITES && <button onClick={() => onClose(id)}>X</button>}
+            {/* {pathname !== FAVORITES && <button onClick={() => onClose(id)}>X</button>} */}
             <div className={styles.status}>{status}</div>
          </div>
       </div>

@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Nav } from './components';
 import { characterService, login, AppRoutes } from './services'
 import styles from "./App.module.css";
 import { useLocationPathname, useCharactersState, useAccessState, useNavigateFunction } from '../src/constants/consts';
+import { handleErrors } from './helpers';
 
-function App() {
+export const App = () => {
     const pathname = useLocationPathname();
     const [characters, setCharacters] = useCharactersState();
     const [access, setAccess] = useAccessState();
@@ -14,7 +15,7 @@ function App() {
         try {
             await login(userData, setAccess, navigate);
         } catch (error) {
-            console.log(error);
+            handleErrors(error);
         }
     }
 
@@ -30,7 +31,7 @@ function App() {
                 : window.alert('¡No hay personajes con este ID!');
 
         } catch (error) {
-            console.log(error);
+            handleErrors(error);
         }
     }
 
@@ -54,5 +55,3 @@ function App() {
         </div>
     );
 }
-
-export default App;

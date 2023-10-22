@@ -3,7 +3,7 @@ import SearchBar from "../SearchBar/SearchBar";
 import PATHROUTES from '../../helpers/PathRoutes.helper';
 import styles from "./Nav.module.css";
 
-const Nav = (props) => {
+export const Nav = (props) => {
     const { onSearch } = props;
     const { HOME, ABOUT, FAVORITES } = PATHROUTES;
 

@@ -1,7 +1,7 @@
 import { Card } from '../../components';
 import styles from './Cards.module.css';
 
-const Cards = (props) => {
+export const Cards = (props) => {
    const { characters, onClose } = props;
 
    return (

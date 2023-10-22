@@ -1,4 +1,5 @@
 import axios from "axios";
+import { handleErrors } from "../helpers";
 
 export const addFav = (character) => {
     const endpoint = 'http://localhost:3001/rickandmorty/fav';
@@ -11,7 +12,7 @@ export const addFav = (character) => {
             });
 
         } catch (error) {
-            console.log(error);
+            handleErrors(error);
         }
     }
 };
@@ -26,7 +27,7 @@ export const removeFav = (id) => {
                 payload: data,
             });
         } catch (error) {
-            console.log(error);
+            handleErrors(error);
         }
     }
 }

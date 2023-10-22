@@ -1,7 +1,7 @@
 import useCharacter from '../../hooks/useCharacter';
 import styles from './Detail.module.css';
 
-const Detail = () => {
+export const Detail = () => {
   const character = useCharacter();
 
   return (

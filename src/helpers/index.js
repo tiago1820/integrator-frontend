@@ -1,2 +1,4 @@
 import PATHROUTES from './PathRoutes.helper.js';
-export { PATHROUTES };
+import { handleErrors } from './handleErrors.helper.js';
+
+export { PATHROUTES, handleErrors };

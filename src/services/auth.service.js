@@ -1,4 +1,5 @@
 import axios from "axios";
+import { handleErrors } from "../helpers";
 
 async function login(userData, setAccess, navigate) {
     try {
@@ -9,7 +10,7 @@ async function login(userData, setAccess, navigate) {
         setAccess(data);
         access && navigate('/home');
     } catch (error) {
-        console.log(error);
+        handleErrors(error);
     }
 }
 
