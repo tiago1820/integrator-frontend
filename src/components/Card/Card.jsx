@@ -1,9 +1,10 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import PATHROUTES from '../../helpers/PathRoutes.helper';
 import styles from './Card.module.css';
 import { addFav, removeFav } from '../../redux/actions';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useLocationPathname } from '../../constants/consts';
 
 const Card = (props) => {
    const dispatch = useDispatch();
@@ -11,7 +12,7 @@ const Card = (props) => {
 
    const { id, name, status, species, gender, origin, image, onClose } = props;
    const { DETAIL, FAVORITES } = PATHROUTES;
-   const { pathname } = useLocation();
+   const pathname = useLocationPathname();
    const [isFav, setIsFav] = useState(false);
 
    const handleFavorite = () => {
