@@ -6,6 +6,7 @@ export const useLocationPathname = () => {
     return pathname;
 };
 
+// States
 export const useCharactersState = () => {
     return useState([]);
 };

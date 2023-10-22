@@ -1,4 +1,4 @@
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PATHROUTES from '../../helpers/PathRoutes.helper';
 import styles from './Card.module.css';
 import { addFav, removeFav } from '../../redux/actions';
@@ -11,7 +11,7 @@ const Card = (props) => {
    const myFavorites = useSelector(state => state.myFavorites);
 
    const { id, name, status, species, gender, origin, image, onClose } = props;
-   const { DETAIL, FAVORITES } = PATHROUTES;
+   const { FAVORITES } = PATHROUTES;
    const pathname = useLocationPathname();
    const [isFav, setIsFav] = useState(false);
 
@@ -31,15 +31,9 @@ const Card = (props) => {
    return (
       <div className={styles.link}>
          <div className={styles.card}>
-            {
-               isFav ? (
-                  <button onClick={handleFavorite}>❤️</button>
-               ) : (
-                  <button onClick={handleFavorite}>🤍</button>
-               )
-            }
-
-            {/* {pathname !== FAVORITES && <button onClick={() => onClose(id)}>X</button>} */}
+            {isFav
+               ? (<button onClick={handleFavorite}>❤️</button>)
+               : (<button onClick={handleFavorite}>🤍</button>)}
 
             <img className={styles.image} src={image} alt='' />
             <div className={styles.cardContent}>
@@ -52,8 +46,9 @@ const Card = (props) => {
                   <div className={styles.origin}>{origin}</div>
                </div>
             </div>
+            {pathname !== FAVORITES && <button onClick={() => onClose(id)}>X</button>}
+            <div className={styles.status}>{status}</div>
          </div>
-         <div className={styles.status}>{status}</div>
       </div>
    );
 }
