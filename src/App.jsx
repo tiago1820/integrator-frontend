@@ -25,11 +25,9 @@ function App() {
     const onSearch = async (id) => {
         try {
             const data = await characterService.getCharacterById(id);
-            if (data.name) {
-                setCharacters((oldChars) => [...oldChars, data]);
-            } else {
-                window.alert('¡No hay personajes con este ID!');
-            }
+            data.name
+                ? setCharacters((oldChars) => [...oldChars, data])
+                : window.alert('¡No hay personajes con este ID!');
 
         } catch (error) {
             console.log(error);

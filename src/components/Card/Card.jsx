@@ -2,17 +2,20 @@ import { Link, useLocation } from 'react-router-dom';
 import PATHROUTES from '../../helpers/PathRoutes.helper';
 import styles from './Card.module.css';
 import { addFav, removeFav } from '../../redux/actions';
-import { connect } from 'react-redux';
 import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Card = (props) => {
-   const { id, name, status, species, gender, origin, image, onClose, addFav, removeFav, myFavorites } = props;
+   const dispatch = useDispatch();
+   const myFavorites = useSelector(state => state.myFavorites);
+
+   const { id, name, status, species, gender, origin, image, onClose } = props;
    const { DETAIL, FAVORITES } = PATHROUTES;
    const { pathname } = useLocation();
    const [isFav, setIsFav] = useState(false);
 
    const handleFavorite = () => {
-      isFav ? removeFav(id) : addFav(props);
+      isFav ? dispatch(removeFav(id)) : dispatch(addFav(props));
       setIsFav(!isFav);
    }
 
@@ -54,21 +57,4 @@ const Card = (props) => {
    );
 }
 
-const mapDispatchToProps = (dispatch) => {
-   return {
-      addFav: (character) => {
-         dispatch(addFav(character))
-      },
-      removeFav: (id) => {
-         dispatch(removeFav(id))
-      }
-   }
-}
-
-const mapStateToProps = (state) => {
-   return {
-      myFavorites: state.myFavorites,
-   }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Card);
+export default Card;
