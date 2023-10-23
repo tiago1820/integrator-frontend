@@ -52,5 +52,3 @@ export const Card = (props) => {
       </div>
    );
 }
-
-export default Card;

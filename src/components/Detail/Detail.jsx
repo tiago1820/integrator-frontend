@@ -21,5 +21,3 @@ export const Detail = () => {
     </div>
   )
 }
-
-export default Detail;

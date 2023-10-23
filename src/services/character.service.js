@@ -1,7 +1,7 @@
 import axios from "axios";
 import { handleErrors } from "../helpers";
 
-const getCharacterById = async (id) => {
+export const getCharacterById = async (id) => {
     try {
         const { data } = await axios(`http://localhost:3001/rickandmorty/character/${id}`);
         return data;
@@ -10,4 +10,7 @@ const getCharacterById = async (id) => {
     }
 }
 
-export default { getCharacterById };
+export const getRandomCharId = () => {
+    const totalCharacters = 826;
+    return Math.floor(Math.random() * totalCharacters);
+};

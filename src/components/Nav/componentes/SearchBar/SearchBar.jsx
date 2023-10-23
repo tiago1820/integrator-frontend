@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import styles from './SearchBar.module.css';
 
-const SearchBar = (props) => {
+export const SearchBar = (props) => {
    const [id, setId] = useState('');
 
    const handleChange = (e) => {
@@ -18,5 +18,3 @@ const SearchBar = (props) => {
       </div>
    );
 }
-
-export default SearchBar;
