@@ -6,7 +6,7 @@ import { PATHROUTES } from '../helpers';
 
 const { LOGIN, HOME, ABOUT, DETAIL, FAVORITES } = PATHROUTES;
 
-const AppRoutes = ({ characters, onClose, handleLogin }) => (
+export const AppRoutes = ({ characters, onClose, handleLogin }) => (
     <Routes>
         <Route path={LOGIN} element={<Form handleLogin={handleLogin} />} />
         <Route path={HOME} element={<Cards characters={characters} onClose={onClose} />} />
@@ -15,5 +15,3 @@ const AppRoutes = ({ characters, onClose, handleLogin }) => (
         <Route path={FAVORITES} element={<Favorites />} />
     </Routes>
 );
-
-export default AppRoutes;

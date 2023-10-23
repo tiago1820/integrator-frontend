@@ -1,7 +1,7 @@
 import axios from "axios";
 import { handleErrors } from "../helpers";
 
-async function login(userData, setAccess, navigate) {
+export async function login(userData, setAccess, navigate) {
     try {
         const { email, password } = userData;
         const URL = 'http://localhost:3001/rickandmorty/login/';
@@ -13,5 +13,3 @@ async function login(userData, setAccess, navigate) {
         handleErrors(error);
     }
 }
-
-export default login;

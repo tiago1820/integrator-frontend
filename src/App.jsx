@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Nav } from './components';
-import { characterService, login, AppRoutes } from './services'
+import { getCharacterById, getRandomCharId, login, AppRoutes } from './services'
 import styles from "./App.module.css";
 import { useLocationPathname, useCharactersState, useAccessState, useNavigateFunction } from '../src/constants/consts';
 import { handleErrors } from './helpers';
@@ -25,7 +25,7 @@ export const App = () => {
 
     const onSearch = async (id) => {
         try {
-            const data = await characterService.getCharacterById(id);
+            const data = await getCharacterById(id);
             data.name
                 ? setCharacters((oldChars) => [...oldChars, data])
                 : window.alert('¡No hay personajes con este ID!');
@@ -43,9 +43,18 @@ export const App = () => {
         )
     }
 
+    const getRandomChar = async () => {
+        const randomCharId = getRandomCharId();
+        const randomCharData = await getCharacterById(randomCharId);
+        randomCharData
+            ? setCharacters(oldChars => [...oldChars, randomCharData])
+            : window.alert('No hay personajes con este ID!');
+    };
+
+
     let navComponent = null;
     if (pathname !== '/') {
-        navComponent = <Nav onSearch={onSearch} />;
+        navComponent = <Nav onSearch={onSearch} getRandomChar={getRandomChar} />;
     }
 
     return (
