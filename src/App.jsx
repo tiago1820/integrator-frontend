@@ -2,10 +2,13 @@ import { useEffect } from 'react';
 import { Nav } from './components';
 import { getCharacterById, getRandomCharId, login, AppRoutes } from './services'
 import styles from "./App.module.css";
-import { useLocationPathname, useCharactersState, useAccessState, useNavigateFunction } from '../src/constants/consts';
+import { useLocationPathname, useCharactersState, useAccessState, useNavigateFunction, useTotalChar } from '../src/constants/consts';
 import { handleErrors } from './helpers';
 
+
 export const App = () => {
+    const totalChar = useTotalChar();
+    
     const pathname = useLocationPathname();
     const [characters, setCharacters] = useCharactersState();
     const [access, setAccess] = useAccessState();
@@ -44,7 +47,7 @@ export const App = () => {
     }
 
     const getRandomChar = async () => {
-        const randomCharId = getRandomCharId();
+        const randomCharId = getRandomCharId(totalChar);
         const randomCharData = await getCharacterById(randomCharId);
         randomCharData
             ? setCharacters(oldChars => [...oldChars, randomCharData])

@@ -10,7 +10,6 @@ export const getCharacterById = async (id) => {
     }
 }
 
-export const getRandomCharId = () => {
-    const totalCharacters = 826;
-    return Math.floor(Math.random() * totalCharacters);
+export const getRandomCharId = (totalChar) => {
+    return Math.floor(Math.random() * totalChar);
 };

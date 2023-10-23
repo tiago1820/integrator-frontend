@@ -67,3 +67,18 @@ export const getCharacterDetail = (id) => {
 export const cleanDetail = () => {
     return { type: "CLEAN_DETAIL" };
 }
+
+export const getTotalChar = () => {
+    return async (dispatch) => {
+        try {
+            const response = await axios.get('http://localhost:3001/rickandmorty/character/total');
+            const total = response.data.total;
+            dispatch({
+                type: 'GET_TOTAL_CHAR',
+                payload: total,
+            });
+        } catch (error) {
+            handleErrors(error);
+        }
+    }
+};
