@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { getTotalChar } from '../redux/actions';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { getTotalChar, getCharacterDetail, cleanDetail } from '../redux/actions';
 
 export const useLocationPathname = () => {
     const { pathname } = useLocation();
@@ -29,4 +29,20 @@ export const useTotalChar = () => {
     }, []);
 
     return totalChar;
+};
+
+export const useCharacter = () => {
+    const dispatch = useDispatch();
+    const { id } = useParams();
+    const character = useSelector((state) => state.characterDetail);
+
+    useEffect(() => {
+        dispatch(getCharacterDetail(id));
+
+        return () => {
+            dispatch(cleanDetail());
+        }
+    }, [id]);
+
+    return character;
 };

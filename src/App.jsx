@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { Nav } from './components';
 import { getCharacterById, getRandomCharId, login, AppRoutes } from './services'
 import styles from "./App.module.css";
-import { useLocationPathname, useCharactersState, useAccessState, useNavigateFunction, useTotalChar } from '../src/constants/consts';
+import { useLocationPathname, useCharactersState, useAccessState, useNavigateFunction, useTotalChar } from './hooks';
 import { handleErrors } from './helpers';
 
 

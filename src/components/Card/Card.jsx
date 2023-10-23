@@ -4,7 +4,7 @@ import styles from './Card.module.css';
 import { addFav, removeFav } from '../../redux/actions';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocationPathname } from '../../constants/consts';
+import { useLocationPathname } from '../../hooks/index';
 
 export const Card = (props) => {
    const dispatch = useDispatch();
