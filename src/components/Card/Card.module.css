@@ -14,14 +14,40 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.card button {
+.card .heartButton {
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: 3px;
+    right: 0;
     background: none;
     border: none;
     font-size: 1.5rem;
     cursor: pointer;
+}
+
+.card .closeButton {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background-color: #ed102e;
+    border: none;
+    padding: 5px 10px;
+    font-size: 1.2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 30px;
+}
+
+.card .charId {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background-color: #007BFE;
+    border: none;
+    padding: 5px 10px;
+    font-size: 1.2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 30px;
 }
 
 .card img {
