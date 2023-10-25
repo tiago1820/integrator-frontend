@@ -43,9 +43,9 @@ export const Card = (props) => {
                         <div className={styles.name}>{name}</div>
                     </Link>
                     <div>
-                        <div>{species}</div>
-                        <div>{gender}</div>
-                        <div className={styles.origin}>{origin}</div>
+                        {/* <div>{species}</div> */}
+                        {/* <div>{gender}</div> */}
+                        {/* <div className={styles.origin}>{origin}</div> */}
                     </div>
                 </div>
                 <div className={styles.status}>{status}</div>

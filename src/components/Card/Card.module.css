@@ -16,8 +16,8 @@
 
 .card .heartButton {
     position: absolute;
-    top: 3px;
-    right: 0;
+    bottom: -5px;
+    left: -15px;
     background: none;
     border: none;
     font-size: 1.5rem;
@@ -48,6 +48,8 @@
     border-radius: 4px;
     cursor: pointer;
     height: 30px;
+    color: yellow;
+    font-weight: bold;
 }
 
 .card img {
@@ -59,10 +61,15 @@
     margin-top: 10px;
 }
 
+.cardContent a {
+    text-decoration: none;
+}
+
 .cardContent .name {
     font-weight: bold;
     font-size: 1.2rem;
     margin-bottom: 5px;
+    text-align: center;
 }
 
 .cardContent div {
@@ -73,6 +80,7 @@
 .status {
     font-size: 0.9rem;
     margin-top: 5px;
+    text-align: center;
 }
 
 .origin {
