@@ -11,6 +11,8 @@ export const Card = (props) => {
     const { id, name, status, species, gender, origin, image, onClose } = props;
     const [isFav, setIsFav] = useState(false);
 
+    console.log(status);
+
     const handleFavorite = () => {
         isFav ? dispatch(removeFav(id)) : dispatch(addFav(props));
         setIsFav(!isFav);
@@ -31,7 +33,7 @@ export const Card = (props) => {
                     ? (<button className={styles.heartButton} onClick={handleFavorite}>❤️</button>)
                     : (<button className={styles.heartButton} onClick={handleFavorite}>🤍</button>)}
                 {<button className={styles.closeButton} onClick={() => onClose(id)}>X</button>}
-                <img className={styles.image} src={image} alt='' />
+                <img className={`${styles.image} ${status === 'Dead' ? styles.blackAndWhite : ''}`} src={image} alt='' />
                 <div className={styles.cardContent}>
                     <Link to={`/detail/${id}`}>
                         <button className={styles.charId}>{id}</button>
@@ -43,7 +45,7 @@ export const Card = (props) => {
                         {/* <div className={styles.origin}>{origin}</div> */}
                     </div>
                 </div>
-                <div className={styles.status}>{status}</div>
+                <div className={`${styles.status} ${status === 'Alive' ? styles.aliveStatus : styles.deadStatus}`}>{status}</div>
             </div>
         </div>
     );

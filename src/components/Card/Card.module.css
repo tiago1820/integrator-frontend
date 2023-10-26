@@ -81,8 +81,22 @@
     font-size: 0.9rem;
     margin-top: 5px;
     text-align: center;
+    color: white;
+    font-weight: bold;
 }
 
 .origin {
     font-weight: bold;
+}
+
+.blackAndWhite {
+    filter: grayscale(100%) !important;
+}
+
+.aliveStatus {
+    background-color: green;
+}
+
+.deadStatus {
+    background-color: red;
 }
