@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
-import { Nav } from './components';
-import { getCharacterById, getRandomCharId, login, AppRoutes, isCharacterDuplicate } from './services'
+import { Nav } from '../src/app/components';
+import { getCharacterById, getRandomCharId, login, AppRoutes, isCharacterDuplicate } from '../src/app/services';
 import styles from "./App.module.css";
-import { useLocationPathname, useCharactersState, useAccessState, useNavigateFunction, useTotalChar } from './hooks';
-import { handleErrors } from './helpers';
+import { useLocationPathname, useCharactersState, useAccessState, useNavigateFunction, useTotalChar } from '../src/app/hooks';
+import { handleErrors } from '../src/app/helpers';
 
 
 export const App = () => {
@@ -23,7 +23,7 @@ export const App = () => {
     }
 
     useEffect(() => {
-        !access && navigate('/');
+        !access && pathname !== '/' && navigate('/app');
     }, [access]);
 
     const onSearch = async (id) => {
@@ -60,12 +60,13 @@ export const App = () => {
     };
 
     let navComponent = null;
-    if (pathname !== '/') {
+    if (pathname !== '/app' && pathname !== '/') {
         navComponent = <Nav onSearch={onSearch} getRandomChar={getRandomChar} />;
     }
 
     return (
         <div className={styles.appContainer}>
+
             {navComponent}
             <AppRoutes characters={characters} onClose={onClose} handleLogin={handleLogin} />
         </div>
