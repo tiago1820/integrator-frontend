@@ -34,12 +34,14 @@ export const Card = (props) => {
                 {isFav
                     ? (<button className={styles.heartButton} onClick={handleFavorite}>❤️</button>)
                     : (<button className={styles.heartButton} onClick={handleFavorite}>🤍</button>)}
-                {pathname !== FAVORITES && <button className={styles.closeButton} onClick={() => onClose(id)}>X</button>}
-                <button className={styles.charId}>{id}</button>
+//                 {pathname !== FAVORITES && <button className={styles.closeButton} onClick={() => onClose(id)}>X</button>}
+                {<button className={styles.closeButton} onClick={() => onClose(id)}>X</button>}
+//                 <button className={styles.charId}>{id}</button>
 
                 <img className={styles.image} src={image} alt='' />
                 <div className={styles.cardContent}>
                     <Link to={`/detail/${id}`}>
+                        <button className={styles.charId}>{id}</button>
                         <div className={styles.name}>{name}</div>
                     </Link>
                     <div>

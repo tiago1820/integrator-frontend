@@ -1,6 +1,6 @@
 import { connect, useDispatch, useSelector } from "react-redux";
 import { Card } from '../../components';
-import { filterCards, orderCards, showAllcharacters } from "../../redux/actions";
+import { filterCards, orderCards, showAllcharacters, removeFav } from "../../redux/actions";
 import { useState } from "react";
 import styles from "./Favorites.module.css";
 
@@ -50,10 +50,11 @@ export const Favorites = (props) => {
                                     id={char.id}
                                     name={char.name}
                                     status={char.status}
-                                    species={char.species}
-                                    gender={char.gender}
-                                    origin={char.origin.name}
+//                                     species={char.species}
+//                                     gender={char.gender}
+//                                     origin={char.origin.name}
                                     image={char.image}
+                                    onClose={() => dispatch(removeFav(char.id))}
                                 />
                             )
                         })}
