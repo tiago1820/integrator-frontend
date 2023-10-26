@@ -13,3 +13,7 @@ export const getCharacterById = async (id) => {
 export const getRandomCharId = (totalChar) => {
     return Math.floor(Math.random() * totalChar);
 };
+
+export const isCharacterDuplicate = (character, id) => {
+    return character.some(char => char.id === id);
+};

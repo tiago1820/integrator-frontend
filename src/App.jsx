@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Nav } from './components';
-import { getCharacterById, getRandomCharId, login, AppRoutes } from './services'
+import { getCharacterById, getRandomCharId, login, AppRoutes, isCharacterDuplicate } from './services'
 import styles from "./App.module.css";
 import { useLocationPathname, useCharactersState, useAccessState, useNavigateFunction, useTotalChar } from './hooks';
 import { handleErrors } from './helpers';
@@ -8,7 +8,7 @@ import { handleErrors } from './helpers';
 
 export const App = () => {
     const totalChar = useTotalChar();
-    
+
     const pathname = useLocationPathname();
     const [characters, setCharacters] = useCharactersState();
     const [access, setAccess] = useAccessState();
@@ -29,9 +29,14 @@ export const App = () => {
     const onSearch = async (id) => {
         try {
             const data = await getCharacterById(id);
-            data.name
-                ? setCharacters((oldChars) => [...oldChars, data])
-                : window.alert('¡No hay personajes con este ID!');
+            if (data.name) {
+                const isDuplicate = isCharacterDuplicate(characters, data.id);
+                !isDuplicate
+                    ? setCharacters(oldChars => [...oldChars, data])
+                    : window.alert('¡El personaje ya está en la lista!');
+            } else {
+                window.alert('¡No hay personajes con este ID!');
+            }
 
         } catch (error) {
             handleErrors(error);
@@ -53,7 +58,6 @@ export const App = () => {
             ? setCharacters(oldChars => [...oldChars, randomCharData])
             : window.alert('No hay personajes con este ID!');
     };
-
 
     let navComponent = null;
     if (pathname !== '/') {
