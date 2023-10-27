@@ -1,67 +1,96 @@
 .navbar {
-    background-color: blueviolet;
-    position: relative;
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    padding: 0.5rem 1rem;
-    /* position: fixed; */
-    top: 0;
-    right: 0;
-    z-index: 1030;
+    background-color: #0d6efd;
+    padding: 10px 20px;
 }
 
-.container {
+.column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.right {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
 }
 
-.navbarBrand {
-    background-color: green;
+.right li {
+    list-style-type: none;
 }
 
-.navbarBrand {
-    display: inline-block;
-    padding-top: 0.3125rem;
-    padding-bottom: 0.3125rem;
-    margin-right: 1rem;
-    font-size: 1.25rem;
-    line-height: inherit;
-    white-space: nowrap;
-}   
+.appName {
+    text-decoration: none;
+    font-size: 1.5em;
+    outline: none;
+    color: black;
+}
 
+.navLink {
+    text-decoration: none;
+    color: #4A4A4B;
+    margin-left: 20px;
+    outline: none;
+    font-size: 1.3rem;
+    color: #FFF;
+}
 
-@media (min-width: 768px) {
-    .navbar {
-        flex-flow: row nowrap;
-        justify-content: flex-start;
+.navbar .navBtn {
+    padding: 5px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #051E34;
+    visibility: hidden;
+    opacity: 0;
+    font-size: 1.8rem;
+
+}
+
+@media only screen and (max-width: 1024px) {
+    .navbar .navBtn {
+        visibility: visible;
+        opacity: 1;
     }
-}
 
-@media (min-width: 576px) {
-    .container {
-        max-width: 540px;
+    .navbar a {
+        color: #4A4A4B;
     }
-}
 
-@media (min-width: 768px) {
-    .container {
-        max-width: 720px;
+    .navbar nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        background-color: #FFF;
+        transition: 1s;
+        transform: translateY(-100vh);
     }
-}
 
-@media (min-width: 992px) {
-    .container {
-        max-width: 960px;
+    .navbar .responsiveNav {
+        transform: none;
+        z-index: 10;
     }
-}
 
-@media (min-width: 1200px) {
-    .container {
-        max-width: 1140px;
+    nav .navCloseBtn {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+    }
+
+    nav a {
+        font-size: 1.5rem;
     }
 }

@@ -41,7 +41,7 @@ export const Card = (props) => {
                 />
 
                 <div className={styles.cardContent}>
-                    <Link to={`/detail/${id}`}>
+                    <Link to={`/app/detail/${id}`}>
                         <button className={styles.charId}>{id}</button>
                         <div className={styles.name}>{name}</div>
                     </Link>
