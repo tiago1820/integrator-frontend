@@ -23,7 +23,7 @@ export const App = () => {
     }
 
     useEffect(() => {
-        !access && pathname !== '/' && navigate('/app');
+        !access && pathname !== '/' && navigate('/app/home');
     }, [access]);
 
     const onSearch = async (id) => {
@@ -66,7 +66,6 @@ export const App = () => {
 
     return (
         <div className={styles.appContainer}>
-
             {navComponent}
             <AppRoutes characters={characters} onClose={onClose} handleLogin={handleLogin} />
         </div>
