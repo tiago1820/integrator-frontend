@@ -1,0 +1,33 @@
+.features {
+    padding: 7% 5%;
+}
+
+.featureBox {
+    text-align: center;
+    padding: 5%;
+}
+
+.icon {
+    color: #0d6efd;
+    margin-bottom: 15px;
+}
+
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.column {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+}

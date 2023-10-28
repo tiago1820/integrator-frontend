@@ -32,6 +32,29 @@
     font-size: 1.25rem;
     padding: 0.75rem 1.5rem;
     border-radius: 0.3rem;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: #23272b;
+    border-color: #1d2124;
+}
+
+.btn2 {
+    color: #f8f9fa;
+    background-color: transparent;
+    background-image: none;
+    border-color: #f8f9fa;
+    font-size: 1.25rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.3rem;
+    text-decoration: none;
+}
+
+.btn2:hover {
+    color: #343a40;
+    background-color: #f8f9fa;
+    border-color: #f8f9fa;
 }
 
 .banner img {
