@@ -1,0 +1,75 @@
+.price {
+    padding: 5% 15% 8%;
+    color: #323338;
+}
+
+.price .title {
+    margin-top: 5%;
+}
+
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    text-align: center;
+}
+
+.column {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+    margin: 0 2px 0 2px;
+}
+
+.cardHeader {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: rgba(0, 0, 0, 0.03);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.cardBody {
+    flex: 1 1 auto;
+    padding: 1.25rem;
+}
+
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+    }
+
+    .column {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .card {
+        margin-bottom: 3px;
+    }
+}
+
+@media (max-width: 576px) {
+    .price {
+        padding: 8% 10% 12%;
+    }
+}

@@ -12,14 +12,12 @@ export const Testimonial = () => {
             .then(setData);
     }, []);
 
-
     return (
-        <div>
+        <section className={styles.testimonial}>
             <Swiper
                 slidesPerView={1}
                 pagination={{ clickable: true }}
                 navigation
-
             >
                 {data.map((item) => (
                     <SwiperSlide key={item.id}>
@@ -29,7 +27,7 @@ export const Testimonial = () => {
                     </SwiperSlide>
                 ))}
             </Swiper>
-        </div>
+        </section>
 
     );
 

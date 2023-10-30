@@ -8,7 +8,6 @@ import { handleErrors } from '../src/app/helpers';
 
 export const App = () => {
     const totalChar = useTotalChar();
-
     const pathname = useLocationPathname();
     const [characters, setCharacters] = useCharactersState();
     const [access, setAccess] = useAccessState();
