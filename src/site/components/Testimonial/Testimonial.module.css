@@ -1,0 +1,23 @@
+.carouselContainer {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+}
+
+.carouselItem {
+    flex: 0 0 auto;
+    min-width: 100%;
+    scroll-snap-align: start;
+}
+
+.slideIten {
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+    margin: auto;
+}
+
+h2, p {
+    text-align: center;
+}
