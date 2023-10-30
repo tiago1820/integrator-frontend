@@ -1,0 +1,20 @@
+[
+    {
+        "id": "1",
+        "text": "Lorem ipsum dolor sit amet consectetur adipisicing.",
+        "author": "Marcio Martins - São Paulo",
+        "image": "http://localhost:5173/public/images/client1.png"
+    },
+    {
+        "id": "2",
+        "text": "Lorem ipsum dolor sit amet consectetur adipisicing.",
+        "author": "Marcio Martins - São Paulo",
+        "image": "http://localhost:5173/public/images/client2.png"
+    },
+    {
+        "id": "3",
+        "text": "Lorem ipsum dolor sit amet consectetur adipisicing.",
+        "author": "Marcio Martins - São Paulo",
+        "image": "http://localhost:5173/public/images/client3.png"
+    }
+]
