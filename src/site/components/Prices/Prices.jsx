@@ -45,7 +45,6 @@ export const Prices = () => {
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>

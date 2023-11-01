@@ -18,6 +18,7 @@ export const Testimonial = () => {
                 slidesPerView={1}
                 pagination={{ clickable: true }}
                 navigation
+                direction='horizontal'
             >
                 {data.map((item) => (
                     <SwiperSlide key={item.id}>

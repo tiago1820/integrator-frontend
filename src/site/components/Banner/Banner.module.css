@@ -60,3 +60,11 @@
 .banner img {
     width: 95%;
 }
+
+@media (max-width: 767px){
+    .column {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+}

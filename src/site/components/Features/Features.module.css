@@ -37,3 +37,17 @@
     flex: 0 0 33.333333%;
     max-width: 33.333333%;
 }
+
+@media (max-width: 767px) {
+    .featureBox {
+        max-width: none;
+        width: 100%;
+        margin: 0;
+    }
+
+    .column {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-bottom: 30px;
+    }
+}

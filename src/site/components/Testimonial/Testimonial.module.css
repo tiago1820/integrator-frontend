@@ -27,3 +27,14 @@ h2,
 p {
     text-align: center;
 }
+
+@media (max-width: 767px) {
+    .slideIten {
+        width: 100%;
+        height: auto;
+    }
+
+    .testimonial {
+        padding: 2%;
+    }
+}
