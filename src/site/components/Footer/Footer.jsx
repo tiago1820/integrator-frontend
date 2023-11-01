@@ -4,7 +4,7 @@ import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
 export const Footer = () => {
     const year = new Date().getFullYear();
 
-    return <section className={styles.footer}>
+    return <section id='footer' className={styles.footer}>
         <div>
             <ul className={styles.list}>
                 <li className={styles.item}>

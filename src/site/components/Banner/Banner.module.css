@@ -1,7 +1,7 @@
 .banner {
     background-color: #0D6EFd;
     color: #ffffff;
-    padding: 100px 0 70px 0;
+    padding: 100px 7px 70px 7px;
 }
 
 .container {
@@ -58,5 +58,5 @@
 }
 
 .banner img {
-    width: 100%;
+    width: 95%;
 }

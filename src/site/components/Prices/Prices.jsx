@@ -1,7 +1,7 @@
 import styles from './Prices.module.css';
 
 export const Prices = () => {
-    return <section className={styles.price}>
+    return <section id='prices' className={styles.price}>
         <div className={styles.container}>
             <div className={styles.row}>
                 <div className={styles.title}>

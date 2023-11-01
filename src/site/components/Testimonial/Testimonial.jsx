@@ -13,7 +13,7 @@ export const Testimonial = () => {
     }, []);
 
     return (
-        <section className={styles.testimonial}>
+        <section id='testimonials' className={styles.testimonial}>
             <Swiper
                 slidesPerView={1}
                 pagination={{ clickable: true }}
