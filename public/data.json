@@ -1,20 +1,20 @@
 [
     {
         "id": "1",
-        "text": "Lorem ipsum dolor sit amet consectetur adipisicing.",
-        "author": "Marcio Martins - São Paulo",
+        "text": "¡Esta aplicación es una maravilla! Soy un gran fan de Rick and Morty y esta app hace que sea súper fácil explorar todos los personajes y episodios. ¡Definitivamente la recomiendo!",
+        "author": "Richard Garriott - Inglaterra",
         "image": "http://localhost:5173/public/images/client1.png"
     },
     {
         "id": "2",
-        "text": "Lorem ipsum dolor sit amet consectetur adipisicing.",
-        "author": "Marcio Martins - São Paulo",
+        "text": "Nunca pensé que encontraría una aplicación tan completa sobre Rick and Morty. La capacidad de buscar por personajes, episodios y ubicaciones es impresionante. ¡Es un imprescindible para cualquier fan!",
+        "author": "Elon Musk - Sudáfrica",
         "image": "http://localhost:5173/public/images/client2.png"
     },
     {
         "id": "3",
-        "text": "Lorem ipsum dolor sit amet consectetur adipisicing.",
-        "author": "Marcio Martins - São Paulo",
+        "text": "Esta app me ha ahorrado mucho tiempo al buscar información sobre la serie. Los detalles de los personajes y episodios están muy bien organizados. ¡Estoy enganchado!",
+        "author": "Marissa Mayer -  Estados Unidos",
         "image": "http://localhost:5173/public/images/client3.png"
     }
 ]

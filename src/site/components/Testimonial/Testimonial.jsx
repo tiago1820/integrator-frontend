@@ -28,7 +28,6 @@ export const Testimonial = () => {
                 ))}
             </Swiper>
         </section>
-
     );
 
 }
