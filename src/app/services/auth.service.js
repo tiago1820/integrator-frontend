@@ -8,7 +8,9 @@ export async function login(userData, setAccess, navigate) {
         const { data } = await axios(URL + `?email=${email}&password=${password}`);
         const { access } = data;
         setAccess(data);
-        access && navigate('/home');
+        access
+        ? navigate('/app/home')
+        : navigate('/app')
     } catch (error) {
         handleErrors(error);
     }
