@@ -46,7 +46,7 @@ export const orderCards = (order) => {
     }
 }
 
-export const showAllcharacters = () => {
+export const showallFavorites = () => {
     return {
         type: "SHOW_ALL",
     }
@@ -76,6 +76,21 @@ export const getTotalChar = () => {
             dispatch({
                 type: 'GET_TOTAL_CHAR',
                 payload: total,
+            });
+        } catch (error) {
+            handleErrors(error);
+        }
+    }
+};
+
+export const getAllCharacters = () => {
+    return async (dispatch) => {
+        try {
+            const response = await axios.get('http://localhost:3001/rickandmorty/characters');
+            const characters = response.data;
+            dispatch({
+                type: 'ALL_CHARARACTERS',
+                payload: characters,
             });
         } catch (error) {
             handleErrors(error);

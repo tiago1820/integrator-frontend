@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import { getTotalChar, getCharacterDetail, cleanDetail } from '../redux/actions';
+import { getTotalChar, getCharacterDetail, cleanDetail, getAllCharacters } from '../redux/actions';
+import { all } from 'axios';
 
 export const useLocationPathname = () => {
     const { pathname } = useLocation();
@@ -29,6 +30,20 @@ export const useTotalChar = () => {
     }, []);
 
     return totalChar;
+};
+
+export const useAllChars = () => {
+    const allChars = useSelector(state => state.allCharacters);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        // if(allChars.length === 0){
+        //     dispatch(getAllCharacters());
+        // }
+        dispatch(getAllCharacters());
+    }, []);
+
+    return allChars;
 };
 
 export const useCharacter = () => {

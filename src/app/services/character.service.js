@@ -17,3 +17,13 @@ export const getRandomCharId = (totalChar) => {
 export const isCharacterDuplicate = (character, id) => {
     return character.some(char => char.id === id);
 };
+
+export const getAllCharacters = async () => {
+    try {
+        const { data } = await axios.get(`http://localhost:3001/rickandmorty/characters`);
+        console.log(data);
+        return data;
+    } catch (error) {
+        handleErrors(error);
+    }
+}

@@ -2,12 +2,13 @@ import { useEffect } from 'react';
 import { Nav } from '../src/app/components';
 import { getCharacterById, getRandomCharId, login, AppRoutes, isCharacterDuplicate } from '../src/app/services';
 import styles from "./App.module.css";
-import { useLocationPathname, useCharactersState, useAccessState, useNavigateFunction, useTotalChar } from '../src/app/hooks';
+import { useLocationPathname, useCharactersState, useAccessState, useNavigateFunction, useTotalChar, useAllChars } from '../src/app/hooks';
 import { handleErrors } from '../src/app/helpers';
 
 
 export const App = () => {
     const totalChar = useTotalChar();
+    const allChars = useAllChars();
     const pathname = useLocationPathname();
     const [characters, setCharacters] = useCharactersState();
     const [access, setAccess] = useAccessState();
@@ -66,7 +67,7 @@ export const App = () => {
     return (
         <div className={styles.appContainer}>
             {navComponent}
-            <AppRoutes characters={characters} onClose={onClose} handleLogin={handleLogin} />
+            <AppRoutes characters={characters} allChars={allChars} onClose={onClose} handleLogin={handleLogin} />
         </div>
     );
 }

@@ -1,27 +1,35 @@
 const initialState = {
     myFavorites: [],
-    allCharacters: [],
+    allFavorites: [],
     characterDetail: {},
     totalCharacters: null,
+    allCharacters: [],
 }
 
 const rootReducer = (state = initialState, { type, payload }) => {
     switch (type) {
+        case 'ALL_CHARARACTERS':
+            return {
+                ...state,
+                allCharacters: payload,
+            };
+
+
         case 'ADD_FAV':
-            return { ...state, myFavorites: payload, allCharacters: payload };
+            return { ...state, myFavorites: payload, allFavorites: payload };
 
         case 'REMOVE_FAV':
             return { ...state, myFavorites: payload };
 
         case "FILTER":
-            let copy3 = state.allCharacters.filter((char) => char.gender === payload)
+            let copy3 = state.allFavorites.filter((char) => char.gender === payload)
             return {
                 ...state,
                 myFavorites: copy3
             }
 
         case "ORDER":
-            let copy4 = [...state.allCharacters].sort((a, b) => {
+            let copy4 = [...state.allFavorites].sort((a, b) => {
                 if (payload === "A") {
                     return a.id - b.id
                 } else if (payload === "D") {
@@ -38,7 +46,7 @@ const rootReducer = (state = initialState, { type, payload }) => {
         case "SHOW_ALL":
             return {
                 ...state,
-                myFavorites: state.allCharacters
+                myFavorites: state.allFavorites
             }
 
         case "GET_CHARACTER_DETAIL":

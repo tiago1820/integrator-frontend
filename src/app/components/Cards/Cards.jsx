@@ -2,13 +2,15 @@ import { Card } from '../../components';
 import styles from './Cards.module.css';
 
 export const Cards = (props) => {
-   const { characters, onClose } = props;
+   const { characters, allChars, onClose } = props;
+   // const charsToUse = characters.length > 0 ? characters : allChars;
+   const charsToUse = characters.length > 0 ? characters.slice(0, 10) : allChars.slice(0, 10);
 
    return (
       <div className={styles.container}>
          <div className={styles.column}>
             <div className={styles.row}>
-               {characters.map((char) => {
+               {charsToUse.map((char) => {
                   return (
                      <Card
                         key={char.id}

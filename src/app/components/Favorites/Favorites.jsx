@@ -1,6 +1,6 @@
 import { connect, useDispatch, useSelector } from "react-redux";
 import { Card } from '../../components';
-import { filterCards, orderCards, showAllcharacters, removeFav } from "../../redux/actions";
+import { filterCards, orderCards, showallFavorites, removeFav } from "../../redux/actions";
 import { useState } from "react";
 import styles from "./Favorites.module.css";
 
@@ -18,7 +18,7 @@ export const Favorites = (props) => {
     const handleFilter = (e) => {
         const selectedValue = e.target.value;
         if (selectedValue === "All") {
-            dispatch(showAllcharacters());
+            dispatch(showallFavorites());
         } else {
             dispatch(filterCards(selectedValue));
         }
