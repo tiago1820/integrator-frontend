@@ -3,7 +3,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background-color: #007bff;
+    background-color: #0D6EFD;
     color: #fff;
 }
 
@@ -15,4 +15,27 @@
 
 .navLink:hover {
     text-decoration: underline;
+}
+
+.userInfo {
+    display: flex;
+    align-items: center;
+}
+
+.userIcon {
+    margin-left: 5px;
+    font-size: 1.5em;
+    color: #fff;
+}
+
+.appName {
+    text-decoration: none;
+    font-size: 1.5em;
+    outline: none;
+    color: black;
+}
+
+.appName img {
+    height: 67.5px;
+    width: 112.5px;
 }
