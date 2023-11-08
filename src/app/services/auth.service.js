@@ -1,13 +1,14 @@
 import axios from "axios";
 import { handleErrors } from "../helpers";
 
-export async function login(userData, setAccess, navigate) {
+export async function login(userData, setAccess, setUser, navigate) {
     try {
         const { email, password } = userData;
         const URL = 'http://localhost:3001/rickandmorty/login/';
         const { data } = await axios(URL + `?email=${email}&password=${password}`);
-        const { access } = data;
-        setAccess(data);
+        const { access, user } = data;
+        setAccess(access);
+        setUser(user)
         access
             ? navigate('/app/home')
             : navigate('/app')
@@ -16,18 +17,15 @@ export async function login(userData, setAccess, navigate) {
     }
 }
 
-export async function register(userData, setAccess, navigate) {
+export async function register(userData, setAccess, setUser, navigate) {
     try {
         const { email, password } = userData;
         const URL = 'http://localhost:3001/rickandmorty/register/';
         const response = await axios.post(URL, { email, password });
         const data = response.data;
-        const access = data.access;
-
-
-        // const { data } = await axios.post(URL + `?email=${email}&password=${password}`);
-        // const { access } = data.access;
-        setAccess(data);
+        const { access, user } = data;
+        setAccess(access);
+        setUser(user)
         access
             ? navigate('/app/home')
             : navigate('/app')
