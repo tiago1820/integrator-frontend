@@ -16,6 +16,10 @@ export const useAccessState = () => {
     return useState(false);
 };
 
+export const useUser = () => {
+    return useState(null);
+};
+
 export const useNavigateFunction = () => {
     return useNavigate();
 };

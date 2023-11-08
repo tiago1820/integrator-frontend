@@ -8,7 +8,7 @@ import logo from '../../../../public/images/logo.png';
 
 export const Nav = (props) => {
     const { t } = useTranslation();
-    const { onSearch, getRandomChar } = props;
+    const { onSearch, getRandomChar, user } = props;
     const { HOME, ABOUT, FAVORITES } = PATHROUTES;
 
     return (
@@ -24,7 +24,7 @@ export const Nav = (props) => {
             <RandomButton getRandomChar={getRandomChar} />
             <SearchBar onSearch={onSearch} />
             <div className={styles.userInfo}>
-                <span>tiago.zdo@gmail.com</span>
+                <span>{user?.email}</span>
                 <FaUser className={styles.userIcon} />
             </div>
         </div>
