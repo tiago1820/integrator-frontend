@@ -1,9 +1,9 @@
 import { useState } from "react";
 import validator from "./validation";
-import styles from "./Form.module.css";
+import styles from "./Register.module.css";
 
-export const Form = (props) => {
-    const { handleLogin } = props;
+export const Register = (props) => {
+    const { handleRegister } = props;
 
     const [errors, setErrors] = useState([]);
 
@@ -19,13 +19,13 @@ export const Form = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        handleLogin(userData)
+        handleRegister(userData)
     }
 
     return (
         <div className={styles.formContainer}>
             <form onSubmit={handleSubmit}>
-                <h1>Log in</h1>
+                <h1>New Account</h1>
                 <div className={styles.formGroup}>
                     <label htmlFor="">Email</label>
                     <input
@@ -46,7 +46,7 @@ export const Form = (props) => {
                         placeholder="Password..." />
                     {errors.p1 ? (<p>{errors.p1}</p>) : (<p>{errors.p2}</p>)}
                 </div>
-                <button>Submit</button>
+                <button>Register</button>
             </form>
         </div>
     )
