@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Nav } from '../src/app/components';
-import { getCharacterById, getRandomCharId, login, AppRoutes, isCharacterDuplicate } from '../src/app/services';
+import { getCharacterById, getRandomCharId, login, register, AppRoutes, isCharacterDuplicate } from '../src/app/services';
 import styles from "./App.module.css";
 import { useLocationPathname, useCharactersState, useAccessState, useNavigateFunction, useTotalChar } from '../src/app/hooks';
 import { handleErrors } from '../src/app/helpers';
@@ -16,6 +16,14 @@ export const App = () => {
     const handleLogin = async (userData) => {
         try {
             await login(userData, setAccess, navigate);
+        } catch (error) {
+            handleErrors(error);
+        }
+    }
+
+    const handleRegister = async (userData) => {
+        try {
+            await register(userData, setAccess, navigate);
         } catch (error) {
             handleErrors(error);
         }
@@ -59,14 +67,14 @@ export const App = () => {
     };
 
     let navComponent = null;
-    if (pathname !== '/app' && pathname !== '/') {
+    if (pathname !== '/app' && pathname !== '/' && pathname !== '/app/register') {
         navComponent = <Nav onSearch={onSearch} getRandomChar={getRandomChar} />;
     }
 
     return (
         <div className={styles.appContainer}>
             {navComponent}
-            <AppRoutes characters={characters} onClose={onClose} handleLogin={handleLogin} />
+            <AppRoutes characters={characters} onClose={onClose} handleLogin={handleLogin} handleRegister={handleRegister} />
         </div>
     );
 }

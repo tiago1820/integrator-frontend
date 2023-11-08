@@ -10,7 +10,7 @@ export const Banner = () => {
             <div className={styles.row}>
                 <div className={styles.column}>
                     <h1>Explora el universo de Rick and Morty con detalles impresionantes.</h1>
-                    <Link className={styles.btn} to={"/app"}>Crear una cuenta</Link>
+                    <Link className={styles.btn} to={"/app/register"}>Crear una cuenta</Link>
                     <Link className={styles.btn2} to={"/app"}>Ingresar</Link>
                 </div>
                 <div className={styles.column}>

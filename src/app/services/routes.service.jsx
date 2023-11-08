@@ -1,14 +1,15 @@
 // routes.js
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Form, Cards, About, Detail, Favorites, Site } from '../components';
+import { Form, Cards, About, Detail, Favorites, Site, Register } from '../components';
 import { PATHROUTES } from '../helpers';
 
-const { LOGIN, HOME, ABOUT, DETAIL, FAVORITES, SITE } = PATHROUTES;
+const { LOGIN, HOME, ABOUT, DETAIL, FAVORITES, SITE, REGISTER } = PATHROUTES;
 
-export const AppRoutes = ({ characters, onClose, handleLogin }) => (
+export const AppRoutes = ({ characters, onClose, handleLogin, handleRegister }) => (
     <Routes>
         <Route path={SITE} element={<Site />} />
+        <Route path={REGISTER} element={<Register handleRegister={handleRegister} />} />
         <Route path={LOGIN} element={<Form handleLogin={handleLogin} />} />
         <Route path={HOME} element={<Cards characters={characters} onClose={onClose} />} />
         <Route path={ABOUT} element={<About />} />
