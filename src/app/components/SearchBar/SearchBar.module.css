@@ -1,6 +1,27 @@
 .form {
     display: flex;
     align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 33.33%;
+    flex-direction: row;
+    margin-bottom: 0.5rem;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2 {
+    margin-top: 0.1rem;
+    margin-bottom: 0.1rem;
+}
+
+.row {
+    display: flex;
+    align-items: center;
 }
 
 .searchInput {
@@ -8,6 +29,7 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     margin-right: 8px;
+    width: 20rem;
 }
 
 .button {

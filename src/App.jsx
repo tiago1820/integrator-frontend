@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Nav } from '../src/app/components';
+import { Nav, SearchBar } from '../src/app/components';
 import { getCharacterById, getRandomCharId, login, register, AppRoutes, isCharacterDuplicate } from '../src/app/services';
 import styles from "./App.module.css";
 import { useLocationPathname, useCharactersState, useAccessState, useNavigateFunction, useTotalChar, useUser } from '../src/app/hooks';
@@ -31,10 +31,10 @@ export const App = () => {
     }
 
     useEffect(() => {
-        if(access && user && pathname !== '/') {
+        if (access && user && pathname !== '/') {
             navigate('/app/home')
-        } 
-        
+        }
+
     }, [access]);
 
     const onSearch = async (id) => {
@@ -71,13 +71,19 @@ export const App = () => {
     };
 
     let navComponent = null;
+    let searchBarComponent = null;
     if (pathname !== '/app' && pathname !== '/' && pathname !== '/app/register') {
         navComponent = <Nav onSearch={onSearch} getRandomChar={getRandomChar} user={user} />;
+    }
+
+    if (pathname === '/app/home') {
+        searchBarComponent = <SearchBar onSearch={onSearch} />
     }
 
     return (
         <div className={styles.appContainer}>
             {navComponent}
+            {searchBarComponent}
             <AppRoutes characters={characters} onClose={onClose} handleLogin={handleLogin} handleRegister={handleRegister} />
         </div>
     );
