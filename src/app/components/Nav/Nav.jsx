@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import PATHROUTES from '../../helpers/PathRoutes.helper';
-import { RandomButton } from '../../components';
+import { RandomButton, LanguageSelector } from '../../components';
 import { useTranslation } from 'react-i18next';
 import styles from "./Nav.module.css";
 import { FaUser } from 'react-icons/fa';
@@ -15,10 +15,8 @@ export const Nav = (props) => {
         navRef.current.classList.toggle(`${styles.responsiveNav}`);
     }
 
-
-
     const { t } = useTranslation();
-    const { onSearch, getRandomChar, user } = props;
+    const { getRandomChar, user } = props;
     const { HOME, ABOUT, FAVORITES } = PATHROUTES;
 
     return (
@@ -45,6 +43,9 @@ export const Nav = (props) => {
                             <RandomButton getRandomChar={getRandomChar} />
                         </li>
                         <li>
+                            <LanguageSelector />
+                        </li>
+                        <li>
                             <div className={styles.userInfo}>
                                 <span>{user?.email}</span>
                                 <FaUser className={styles.userIcon} />
@@ -61,25 +62,5 @@ export const Nav = (props) => {
 
             </nav>
         </>
-
-
-
-
-
-        // <div className={styles.navContainer}>
-        //     <div className={styles.left}>
-        //         <Link className={styles.appName} to={HOME}>
-        //             <img src={logo} alt="Logo" />
-        //         </Link>
-        //     </div>
-        //     {/* <Link className={styles.navLink} to={HOME}>{t('home')}</Link> */}
-        //     <Link className={styles.navLink} to={ABOUT}>{t('about')}</Link>
-        //     <Link className={styles.navLink} to={FAVORITES}>{t('favorites')}</Link>
-        //     <RandomButton getRandomChar={getRandomChar} />
-        //     <div className={styles.userInfo}>
-        //         <span>{user?.email}</span>
-        //         <FaUser className={styles.userIcon} />
-        //     </div>
-        // </div>
     )
 }

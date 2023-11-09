@@ -1,7 +1,10 @@
 import { useCharacter } from '../../hooks';
 import styles from './Detail.module.css';
+import { useTranslation } from 'react-i18next';
+
 
 export const Detail = () => {
+  const { t } = useTranslation();
   const character = useCharacter();
 
   return (
@@ -11,13 +14,13 @@ export const Detail = () => {
         <div className={styles.cardContent}>
           <div className={styles.name}>{character?.name}</div>
           <div>
-            <div>{character?.species}</div>
-            <div>{character?.gender}</div>
-            <div className={styles.origin}>{character.origin?.name}</div>
+            <div>{t('species')}: {character?.species}</div>
+            <div>{t('gender')}: {character?.gender}</div>
+            <div className={styles.origin}>{t('origin')}: {character.origin?.name}</div>
           </div>
         </div>
       </div>
-      <div className={styles.status}>{character?.status}</div>
+      <div className={styles.status}>{t('status')}: {character?.status}</div>
     </div>
   )
 }
