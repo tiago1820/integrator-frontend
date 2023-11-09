@@ -50,7 +50,7 @@ export const Favorites = (props) => {
                             return (
                                 <Card
                                     key={char.id}
-                                    id={char.id}
+                                    id={char.uid}
                                     name={char.name}
                                     status={char.status}
                                     //                                     species={char.species}

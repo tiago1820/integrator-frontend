@@ -33,9 +33,7 @@ export const App = () => {
     useEffect(() => {
         if(access && user && pathname !== '/') {
             navigate('/app/home')
-        } else {
-            navigate('/app');
-        }
+        } 
         
     }, [access]);
 
