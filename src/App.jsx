@@ -14,9 +14,6 @@ export const App = () => {
     const [user, setUser] = useUser();
     const navigate = useNavigateFunction();
 
-    console.log("HOLA", access);
-    console.log("HELLO", user);
-
     const handleLogin = async (userData) => {
         try {
             await login(userData, setAccess, setUser, navigate);

@@ -1,13 +1,12 @@
 import { connect, useDispatch, useSelector } from "react-redux";
 import { Card } from '../../components';
-import { filterCards, orderCards, showAllcharacters, removeFav } from "../../redux/actions";
+import { filterCards, orderCards, showAllcharacters, removeFav, loadFavorites } from "../../redux/actions";
 import { useEffect, useState } from "react";
 import styles from "./Favorites.module.css";
 
 export const Favorites = (props) => {
     const dispatch = useDispatch();
     const myFavorites = useSelector(state => state.myFavorites);
-
     const [aux, setAux] = useState(false);
 
     const handleOrder = (e) => {
@@ -25,7 +24,7 @@ export const Favorites = (props) => {
     }
 
     useEffect(() => {
-        
+        dispatch(loadFavorites());
     }, []);
 
     return (

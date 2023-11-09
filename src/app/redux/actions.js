@@ -1,6 +1,21 @@
 import axios from "axios";
 import { handleErrors } from "../helpers";
 
+export const loadFavorites = () => {
+    const endpoint = 'http://localhost:3001/rickandmorty/fav';
+    return async (dispatch) => {
+        try {
+            const { data } = await axios.get(endpoint);
+            return dispatch({
+                type: 'LOAD_FAVORITES',
+                payload: data,
+            });
+        } catch (error) {
+            handleErrors(error);
+        }
+    }
+}
+
 export const addFav = (character) => {
     const endpoint = 'http://localhost:3001/rickandmorty/fav';
     return async (dispatch) => {
