@@ -3,5 +3,23 @@
     "about": "Quienes somos",
     "favorites": "Favoritos",
     "random": "Aleatorio",
-    "add": "Agregar"
+    "english": "Inglés",
+    "spanish": "Español",
+    "portuguese": "Portugués",
+    "characters": "Personajes",
+    "add": "Agregar",
+    "ascending": "Ascendente",
+    "falling": "Descendente",
+    "all": "Todos",
+    "male": "Masculino",
+    "female": "Feminino",
+    "genderless": "Sin género",
+    "unknown": "Desconocido",
+    "name": "Nombre",
+    "status": "Estado",
+    "species": "Especie",
+    "gender": "Género",
+    "origin": "Origen",
+    "searchId": "Ingrese una identificación entre 1 y 826"
+
 }
