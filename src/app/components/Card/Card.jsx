@@ -8,7 +8,7 @@ export const Card = (props) => {
     const dispatch = useDispatch();
     const myFavorites = useSelector(state => state.myFavorites);
 
-    const { id, name, status, species, gender, origin, image, onClose } = props;
+    const { id, uid, name, status, species, gender, origin, image, onClose } = props;
     const [isFav, setIsFav] = useState(false);
 
     const handleFavorite = () => {

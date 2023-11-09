@@ -16,8 +16,14 @@ export const SearchBar = (props) => {
 
    return (
       <div className={styles.form}>
-         <input className={styles.searchInput} type='search' placeholder='write ID...' onChange={handleChange} value={id} />
-         <button className={styles.button} onClick={() => onSearch(id)}>{t('add')}</button>
+         <div className={styles.column}>
+            <h2>Characters</h2>
+            <div className={styles.row}>
+               <input className={styles.searchInput} type='search' placeholder='write ID...' onChange={handleChange} value={id} />
+               <button className={styles.button} onClick={() => onSearch(id)}>{t('add')}</button>
+            </div>
+         </div>
+
       </div>
    );
 }
