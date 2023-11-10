@@ -1,0 +1,9 @@
+export const ADD_FAV = "ADD_FAV";
+export const REMOVE_FAV = "REMOVE_FAV";
+export const LOAD_FAVORITES = "LOAD_FAVORITES";
+export const FILTER = "FILTER";
+export const ORDER = "ORDER";
+export const SHOW_ALL = "SHOW_ALL";
+export const GET_CHARACTER_DETAIL = "GET_CHARACTER_DETAIL";
+export const CLEAN_DETAIL = "CLEAN_DETAIL";
+export const GET_TOTAL_CHAR = "GET_TOTAL_CHAR";

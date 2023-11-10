@@ -1,3 +1,14 @@
+import {
+    ADD_FAV,
+    REMOVE_FAV,
+    LOAD_FAVORITES,
+    FILTER,
+    ORDER,
+    SHOW_ALL,
+    GET_CHARACTER_DETAIL,
+    CLEAN_DETAIL,
+    GET_TOTAL_CHAR
+} from './action-types';
 import axios from "axios";
 import { handleErrors } from "../helpers";
 
@@ -7,7 +18,7 @@ export const loadFavorites = () => {
         try {
             const { data } = await axios.get(endpoint);
             return dispatch({
-                type: 'LOAD_FAVORITES',
+                type: LOAD_FAVORITES,
                 payload: data,
             });
         } catch (error) {
@@ -22,7 +33,7 @@ export const addFav = (character) => {
         try {
             const { data } = await axios.post(endpoint, character);
             return dispatch({
-                type: 'ADD_FAV',
+                type: ADD_FAV,
                 payload: data,
             });
 
@@ -38,7 +49,7 @@ export const removeFav = (id) => {
         try {
             const { data } = await axios.delete(endpoint);
             return dispatch({
-                type: 'REMOVE_FAV',
+                type: REMOVE_FAV,
                 payload: data,
             });
         } catch (error) {
@@ -49,21 +60,21 @@ export const removeFav = (id) => {
 
 export const filterCards = (gender) => {
     return {
-        type: "FILTER",
+        type: FILTER,
         payload: gender
     }
 }
 
 export const orderCards = (order) => {
     return {
-        type: "ORDER",
+        type: ORDER,
         payload: order
     }
 }
 
 export const showAllcharacters = () => {
     return {
-        type: "SHOW_ALL",
+        type: SHOW_ALL,
     }
 }
 
@@ -74,13 +85,13 @@ export const getCharacterDetail = (id) => {
         )
             .then((response) => response.json())
             .then(data => {
-                dispatch({ type: "GET_CHARACTER_DETAIL", payload: data })
+                dispatch({ type: GET_CHARACTER_DETAIL, payload: data })
             })
     }
 }
 
 export const cleanDetail = () => {
-    return { type: "CLEAN_DETAIL" };
+    return { type: CLEAN_DETAIL };
 }
 
 export const getTotalChar = () => {
@@ -89,7 +100,7 @@ export const getTotalChar = () => {
             const response = await axios.get('http://localhost:3001/rickandmorty/character/total');
             const total = response.data.total;
             dispatch({
-                type: 'GET_TOTAL_CHAR',
+                type: GET_TOTAL_CHAR,
                 payload: total,
             });
         } catch (error) {
