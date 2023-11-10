@@ -23,9 +23,9 @@ export const Nav = (props) => {
         <>
             <nav className={styles.navbar}>
                 <div className={styles.left}>
-                    <a className={styles.appName} href="/#">
+                    <Link className={styles.appName} to={HOME}>
                         <img src={logo} alt="Logo" />
-                    </a>
+                    </Link>
                 </div>
 
                 <div className={styles.column}>

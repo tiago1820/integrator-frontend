@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Nav, SearchBar } from '../src/app/components';
+import { Nav, SearchBar, Pagination } from '../src/app/components';
 import { getCharacterById, getRandomCharId, login, register, AppRoutes, isCharacterDuplicate, getCharacterByPage } from '../src/app/services';
 import styles from "./App.module.css";
 import { useLocationPathname, useCharactersState, useAccessState, useNavigateFunction, useTotalChar, useUser, useCharsByPage } from '../src/app/hooks';
@@ -129,35 +129,44 @@ export const App = () => {
             {navComponent}
             {searchBarComponent}
             <AppRoutes characters={characters.concat(pageCharacters)} onClose={onClose} handleLogin={handleLogin} handleRegister={handleRegister} />
-            {pageCharacters.length >= 20 && (
-                <div className={styles.btnContainer}>
-                    <button
-                        className={styles.btnPagination}
-                        onClick={() => goToPreviousPage()} disabled={currentPage === 1}>Prev</button>
+            {pageCharacters.length >= 5 && (
+                <Pagination
+                    currentPage={currentPage}
+                    goToPreviousPage={goToPreviousPage}
+                    goToNextPage={goToNextPage}
+                    goToPage={goToPage}
+                />
 
-                    {[1, 2].map(page => (
-                        <button className={styles.btnPagination} key={page} onClick={() => goToPage(page)}>
-                            {page}
-                        </button>
-                    ))}
 
-                    <button
-                        className={`${styles.btnPagination} ${styles.disabledBtn}`}
-                        disabled>...</button>
 
-                    {[41, 42].map(page => (
-                        <button
-                            className={styles.btnPagination}
-                            key={page}
-                            onClick={() => goToPage(page)}>
-                            {page}
-                        </button>
-                    ))}
+                // <div className={styles.btnContainer}>
+                //     <button
+                //         className={styles.btnPagination}
+                //         onClick={() => goToPreviousPage()} disabled={currentPage === 1}>Prev</button>
 
-                    <button
-                        className={styles.btnPagination}
-                        onClick={() => goToNextPage()} disabled={currentPage === 42}>Next</button>
-                </div>
+                //     {[1, 2].map(page => (
+                //         <button className={styles.btnPagination} key={page} onClick={() => goToPage(page)}>
+                //             {page}
+                //         </button>
+                //     ))}
+
+                //     <button
+                //         className={`${styles.btnPagination} ${styles.disabledBtn}`}
+                //         disabled>...</button>
+
+                //     {[41, 42].map(page => (
+                //         <button
+                //             className={styles.btnPagination}
+                //             key={page}
+                //             onClick={() => goToPage(page)}>
+                //             {page}
+                //         </button>
+                //     ))}
+
+                //     <button
+                //         className={styles.btnPagination}
+                //         onClick={() => goToNextPage()} disabled={currentPage === 42}>Next</button>
+                // </div>
             )}
         </div>
     );

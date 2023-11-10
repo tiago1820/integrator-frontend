@@ -10,5 +10,6 @@ import { Register } from './Register/Register.jsx';
 import { SearchBar } from './SearchBar/SearchBar.jsx';
 import { Site } from '../../site/Site.jsx';
 import {LanguageSelector} from './Nav/componentes/LanguageSelector/LanguageSelector.jsx';
+import { Pagination } from './Pagination/Pagination.jsx';
 
-export { Card, Cards, Nav, About, Detail, Form, Favorites, RandomButton, Register, SearchBar, Site, LanguageSelector };
+export { Card, Cards, Nav, About, Detail, Form, Favorites, RandomButton, Register, SearchBar, Site, LanguageSelector, Pagination };
