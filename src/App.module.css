@@ -3,3 +3,23 @@
   background-color: #fff;
   margin-top: -8px;
 }
+
+.btnContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.btnPagination {
+  background-color: white;
+  border: 1px solid black;
+  margin: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  color: black;
+}
+
+.disabledBtn {
+  cursor: not-allowed;
+}

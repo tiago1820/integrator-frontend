@@ -4,7 +4,6 @@ import { handleErrors } from "../helpers";
 export const getCharacterByPage = async (page) => {
     try {
         const { data } = await axios(`http://localhost:3001/rickandmorty/character/page/${page}`);
-        console.log(data[0]);
         return data;
     } catch (error) {
         handleErrors(error);

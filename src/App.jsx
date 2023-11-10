@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Nav, SearchBar } from '../src/app/components';
 import { getCharacterById, getRandomCharId, login, register, AppRoutes, isCharacterDuplicate, getCharacterByPage } from '../src/app/services';
 import styles from "./App.module.css";
@@ -9,12 +9,11 @@ import { handleErrors } from '../src/app/helpers';
 export const App = () => {
 
     const [pageCharacters, setPageCharacters] = useCharsByPage();
-
+    const [currentPage, setCurrentPage] = useState(1);
 
     const totalChar = useTotalChar();
     const pathname = useLocationPathname();
     const [characters, setCharacters] = useCharactersState();
-    console.log("Chars",characters);
 
 
     const [access, setAccess] = useAccessState();
@@ -47,8 +46,8 @@ export const App = () => {
     useEffect(() => {
         const fetchCharacters = async () => {
             try {
-                const page = 1;
-                const charactersData = await getCharacterByPage(page);
+                // const page = 1;
+                const charactersData = await getCharacterByPage(currentPage);
                 setPageCharacters(charactersData);
             } catch (error) {
                 handleErrors(error);
@@ -56,7 +55,7 @@ export const App = () => {
         };
 
         fetchCharacters();
-    }, []);
+    }, [currentPage]);
 
     const onSearch = async (id) => {
         try {
@@ -107,11 +106,51 @@ export const App = () => {
         searchBarComponent = <SearchBar onSearch={onSearch} />
     }
 
+    const goToPage = page => {
+        setCurrentPage(page);
+    };
+
+    const goToNextPage = () => {
+        setCurrentPage(prevPage => prevPage + 1);
+    };
+
+    const goToPreviousPage = () => {
+        setCurrentPage(prevPage => (prevPage > 1 ? prevPage - 1 : prevPage));
+    }
+
     return (
         <div className={styles.appContainer}>
             {navComponent}
             {searchBarComponent}
             <AppRoutes characters={characters.concat(pageCharacters)} onClose={onClose} handleLogin={handleLogin} handleRegister={handleRegister} />
+            <div className={styles.btnContainer}>
+                <button
+                    className={styles.btnPagination}
+                    onClick={() => goToPreviousPage()} disabled={currentPage === 1}>Prev</button>
+
+                {[1, 2].map(page => (
+                    <button className={styles.btnPagination} key={page} onClick={() => goToPage(page)}>
+                        {page}
+                    </button>
+                ))}
+
+                <button
+                    className={`${styles.btnPagination} ${styles.disabledBtn}`}
+                    disabled>...</button>
+
+                {[41, 42].map(page => (
+                    <button
+                        className={styles.btnPagination}
+                        key={page}
+                        onClick={() => goToPage(page)}>
+                        {page}
+                    </button>
+                ))}
+
+                <button
+                    className={styles.btnPagination}
+                    onClick={() => goToNextPage()} disabled={currentPage === 42}>Next</button>
+            </div>
         </div>
     );
 }
