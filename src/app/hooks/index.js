@@ -12,6 +12,10 @@ export const useCharactersState = () => {
     return useState([]);
 };
 
+export const useCharsByPage = () => {
+    return useState([]);
+}
+
 export const useAccessState = () => {
     return useState(false);
 };
