@@ -16,3 +16,9 @@
 .languageSelector:focus {
     border-color: #555;
 }
+
+@media only screen and (max-width: 1024px) {
+    .languageSelector {
+        margin-left: 1.3rem;
+    }
+}
