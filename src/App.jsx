@@ -1,15 +1,22 @@
 import { useEffect } from 'react';
 import { Nav, SearchBar } from '../src/app/components';
-import { getCharacterById, getRandomCharId, login, register, AppRoutes, isCharacterDuplicate } from '../src/app/services';
+import { getCharacterById, getRandomCharId, login, register, AppRoutes, isCharacterDuplicate, getCharacterByPage } from '../src/app/services';
 import styles from "./App.module.css";
-import { useLocationPathname, useCharactersState, useAccessState, useNavigateFunction, useTotalChar, useUser } from '../src/app/hooks';
+import { useLocationPathname, useCharactersState, useAccessState, useNavigateFunction, useTotalChar, useUser, useCharsByPage } from '../src/app/hooks';
 import { handleErrors } from '../src/app/helpers';
 
 
 export const App = () => {
+
+    const [pageCharacters, setPageCharacters] = useCharsByPage();
+
+
     const totalChar = useTotalChar();
     const pathname = useLocationPathname();
     const [characters, setCharacters] = useCharactersState();
+    console.log("Chars",characters);
+
+
     const [access, setAccess] = useAccessState();
     const [user, setUser] = useUser();
     const navigate = useNavigateFunction();
@@ -37,10 +44,25 @@ export const App = () => {
 
     }, [access]);
 
+    useEffect(() => {
+        const fetchCharacters = async () => {
+            try {
+                const page = 1;
+                const charactersData = await getCharacterByPage(page);
+                setPageCharacters(charactersData);
+            } catch (error) {
+                handleErrors(error);
+            }
+        };
+
+        fetchCharacters();
+    }, []);
+
     const onSearch = async (id) => {
         try {
             const data = await getCharacterById(id);
             if (data.name) {
+                setPageCharacters([]);
                 const isDuplicate = isCharacterDuplicate(characters, data.id);
                 !isDuplicate
                     ? setCharacters(oldChars => [...oldChars, data])
@@ -63,11 +85,16 @@ export const App = () => {
     }
 
     const getRandomChar = async () => {
-        const randomCharId = getRandomCharId(totalChar);
-        const randomCharData = await getCharacterById(randomCharId);
-        randomCharData
-            ? setCharacters(oldChars => [...oldChars, randomCharData])
-            : window.alert('No hay personajes con este ID!');
+        try {
+            setPageCharacters([]);
+            const randomCharId = getRandomCharId(totalChar);
+            const randomCharData = await getCharacterById(randomCharId);
+            randomCharData
+                ? setCharacters(oldChars => [...oldChars, randomCharData])
+                : window.alert('No hay personajes con este ID!');
+        } catch (error) {
+            handleErrors(error);
+        }
     };
 
     let navComponent = null;
@@ -84,7 +111,7 @@ export const App = () => {
         <div className={styles.appContainer}>
             {navComponent}
             {searchBarComponent}
-            <AppRoutes characters={characters} onClose={onClose} handleLogin={handleLogin} handleRegister={handleRegister} />
+            <AppRoutes characters={characters.concat(pageCharacters)} onClose={onClose} handleLogin={handleLogin} handleRegister={handleRegister} />
         </div>
     );
 }
