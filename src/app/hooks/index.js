@@ -21,7 +21,10 @@ export const useAccessState = () => {
 };
 
 export const useUser = () => {
-    return useState(null);
+    const user = useSelector(state => state.user)
+    return user;
+
+    // return useState(null);
 };
 
 export const useNavigateFunction = () => {

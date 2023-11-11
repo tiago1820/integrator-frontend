@@ -7,13 +7,15 @@ import {
     SHOW_ALL,
     GET_CHARACTER_DETAIL,
     CLEAN_DETAIL,
-    GET_TOTAL_CHAR
+    GET_TOTAL_CHAR,
+    SET_USER
 } from './action-types';
 import axios from "axios";
 import { handleErrors } from "../helpers";
 
-export const loadFavorites = () => {
-    const endpoint = 'http://localhost:3001/rickandmorty/fav';
+export const loadFavorites = (userId) => {
+
+    const endpoint = `http://localhost:3001/rickandmorty/fav/${userId}`;
     return async (dispatch) => {
         try {
             const { data } = await axios.get(endpoint);
@@ -27,8 +29,9 @@ export const loadFavorites = () => {
     }
 }
 
-export const addFav = (character) => {
-    const endpoint = 'http://localhost:3001/rickandmorty/fav';
+export const addFav = (userId, character) => {
+
+    const endpoint = `http://localhost:3001/rickandmorty/fav/${userId}`;
     return async (dispatch) => {
         try {
             const { data } = await axios.post(endpoint, character);
@@ -43,8 +46,10 @@ export const addFav = (character) => {
     }
 };
 
-export const removeFav = (id) => {
-    const endpoint = 'http://localhost:3001/rickandmorty/fav/' + id;
+export const removeFav = (userId, favoriteId) => {
+
+
+    const endpoint = `http://localhost:3001/rickandmorty/fav/${userId}/${favoriteId}`;
     return async (dispatch) => {
         try {
             const { data } = await axios.delete(endpoint);
@@ -62,6 +67,13 @@ export const filterCards = (gender) => {
     return {
         type: FILTER,
         payload: gender
+    }
+}
+
+export const setUser = (user) => {
+    return {
+        type: SET_USER,
+        payload: user
     }
 }
 

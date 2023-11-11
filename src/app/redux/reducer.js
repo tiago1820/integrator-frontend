@@ -7,7 +7,8 @@ import {
     SHOW_ALL,
     GET_CHARACTER_DETAIL,
     CLEAN_DETAIL,
-    GET_TOTAL_CHAR
+    GET_TOTAL_CHAR,
+    SET_USER
 } from './action-types';
 
 const initialState = {
@@ -15,6 +16,7 @@ const initialState = {
     allCharacters: [],
     characterDetail: {},
     totalCharacters: null,
+    user: null,
 }
 
 const rootReducer = (state = initialState, { type, payload }) => {
@@ -75,6 +77,12 @@ const rootReducer = (state = initialState, { type, payload }) => {
                 ...state,
                 totalCharacters: payload,
             };
+
+        case SET_USER:
+            return {
+                ...state,
+                user: payload,
+            }
 
         default:
             return {

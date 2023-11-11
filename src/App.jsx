@@ -4,25 +4,26 @@ import { getCharacterById, getRandomCharId, login, register, AppRoutes, isCharac
 import styles from "./App.module.css";
 import { useLocationPathname, useCharactersState, useAccessState, useNavigateFunction, useTotalChar, useUser, useCharsByPage } from '../src/app/hooks';
 import { handleErrors } from '../src/app/helpers';
+import { useDispatch } from 'react-redux';
 
 
 export const App = () => {
-
+    const dispatch = useDispatch();
     const [pageCharacters, setPageCharacters] = useCharsByPage();
     const [currentPage, setCurrentPage] = useState(1);
-
     const totalChar = useTotalChar();
     const pathname = useLocationPathname();
     const [characters, setCharacters] = useCharactersState();
 
 
     const [access, setAccess] = useAccessState();
-    const [user, setUser] = useUser();
+    const user = useUser();
+
     const navigate = useNavigateFunction();
 
     const handleLogin = async (userData) => {
         try {
-            await login(userData, setAccess, setUser, navigate);
+            await login(userData, setAccess, navigate, dispatch);
         } catch (error) {
             handleErrors(error);
         }
@@ -30,7 +31,7 @@ export const App = () => {
 
     const handleRegister = async (userData) => {
         try {
-            await register(userData, setAccess, setUser, navigate);
+            await register(userData, setAccess, navigate, dispatch);
         } catch (error) {
             handleErrors(error);
         }
@@ -135,38 +136,7 @@ export const App = () => {
                     goToPreviousPage={goToPreviousPage}
                     goToNextPage={goToNextPage}
                     goToPage={goToPage}
-                />
-
-
-
-                // <div className={styles.btnContainer}>
-                //     <button
-                //         className={styles.btnPagination}
-                //         onClick={() => goToPreviousPage()} disabled={currentPage === 1}>Prev</button>
-
-                //     {[1, 2].map(page => (
-                //         <button className={styles.btnPagination} key={page} onClick={() => goToPage(page)}>
-                //             {page}
-                //         </button>
-                //     ))}
-
-                //     <button
-                //         className={`${styles.btnPagination} ${styles.disabledBtn}`}
-                //         disabled>...</button>
-
-                //     {[41, 42].map(page => (
-                //         <button
-                //             className={styles.btnPagination}
-                //             key={page}
-                //             onClick={() => goToPage(page)}>
-                //             {page}
-                //         </button>
-                //     ))}
-
-                //     <button
-                //         className={styles.btnPagination}
-                //         onClick={() => goToNextPage()} disabled={currentPage === 42}>Next</button>
-                // </div>
+                /> 
             )}
         </div>
     );
