@@ -42,9 +42,9 @@ const rootReducer = (state = initialState, { type, payload }) => {
         case ORDER:
             let copy4 = [...state.allCharacters].sort((a, b) => {
                 if (payload === "A") {
-                    return a.id - b.id
+                    return a.uid - b.uid
                 } else if (payload === "D") {
-                    return b.id - a.id
+                    return b.uid - a.uid
                 } else {
                     return 0;
                 }

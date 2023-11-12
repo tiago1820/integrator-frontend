@@ -4,7 +4,7 @@ import { RandomButton, LanguageSelector } from '../../components';
 import { useTranslation } from 'react-i18next';
 import styles from "./Nav.module.css";
 import { FaUser } from 'react-icons/fa';
-import logo from '../../../../public/images/logo.png';
+import logo from '../../../../public/images/logo-app.png';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { useRef } from 'react';
 
