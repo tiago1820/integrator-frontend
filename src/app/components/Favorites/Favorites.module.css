@@ -20,3 +20,19 @@
     justify-content: center;
     margin-bottom: 20px;
 }
+
+.selectors select {
+    font-size: 15px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #435585;
+    color: #fff;
+    cursor: pointer;
+    outline: none;
+    margin-top: 0.5rem;
+}
+
+.selectors select:first-child {
+    margin-right: 0.3rem;
+}

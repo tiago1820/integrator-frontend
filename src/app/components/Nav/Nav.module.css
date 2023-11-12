@@ -8,6 +8,10 @@
     height: 4rem;
 }
 
+.navbar .responsiveNav {
+    background-color: #363062;
+}
+
 .column {
     display: flex;
     flex-direction: column;
@@ -40,7 +44,7 @@
     margin-left: 0.8rem;
 }
 
-.logoutIcon{
+.logoutIcon {
     margin-left: 5px;
     font-size: 1.5em;
     color: #fff;
@@ -87,17 +91,17 @@
 }
 
 @media only screen and (max-width: 1024px) {
-
     .right {
         margin-top: 0;
     }
+
     .navbar .navBtn {
         visibility: visible;
         opacity: 1;
     }
 
     .navbar a {
-        color: #4A4A4B;
+        color: #fff;
     }
 
     .navbar nav {

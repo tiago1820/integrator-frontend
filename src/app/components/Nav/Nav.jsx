@@ -23,7 +23,7 @@ export const Nav = (props) => {
         <>
             <nav className={styles.navbar}>
                 <div className={styles.left}>
-                    <Link className={styles.appName} to={HOME}>
+                    <Link className={styles.appName} onClick={showNavBar} to={HOME}>
                         <img src={logo} alt="Logo" />
                     </Link>
                 </div>
@@ -31,13 +31,13 @@ export const Nav = (props) => {
                 <div className={styles.column}>
                     <nav ref={navRef} className={styles.right}>
                         <li >
-                            <Link className={styles.navLink} to={HOME}>{t('home')}</Link>
+                            <Link className={styles.navLink} onClick={showNavBar} to={HOME}>{t('home')}</Link>
                         </li>
                         <li>
-                            <Link className={styles.navLink} to={ABOUT}>{t('about')}</Link>
+                            <Link className={styles.navLink} onClick={showNavBar} to={ABOUT}>{t('about')}</Link>
                         </li>
                         <li>
-                            <Link className={styles.navLink} to={FAVORITES}>{t('favorites')}</Link>
+                            <Link className={styles.navLink} onClick={showNavBar} to={FAVORITES}>{t('favorites')}</Link>
                         </li>
                         <li className={styles.liButton}>
                             <RandomButton getRandomChar={getRandomChar} />
@@ -53,8 +53,8 @@ export const Nav = (props) => {
                         </li>
                         <li>
                             <div>
-                                <Link to={LOGIN} onClick={handleLogout}>
-                                    <FaSignOutAlt className={styles.logoutIcon}/>
+                                <Link onClick={showNavBar} to={LOGIN}>
+                                    <FaSignOutAlt className={styles.logoutIcon} />
                                 </Link>
                             </div>
                         </li>
