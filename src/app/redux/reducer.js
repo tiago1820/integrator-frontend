@@ -8,7 +8,8 @@ import {
     GET_CHARACTER_DETAIL,
     CLEAN_DETAIL,
     GET_TOTAL_CHAR,
-    SET_USER
+    SET_USER,
+    REMOVE_USER
 } from './action-types';
 
 const initialState = {
@@ -82,6 +83,11 @@ const rootReducer = (state = initialState, { type, payload }) => {
             return {
                 ...state,
                 user: payload,
+            }
+
+        case REMOVE_USER:
+            return {
+                ...state, user: null
             }
 
         default:

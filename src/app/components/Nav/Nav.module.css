@@ -37,6 +37,15 @@
     margin-left: 5px;
     font-size: 1.5em;
     color: #fff;
+    margin-left: 0.8rem;
+}
+
+.logoutIcon{
+    margin-left: 5px;
+    font-size: 1.5em;
+    color: #fff;
+    margin-top: 0.5rem;
+    margin-left: 0.8rem;
 }
 
 .appName {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Nav, SearchBar, Pagination } from '../src/app/components';
-import { getCharacterById, getRandomCharId, login, register, AppRoutes, isCharacterDuplicate, getCharacterByPage } from '../src/app/services';
+import { getCharacterById, getRandomCharId, login, register, AppRoutes, isCharacterDuplicate, getCharacterByPage, logout } from '../src/app/services';
 import styles from "./App.module.css";
 import { useLocationPathname, useCharactersState, useAccessState, useNavigateFunction, useTotalChar, useUser, useCharsByPage } from '../src/app/hooks';
 import { handleErrors } from '../src/app/helpers';
@@ -36,6 +36,15 @@ export const App = () => {
             handleErrors(error);
         }
     }
+
+    const handleLogout = async (dispatch) => {
+        try {
+            await logout();
+        } catch (error) {
+            handleErrors(error);
+        }
+    }
+
 
     useEffect(() => {
         if (access && user && pathname !== '/') {
@@ -106,7 +115,7 @@ export const App = () => {
     let navComponent = null;
     let searchBarComponent = null;
     if (pathname !== '/app' && pathname !== '/' && pathname !== '/app/register') {
-        navComponent = <Nav onSearch={onSearch} getRandomChar={getRandomChar} user={user} />;
+        navComponent = <Nav onSearch={onSearch} getRandomChar={getRandomChar} user={user} handleLogout={handleLogout} />;
     }
 
     if (pathname === '/app/home') {
@@ -136,7 +145,7 @@ export const App = () => {
                     goToPreviousPage={goToPreviousPage}
                     goToNextPage={goToNextPage}
                     goToPage={goToPage}
-                /> 
+                />
             )}
         </div>
     );

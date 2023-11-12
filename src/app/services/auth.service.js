@@ -1,6 +1,6 @@
 import axios from "axios";
 import { handleErrors } from "../helpers";
-import { setUser } from "../redux/actions";
+import { removeFav, setUser, removeUser } from "../redux/actions";
 
 export async function login(userData, setAccess, navigate, dispatch) {
     try {
@@ -13,6 +13,14 @@ export async function login(userData, setAccess, navigate, dispatch) {
         access
             ? navigate('/app/home')
             : navigate('/app')
+    } catch (error) {
+        handleErrors(error);
+    }
+}
+
+export async function logout(dispatch) {
+    try {
+        dispatch(removeUser());
     } catch (error) {
         handleErrors(error);
     }

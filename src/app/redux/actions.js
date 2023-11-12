@@ -47,9 +47,6 @@ export const addFav = (userId, character) => {
 };
 
 export const removeFav = (userId, uid) => {
-    console.log("HOLAAAA", userId);
-    console.log("HOLAAAA", uid);
-
     const endpoint = `http://localhost:3001/rickandmorty/fav/${userId}/${uid}`;
     return async (dispatch) => {
         try {
@@ -75,6 +72,12 @@ export const setUser = (user) => {
     return {
         type: SET_USER,
         payload: user
+    }
+}
+
+export const removeUser = () => {
+    return {
+        type: REMOVE_USER,
     }
 }
 

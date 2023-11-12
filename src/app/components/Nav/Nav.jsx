@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import styles from "./Nav.module.css";
 import { FaUser } from 'react-icons/fa';
 import logo from '../../../../public/images/logo-app.png';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import { FaBars, FaTimes, FaSignOutAlt } from 'react-icons/fa';
 import { useRef } from 'react';
 
 export const Nav = (props) => {
@@ -16,8 +16,8 @@ export const Nav = (props) => {
     }
 
     const { t } = useTranslation();
-    const { getRandomChar, user } = props;
-    const { HOME, ABOUT, FAVORITES } = PATHROUTES;
+    const { getRandomChar, user, handleLogout } = props;
+    const { HOME, ABOUT, FAVORITES, LOGIN } = PATHROUTES;
 
     return (
         <>
@@ -49,6 +49,13 @@ export const Nav = (props) => {
                             <div className={styles.userInfo}>
                                 <span>{user?.email}</span>
                                 <FaUser className={styles.userIcon} />
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <Link to={LOGIN} onClick={handleLogout}>
+                                    <FaSignOutAlt className={styles.logoutIcon}/>
+                                </Link>
                             </div>
                         </li>
                         <button className={`${styles.navBtn} ${styles.navCloseBtn}`} onClick={showNavBar}>
