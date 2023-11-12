@@ -1,10 +1,10 @@
 // routes.js
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Form, Cards, About, Detail, Favorites, Site, Register } from '../components';
+import { Form, Cards, About, Detail, Favorites, Site, Register, Error } from '../components';
 import { PATHROUTES } from '../helpers';
 
-const { LOGIN, HOME, ABOUT, DETAIL, FAVORITES, SITE, REGISTER } = PATHROUTES;
+const { LOGIN, HOME, ABOUT, DETAIL, FAVORITES, SITE, REGISTER, NOT_FOUND } = PATHROUTES;
 
 export const AppRoutes = ({ characters, onClose, handleLogin, handleRegister }) => (
     <Routes>
@@ -15,5 +15,6 @@ export const AppRoutes = ({ characters, onClose, handleLogin, handleRegister }) 
         <Route path={ABOUT} element={<About />} />
         <Route path={DETAIL} element={<Detail />} />
         <Route path={FAVORITES} element={<Favorites />} />
+        <Route path={NOT_FOUND} element={<Error />} />
     </Routes>
 );

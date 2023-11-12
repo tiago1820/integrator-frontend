@@ -12,5 +12,22 @@ import { SearchBar } from './SearchBar/SearchBar.jsx';
 import { Site } from '../../site/Site.jsx';
 import { LanguageSelector } from './Nav/componentes/LanguageSelector/LanguageSelector.jsx';
 import { Pagination } from './Pagination/Pagination.jsx';
+import { Error } from './Error/Error.jsx';
 
-export { Card, FavCard, Cards, Nav, About, Detail, Form, Favorites, RandomButton, Register, SearchBar, Site, LanguageSelector, Pagination };
+export {
+    Card,
+    FavCard,
+    Cards,
+    Nav,
+    About,
+    Detail,
+    Form,
+    Favorites,
+    RandomButton,
+    Register,
+    SearchBar,
+    Site,
+    LanguageSelector,
+    Pagination,
+    Error
+};

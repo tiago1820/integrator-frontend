@@ -5,7 +5,8 @@ const PATHROUTES = {
     HOME: '/app/home',
     ABOUT: '/app/about',
     DETAIL: '/app/detail/:id',
-    FAVORITES: '/app/favorites'
+    FAVORITES: '/app/favorites',
+    NOT_FOUND: '*',
 }
 
 export default PATHROUTES;
