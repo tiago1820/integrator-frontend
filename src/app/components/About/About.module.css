@@ -1,9 +1,21 @@
 .aboutContainer {
     max-width: 800px;
     margin: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     padding: 20px;
     background-color: #f4f4f4;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     font-size: 1.2rem;
+
+    text-align: justify;
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+    font-family: 'Arial', sans-serif;
+    font-weight: 400;
+    color: #333;
+    box-shadow:  0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+
 }

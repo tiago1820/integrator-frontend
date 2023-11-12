@@ -139,7 +139,7 @@ export const App = () => {
             {navComponent}
             {searchBarComponent}
             <AppRoutes characters={characters.concat(pageCharacters)} onClose={onClose} handleLogin={handleLogin} handleRegister={handleRegister} />
-            {pageCharacters.length >= 5 && (
+            {pathname === '/app/home' && pageCharacters.length >= 5 && (
                 <Pagination
                     currentPage={currentPage}
                     goToPreviousPage={goToPreviousPage}
