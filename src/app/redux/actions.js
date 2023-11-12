@@ -46,10 +46,11 @@ export const addFav = (userId, character) => {
     }
 };
 
-export const removeFav = (userId, favoriteId) => {
+export const removeFav = (userId, uid) => {
+    console.log("HOLAAAA", userId);
+    console.log("HOLAAAA", uid);
 
-
-    const endpoint = `http://localhost:3001/rickandmorty/fav/${userId}/${favoriteId}`;
+    const endpoint = `http://localhost:3001/rickandmorty/fav/${userId}/${uid}`;
     return async (dispatch) => {
         try {
             const { data } = await axios.delete(endpoint);

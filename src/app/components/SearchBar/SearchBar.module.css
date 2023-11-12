@@ -17,6 +17,7 @@
 h2 {
     margin-top: 0.1rem;
     margin-bottom: 0.1rem;
+    color: #363062;
 }
 
 .row {
@@ -34,7 +35,7 @@ h2 {
 
 .button {
     padding: 8px 16px;
-    background-color: #007bff;
+    background-color: #435585;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -42,5 +43,5 @@ h2 {
 }
 
 .button:hover {
-    background-color: #0056b3;
+    background-color: #363062;
 }

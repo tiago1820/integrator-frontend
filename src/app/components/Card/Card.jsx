@@ -7,20 +7,22 @@ import { useDispatch, useSelector } from 'react-redux';
 export const Card = (props) => {
     const dispatch = useDispatch();
     const myFavorites = useSelector(state => state.myFavorites);
-    const { id, uid, name, status, species, gender, origin, image, onClose } = props;
+    const { id, name, status, species, gender, origin, image, onClose } = props;
     const [isFav, setIsFav] = useState(false);
     const user = useSelector(state => state.user);
+
+    const uid = parseInt(id, 10);
+    const userId = parseInt(user.id, 10);
+    const character = { uid, name, status, species, gender, origin, image};
      
-
-
     const handleFavorite = () => {
-        isFav ? dispatch(removeFav(user.id, id)) : dispatch(addFav(user.id, props));
+        isFav ? dispatch(removeFav(userId, uid)) : dispatch(addFav(userId, character));
         setIsFav(!isFav);
     }
 
     useEffect(() => {
         myFavorites.forEach((fav) => {
-            if (fav.id === props.id) {
+            if (fav.uid === props.id) {
                 setIsFav(true);
             }
         });
