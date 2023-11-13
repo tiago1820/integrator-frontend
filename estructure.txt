@@ -1,7 +1,7 @@
+public/
+|--fonts
+|--images
 src/
-|-- constants/
-|   |-- consts.js
-|
 |-- utils/
 |   |-- helpers.js
 |   |-- functions.js

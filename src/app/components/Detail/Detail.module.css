@@ -1,44 +1,73 @@
-/* Detail.module.css */
-.link {
-    text-decoration: none;
+.charImg {
+    display: block;
+    margin: auto;
+    border: 0.6rem solid #fff;
+    margin-top: 1rem;
 }
 
-.card {
-    position: relative;
-    width: 200px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 10px;
-    margin: 10px;
+.charTable {
+    width: 80%;
+    margin: auto;
+    border-collapse: collapse;
+    margin-top: 20px;
     background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    table-layout: fixed;
 }
 
-.card img {
-    width: 100%;
-    border-radius: 4px;
+.charTable th {
+    background-color: #363062;
+    color: #fff;
 }
 
-.cardContent {
-    margin-top: 10px;
+.charTable th,
+.charTable td {
+    padding: 1rem;
+    text-align: left;
+    width: 50%;
 }
 
-.cardContent .name {
+.charTable th {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.charTable td:first-child,
+.charTable th:first-child {
+    border-left: 5px solid #363062;
     font-weight: bold;
+}
+
+.charTable td:last-child,
+.charTable th:last-child {
+    border-right: 5px solid #363062;
+}
+
+.charTable td {
+    border-right: 5px solid #363062;
     font-size: 1.2rem;
-    margin-bottom: 5px;
 }
 
-.cardContent div {
-    font-size: 0.9rem;
-    margin-bottom: 3px;
+.charTable tr:nth-child(even) {
+    background-color: #435585;
+    color: #fff;
 }
 
-.status {
-    font-size: 0.9rem;
-    margin-top: 5px;
+.charTable tr:nth-child(odd) {
+    background-color: #F5E8C7;
+    color: #363062;
 }
 
-.origin {
-    font-weight: bold;
+.charTable tr:last-child td {
+    border-bottom: 5px solid #363062;
+}
+
+@media (max-width: 768px) {
+    .charTable {
+        width: 100%;
+    }
+
+    .charTable th,
+    .charTable td {
+        width: 100%;
+    }
 }
