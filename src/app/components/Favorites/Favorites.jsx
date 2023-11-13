@@ -27,7 +27,6 @@ export const Favorites = () => {
 
     useEffect(() => {
         dispatch(loadFavorites(user.id));
-        console.log("AQUI");
     }, []);
 
     return (
@@ -66,9 +65,10 @@ export const Favorites = () => {
                             )
                         })}
                     </div>
-                </div>
 
+                </div>
             </div>
+
         </>
     )
 }
