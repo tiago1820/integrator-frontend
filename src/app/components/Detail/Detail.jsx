@@ -4,23 +4,37 @@ import { useTranslation } from 'react-i18next';
 
 
 export const Detail = () => {
-  const { t } = useTranslation();
-  const character = useCharacter();
+	const { t } = useTranslation();
+	const character = useCharacter();
 
-  return (
-    <div className={styles.link}>
-      <div className={styles.card}>
-        <img className={styles.image} src={character?.image} alt='' />
-        <div className={styles.cardContent}>
-          <div className={styles.name}>{character?.name}</div>
-          <div>
-            <div>{t('species')}: {character?.species}</div>
-            <div>{t('gender')}: {character?.gender}</div>
-            <div className={styles.origin}>{t('origin')}: {character.origin?.name}</div>
-          </div>
-        </div>
-      </div>
-      <div className={styles.status}>{t('status')}: {character?.status}</div>
-    </div>
-  )
+	return (
+		<>
+			<img className={styles.charImg} src={character?.image} alt="" />
+			<table className={styles.charTable}>
+				<thead>
+					<tr>
+						<th colSpan="2">{character?.name}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>{t('species')}</td>
+						<td>{character?.species}</td>
+					</tr>
+					<tr>
+						<td>{t('gender')}</td>
+						<td>{character?.gender}</td>
+					</tr>
+					<tr>
+						<td>{t('origin')}</td>
+						<td>{character.origin?.name}</td>
+					</tr>
+					<tr>
+						<td>{t('status')}</td>
+						<td>{character?.status}</td>
+					</tr>
+				</tbody>
+			</table>
+		</>
+	)
 }
