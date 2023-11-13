@@ -8,7 +8,7 @@ import { useState } from 'react';
 
 export const FavCard = (props) => {
     const dispatch = useDispatch();
-    const {uid, name, status, species, gender, origin, image, onClose } = props;
+    const {uid, name, status, species, gender, origin, image} = props;
     const user = useSelector(state => state.user);
     const [confirm, setConfirm] = useState(false);
 
@@ -37,7 +37,7 @@ export const FavCard = (props) => {
             <div className={styles.card}>
                 {<button className={styles.heartButton} onClick={confirmDeleteFav}>❤️</button>}
 
-                {<button className={styles.closeButton} onClick={() => onClose(uid)}>X</button>}
+                {<button className={styles.closeButton} onClick={confirmDeleteFav}>X</button>}
 
                 <img
                     className={`${styles.image} ${status === 'Dead' ? styles.blackAndWhite : ''}`}
@@ -73,6 +73,7 @@ export const FavCard = (props) => {
                     onConfirm={() => handleFavorite()}
                     onCancel={() => setConfirm(false)} 
                     reverseButtons={true}
+                    customClass={styles.customSweetAlert}
                 >
                     ¿Quieres eliminar el card seleccionado?
                 </SweetAlert> : null

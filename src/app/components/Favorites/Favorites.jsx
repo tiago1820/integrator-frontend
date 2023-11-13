@@ -60,7 +60,6 @@ export const Favorites = () => {
                                     //                                     gender={char.gender}
                                     //                                     origin={char.origin.name}
                                     image={char.image}
-                                    onClose={() => dispatch(removeFav(user.id, char.uid))}
                                 />
                             )
                         })}

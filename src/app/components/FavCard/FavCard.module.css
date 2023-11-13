@@ -114,3 +114,20 @@
 .deadStatus {
     background-color: var(--dead-status-background);
 }
+
+.customSweetAlert a {
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    margin-left: 0.3rem;
+    text-decoration: none;
+}
+
+.customSweetAlert a:first-child {
+    background-color: #D35D6E;
+}
+
+.customSweetAlert a:last-child {
+    background-color: #363062;
+}

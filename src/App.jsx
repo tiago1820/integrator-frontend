@@ -5,7 +5,7 @@ import styles from "./App.module.css";
 import { useLocationPathname, useCharactersState, useAccessState, useNavigateFunction, useTotalChar, useUser, useCharsByPage } from '../src/app/hooks';
 import { handleErrors } from '../src/app/helpers';
 import { useDispatch } from 'react-redux';
-
+import SweetAlert from "react-bootstrap-sweetalert";
 
 export const App = () => {
     const dispatch = useDispatch();
@@ -14,6 +14,10 @@ export const App = () => {
     const totalChar = useTotalChar();
     const pathname = useLocationPathname();
     const [characters, setCharacters] = useCharactersState();
+    const [confirm, setConfirm] = useState({
+        show: false,
+        title: "",
+    });
 
 
     const [access, setAccess] = useAccessState();
@@ -73,11 +77,23 @@ export const App = () => {
             if (data.name) {
                 setPageCharacters([]);
                 const isDuplicate = isCharacterDuplicate(characters, data.id);
-                !isDuplicate
-                    ? setCharacters(oldChars => [...oldChars, data])
-                    : window.alert('¡El personaje ya está en la lista!');
+                if (!isDuplicate) {
+                    setCharacters(oldChars => [...oldChars, data]);
+                } else {
+                    setConfirm({
+                        show: true,
+                        title: '¡El personaje ya está en la lista!',
+                    });
+                }
+
+                // !isDuplicate
+                //     ? setCharacters(oldChars => [...oldChars, data])
+                //     : window.alert('¡El personaje ya está en la lista!');
             } else {
-                window.alert('¡No hay personajes con este ID!');
+                setConfirm({
+                    show: true,
+                    title: '¡No hay personajes con este ID!',
+                });
             }
 
         } catch (error) {
@@ -147,6 +163,16 @@ export const App = () => {
                     goToPage={goToPage}
                 />
             )}
+            <SweetAlert
+                title={confirm.show ? confirm.title : ""}
+                show={confirm.show}
+                onConfirm={() => setConfirm({ show: false, title: confirm.title })}
+                customClass={styles.customSweetAlert}
+            // onCancel={this.onCancel}
+            />
+
         </div>
     );
+
+
 }

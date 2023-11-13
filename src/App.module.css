@@ -3,3 +3,13 @@
   background-color: #F5E8C7;
   margin-top: -8px;
 }
+
+.customSweetAlert a {
+  background-color: #435585;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  margin-left: 0.3rem;
+  text-decoration: none;
+}
