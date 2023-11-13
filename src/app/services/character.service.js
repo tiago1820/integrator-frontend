@@ -1,9 +1,11 @@
 import axios from "axios";
 import { handleErrors } from "../helpers";
+import { URL } from "../constants";
+const API_URL = URL;
 
 export const getCharacterByPage = async (page) => {
     try {
-        const { data } = await axios(`http://localhost:3001/rickandmorty/character/page/${page}`);
+        const { data } = await axios(`${API_URL}character/page/${page}`);
         return data;
     } catch (error) {
         handleErrors(error);
@@ -12,7 +14,7 @@ export const getCharacterByPage = async (page) => {
 
 export const getCharacterById = async (id) => {
     try {
-        const { data } = await axios(`http://localhost:3001/rickandmorty/character/${id}`);
+        const { data } = await axios(`${API_URL}character/${id}`);
         return data;
     } catch (error) {
         handleErrors(error);

@@ -12,10 +12,13 @@ import {
 } from './action-types';
 import axios from "axios";
 import { handleErrors } from "../helpers";
+import { URL } from "../constants";
+
+const API_URL = URL;
 
 export const loadFavorites = (userId) => {
 
-    const endpoint = `http://localhost:3001/rickandmorty/fav/${userId}`;
+    const endpoint = `${API_URL}fav/${userId}`;
     return async (dispatch) => {
         try {
             const { data } = await axios.get(endpoint);
@@ -31,7 +34,7 @@ export const loadFavorites = (userId) => {
 
 export const addFav = (userId, character) => {
 
-    const endpoint = `http://localhost:3001/rickandmorty/fav/${userId}`;
+    const endpoint = `${API_URL}fav/${userId}`;
     return async (dispatch) => {
         try {
             const { data } = await axios.post(endpoint, character);
@@ -47,7 +50,7 @@ export const addFav = (userId, character) => {
 };
 
 export const removeFav = (userId, uid) => {
-    const endpoint = `http://localhost:3001/rickandmorty/fav/${userId}/${uid}`;
+    const endpoint = `${API_URL}fav/${userId}/${uid}`;
     return async (dispatch) => {
         try {
             const { data } = await axios.delete(endpoint);
@@ -97,7 +100,7 @@ export const showAllcharacters = () => {
 export const getCharacterDetail = (id) => {
 
     return function (dispatch) {
-        fetch(`http://localhost:3001/rickandmorty/character/${id}`
+        fetch(`${API_URL}character/${id}`
         )
             .then((response) => response.json())
             .then(data => {
@@ -113,7 +116,7 @@ export const cleanDetail = () => {
 export const getTotalChar = () => {
     return async (dispatch) => {
         try {
-            const response = await axios.get('http://localhost:3001/rickandmorty/character/total');
+            const response = await axios.get(`${API_URL}character/total`);
             const total = response.data.total;
             dispatch({
                 type: GET_TOTAL_CHAR,

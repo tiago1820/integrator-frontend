@@ -18,8 +18,14 @@ export const Form = (props) => {
     }
 
     const handleSubmit = (e) => {
-        e.preventDefault()
-        handleLogin(userData)
+        e.preventDefault();
+
+        if (Object.values(errors).some(error => error !== null && error !== undefined && error !== '')) {
+            console.log('Hay errores en el formulario. No se puede enviar.');
+        } else {
+            handleLogin(userData)
+        }
+
     }
 
     return (

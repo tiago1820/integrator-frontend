@@ -18,8 +18,15 @@ export const Register = (props) => {
     }
 
     const handleSubmit = (e) => {
-        e.preventDefault()
-        handleRegister(userData)
+        e.preventDefault();
+
+        if (Object.values(errors).some(error => error !== null && error !== undefined && error !== '')) {
+            console.log('Hay errores en el formulario. No se puede enviar.');
+        } else {
+            handleRegister(userData)
+        }
+
+        // handleRegister(userData)
     }
 
     return (
