@@ -20,5 +20,10 @@
     "species": "Species",
     "gender": "Gender",
     "origin": "Origin",
-    "searchId": "Enter an id between 1 and 826"
+    "searchId": "Enter an id between 1 and 826",
+    "aboutTitle": "About me",
+    "aboutP1": "My name is Tiago Souza de Oliveira, a passionate Fullstack Developer with a solid background in Javascript, HTML5, CSS3, SQL, NodeJS, ReactJS, Linux and Docker. Originally from Brazil, I have worked in various areas, standing out as a Service Desk at Yel Informatica, providing bilingual technical support for Stellantis employees and dealers in Argentina and Brazil. My experience also includes roles as Warehouse Assistant at Medical Implants S.A., where I managed the reception, control and dispatch of medical instruments and equipment.",
+    "aboutP2": "Throughout my career, I have cultivated specialized skills in technologies like JavaScript and React.js, as well as implementing test-driven development (TDD) practices. My HTML, CSS, JavaScript and Linux course certifications reflect my commitment to continuous improvement and excellence in my field.",
+    "aboutP3": "In addition to my work experience, I am immersed in a Full Stack Web Developer program at Henry, where I am expanding my skills and knowledge. My approach goes beyond writing code; I seek to contribute to innovative and efficient solutions.",
+    "aboutP4": "This project is a manifestation of my passion for technology and web development. Through this platform, I am excited to share my experience and knowledge in the world of development. You can contact me through my phone number +54 9 11 2705-0682, my email tiago.zdo@gmail.com, or connect with me on LinkedIn and GitHub."   
 }
