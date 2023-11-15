@@ -42,6 +42,6 @@ export async function register(userData, setAccess, navigate, dispatch) {
             ? navigate('/app/home')
             : navigate('/app')
     } catch (error) {
-        handleErrors(error);
+        throw error;
     }
 }

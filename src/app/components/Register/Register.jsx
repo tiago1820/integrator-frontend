@@ -6,6 +6,7 @@ export const Register = (props) => {
     const { handleRegister } = props;
 
     const [errors, setErrors] = useState([]);
+    const [errorReq, setErrorReq] = useState("");
 
     const [userData, setUserData] = useState({
         email: '',
@@ -17,16 +18,19 @@ export const Register = (props) => {
         setUserData({ ...userData, [e.target.name]: e.target.value })
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         if (Object.values(errors).some(error => error !== null && error !== undefined && error !== '')) {
             console.log('Hay errores en el formulario. No se puede enviar.');
         } else {
-            handleRegister(userData)
+            try {
+                await handleRegister(userData)
+            } catch (error) {
+                setErrorReq(error.response.data.message);
+            }
         }
 
-        // handleRegister(userData)
     }
 
     return (
@@ -36,6 +40,7 @@ export const Register = (props) => {
                 <div className={styles.formGroup}>
                     <label htmlFor="">Email</label>
                     <input
+                        className={styles.input}
                         onChange={handleChange}
                         name="email"
                         value={userData.email}
@@ -46,6 +51,7 @@ export const Register = (props) => {
                 <div className={styles.formGroup}>
                     <label htmlFor="">Password</label>
                     <input
+                        className={styles.input}
                         onChange={handleChange}
                         name="password"
                         value={userData.password}
@@ -53,7 +59,12 @@ export const Register = (props) => {
                         placeholder="Password..." />
                     {errors.p1 ? (<p>{errors.p1}</p>) : (<p>{errors.p2}</p>)}
                 </div>
-                <button>Register</button>
+                {errorReq && (
+                    <div className={styles.alert}>
+                        {errorReq}
+                    </div>
+                )}
+                <button className={styles.submit}>Register</button>
             </form>
         </div>
     )

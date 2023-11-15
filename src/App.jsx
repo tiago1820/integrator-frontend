@@ -37,7 +37,7 @@ export const App = () => {
         try {
             await register(userData, setAccess, navigate, dispatch);
         } catch (error) {
-            handleErrors(error);
+            throw error;
         }
     }
 
