@@ -26,11 +26,11 @@
     "aboutP2": "Ao longo da minha carreira, cultivei habilidades especializadas em tecnologias como JavaScript e React.js, além de implementar práticas de desenvolvimento orientado a testes (TDD). Minhas certificações de cursos de HTML, CSS, JavaScript e Linux refletem meu compromisso com a melhoria contínua e a excelência em minha área.",
     "aboutP3": "Além da minha experiência profissional, estou imerso em um programa Full Stack Web Developer na Henry, onde estou ampliando minhas habilidades e conhecimentos. Minha abordagem vai além de escrever código; Procuro contribuir com soluções inovadoras e eficientes.",
     "aboutP4": "Este projeto é uma manifestação da minha paixão por tecnologia e desenvolvimento web. Através desta plataforma, estou entusiasmado em compartilhar minha experiência e conhecimento no mundo do desenvolvimento. Você pode entrar em contato comigo através do meu telefone +54 9 11 2705-0682, meu e-mail tiago.zdo@gmail.com, ou conectar-se comigo no LinkedIn e GitHub.",
-    "site_home": "Início",
-    "site_features": "Features",
-    "site_clients": "Clientes",
-    "site_prices": "Preços",
-    "site_contact": "Contato",
+    "site_nav1": "Início",
+    "site_nav2": "Features",
+    "site_nav3": "Clientes",
+    "site_nav4": "Preços",
+    "site_nav5": "Contato",
     "site_banner1": "Explore o universo de Rick e Morty com detalhes impressionantes.",
     "site_banner2": "Criar uma conta",
     "site_banner3": "Entrar",
@@ -56,5 +56,6 @@
     "site_prices6": "Suporte técnico por e-mail.",
     "site_prices7": "Favoritos ilimitados.",
     "site_prices8": "Suporte Técnico por telefone.",
+    "site_prices9": "Inscreva-se agora",
     "site_footer": "Desenvolvido por"
 }

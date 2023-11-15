@@ -1,7 +1,9 @@
 import styles from './Footer.module.css';
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 
 export const Footer = () => {
+    const { t } = useTranslation();
     const year = new Date().getFullYear();
 
     return <section id='footer' className={styles.footer}>
@@ -16,6 +18,6 @@ export const Footer = () => {
             </ul>
         </div>
         <a className={styles.contacto} href="mailto:tiago.zdo@gmail.com">tiago.zdo@gmail.com</a>
-        <p>Desarrollado por Tiago de Oliveira - {year}</p>
+        <p>{t('site_footer')} Tiago de Oliveira - {year}</p>
     </section>
 }
