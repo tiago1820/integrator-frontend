@@ -20,4 +20,4 @@ export const Footer = () => {
         <a className={styles.contacto} href="mailto:tiago.zdo@gmail.com">tiago.zdo@gmail.com</a>
         <p>{t('site_footer')} Tiago de Oliveira - {year}</p>
     </section>
-}
+};
