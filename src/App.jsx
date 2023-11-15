@@ -41,9 +41,9 @@ export const App = () => {
         }
     }
 
-    const handleLogout = async (dispatch) => {
+    const handleLogout = async () => {
         try {
-            await logout();
+            await logout(dispatch);
         } catch (error) {
             handleErrors(error);
         }

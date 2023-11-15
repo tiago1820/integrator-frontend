@@ -53,7 +53,7 @@ export const Nav = (props) => {
                         </li>
                         <li>
                             <div>
-                                <Link onClick={showNavBar} to={LOGIN}>
+                                <Link onClick={handleLogout} to={LOGIN}>
                                     <FaSignOutAlt className={styles.logoutIcon} />
                                 </Link>
                             </div>

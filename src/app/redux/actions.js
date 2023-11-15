@@ -8,7 +8,8 @@ import {
     GET_CHARACTER_DETAIL,
     CLEAN_DETAIL,
     GET_TOTAL_CHAR,
-    SET_USER
+    SET_USER,
+    REMOVE_USER
 } from './action-types';
 import axios from "axios";
 import { handleErrors } from "../helpers";
