@@ -29,7 +29,7 @@ export const App = () => {
         try {
             await login(userData, setAccess, navigate, dispatch);
         } catch (error) {
-            handleErrors(error);
+            throw error;
         }
     }
 

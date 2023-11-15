@@ -17,7 +17,7 @@ export async function login(userData, setAccess, navigate, dispatch) {
             ? navigate('/app/home')
             : navigate('/app')
     } catch (error) {
-        handleErrors(error);
+        throw error;
     }
 }
 
