@@ -54,7 +54,7 @@ export const App = () => {
         if (access && user && pathname !== '/') {
             navigate('/app/home')
         } else if(!user) {
-            navigate('/app')
+            navigate('/')
         }
 
     }, [access]);
