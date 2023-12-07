@@ -24,13 +24,16 @@ This is a React-based Rick and Morty Wiki app supporting three languages (Englis
 
 To run this project locally, follow these steps:
 
-1. Clone the repository:
+1. Install the backend:
+[backend](https://github.com/tiago1820/integrator-backend)
+
+2. Clone the repository:
 
 ```bash
 git clone https://github.com/tiago1820/integrator-frontend.git
 ```
    
-2. open the project in terminal and then run:
+3. open the project in terminal and then run:
 ```bash
 npm install
 npm run dev
