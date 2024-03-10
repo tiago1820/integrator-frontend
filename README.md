@@ -174,6 +174,6 @@ git push origin feature/NewFeature.
 
 ## License
 
-This project is licensed under the GNU GENERAL PUBLIC LICENSE - see the [LICENSE](/LICENSE) file for details. 
+This project is licensed under the MIT LICENSE - see the [LICENSE](/LICENSE) file for details. 
 
 If you find this project helpful or interesting, please give it a ⭐️.
