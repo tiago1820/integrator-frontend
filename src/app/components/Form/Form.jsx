@@ -1,6 +1,5 @@
 import { useState } from "react";
 import validator from "./validation";
-import styles from "./Form.module.css";
 
 export const Form = (props) => {
     const { handleLogin } = props;

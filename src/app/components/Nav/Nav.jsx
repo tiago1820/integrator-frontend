@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import PATHROUTES from '../../helpers/PathRoutes.helper';
 import { RandomButton, LanguageSelector } from '../../components';
 import { useTranslation } from 'react-i18next';
-import styles from "./Nav.module.css";
 import { FaUser } from 'react-icons/fa';
 import logo from '../../../../public/images/logo-app.png';
 import { FaBars, FaTimes, FaSignOutAlt } from 'react-icons/fa';
@@ -20,54 +19,53 @@ export const Nav = (props) => {
     const { HOME, ABOUT, FAVORITES, LOGIN } = PATHROUTES;
 
     return (
-        <>
-            <nav className={styles.navbar}>
-                <div className={styles.left}>
-                    <Link className={styles.appName} onClick={showNavBar} to={HOME}>
-                        <img src={logo} alt="Logo" />
-                    </Link>
-                </div>
-
-                <div className={styles.column}>
-                    <nav ref={navRef} className={styles.right}>
-                        <li >
-                            <Link className={styles.navLink} onClick={showNavBar} to={HOME}>{t('home')}</Link>
-                        </li>
-                        <li>
-                            <Link className={styles.navLink} onClick={showNavBar} to={ABOUT}>{t('about')}</Link>
-                        </li>
-                        <li>
-                            <Link className={styles.navLink} onClick={showNavBar} to={FAVORITES}>{t('favorites')}</Link>
-                        </li>
-                        <li className={styles.liButton}>
+        <nav className='bg-gray-800'>
+            <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+                <div className='flex justify-between h-16'>
+                    <div className='flex'>
+                        <div className='flex-shrink-0 flex items-center'>
+                            <Link to={HOME} onClick={showNavBar}>
+                                <img className="h-8 w-auto" src={logo} alt="Logo" />
+                            </Link>
+                        </div>
+                        <div className='hidden sm:ml-6 sm:flex sm:space-x-8'>
+                            <Link to={HOME} className='text-gray-300 hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium mt-4'
+                                onClick={showNavBar}
+                            >
+                                {t('home')}
+                            </Link>
+                            <Link to={ABOUT} className='text-gray-300 hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium mt-4'
+                                onClick={showNavBar}
+                            >
+                                {t('about')}
+                            </Link>
+                            <Link to={FAVORITES} className='text-gray-300 hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium mt-4' onClick={showNavBar}>
+                                {t('favorites')}
+                            </Link>
                             <RandomButton getRandomChar={getRandomChar} />
-                        </li>
-                        <li>
                             <LanguageSelector />
-                        </li>
-                        <li>
-                            <div className={styles.userInfo}>
-                                <span>{user?.email}</span>
-                                <FaUser className={styles.userIcon} />
-                            </div>
-                        </li>
-                        <li>
-                            <div>
-                                <Link onClick={handleLogout} to={LOGIN}>
-                                    <FaSignOutAlt className={styles.logoutIcon} />
-                                </Link>
-                            </div>
-                        </li>
-                        <button className={`${styles.navBtn} ${styles.navCloseBtn}`} onClick={showNavBar}>
-                            <FaTimes />
-                        </button>
-                    </nav>
-                    <button className={styles.navBtn} onClick={showNavBar}>
-                        <FaBars />
-                    </button>
-                </div>
+                        </div>
+                    </div>
+                    <div className='hidden sm:flex sm:items-center sm:ml-6'>
+                        <div className='flex-shrink-0'>
+                            <span className='text-gray-300'>{user?.email}</span>
+                        </div>
+                        <div className='ml-3 relative'>
+                            <button className='text-gray-300 hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium' onClick={handleLogout}>
+                                <FaSignOutAlt className='h-6 w-6' />
+                            </button>
+                        </div>
+                    </div>
+                    <div className='-mr-2 flex items-center sm:hidden'>
+                        <button type='button' className='text-gray-300 hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium'
+                            onClick={handleLogout}
+                        >
+                            <FaBars className='h-6 w-6' />
 
-            </nav>
-        </>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
     )
 }
