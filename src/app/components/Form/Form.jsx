@@ -30,7 +30,6 @@ export const Form = (props) => {
                 setErrorReq(error.response.data.message);
             }
         }
-
     }
 
     return (
@@ -52,7 +51,7 @@ export const Form = (props) => {
                         {errors.e1 ? (<p>{errors.e1}</p>) : errors.e2 ? (<p>{errors.e2}</p>) : (<p>{errors.e3}</p>)}
                     </div>
                     <div className="mb-4">
-                        <label for="password" class="block text-gray-700">Password</label>
+                        <label htmlFor="password" className="block text-gray-700">Password</label>
                         <input
                             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                             onChange={handleChange}
