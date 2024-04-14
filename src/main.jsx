@@ -6,13 +6,11 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 // import store from '../src/app/redux/store.js';
 import {store, persistor} from './app/redux/store.js';
-
 import './global.css';
 import i18n from './i18n.js';
 import { PersistGate } from 'redux-persist/integration/react';
-
-
 import { register } from 'swiper/element/bundle';
+import "./index.css";
 
 register();
 import 'swiper/css';
